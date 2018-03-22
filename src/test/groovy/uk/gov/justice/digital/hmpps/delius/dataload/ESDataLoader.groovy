@@ -10,7 +10,9 @@ class ESDataLoader {
     }
     static def clear() {
         destroyIndex()
+        destroyPipeline()
         buildIndex()
+        buildPipeline()
     }
 
     static def load(Map<Long, String> offenders) {
@@ -20,7 +22,7 @@ class ESDataLoader {
 
     static def loadOffender(key, offender) {
         println 'Loading offender'
-        def responseCode = Unirest.put(elasticSearchBaseUrl() + "offender/document/" + key)
+        def responseCode = Unirest.put(elasticSearchBaseUrl() + "offender/document/" + key + "?pipeline=pnc-pipeline")
                 .header("Content-Type", "application/json")
                 .body(offender)
                 .asJson()
@@ -42,6 +44,17 @@ class ESDataLoader {
 
     }
 
+    static private destroyPipeline = {
+        println 'Dropping pipeline'
+
+        def responseCode = Unirest.delete(elasticSearchBaseUrl() + "_ingest/pipeline/pnc-pipeline")
+                .asJson()
+                .status
+
+        println 'Dropped pipeline Response is ' + responseCode
+
+    }
+
     static private buildIndex = {
         println 'Building offender index'
         def responseCode = Unirest.put(elasticSearchBaseUrl() + "offender")
@@ -51,6 +64,18 @@ class ESDataLoader {
                 .status
 
         println 'Create offender index. Response is ' + responseCode
+
+    }
+
+    static private buildPipeline = {
+        println 'Building pipeline'
+        def responseCode = Unirest.put(elasticSearchBaseUrl() + "_ingest/pipeline/pnc-pipeline")
+                .header("Content-Type", "application/json")
+                .body(this.getClass().getResource( '/esdata/create-pipeline.json' ).text)
+                .asJson()
+                .status
+
+        println 'Create pipeline. Response is ' + responseCode
 
     }
 
