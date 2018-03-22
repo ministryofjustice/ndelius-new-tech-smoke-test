@@ -1,6 +1,5 @@
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
-import org.openqa.selenium.remote.DesiredCapabilities
 
 driver = {
     def chromeDriverPath = getClass().getResource(String.format("webdriver/%s/chromedriver", isMac() ? "mac64" : "linux64"))
@@ -22,6 +21,5 @@ static def isMac() {
 }
 
 
-baseUrl = System.getenv('DELIUS_WRAPPER_URL') ?: "http://delius-wrapper.eu-west-2.elasticbeanstalk.com/"
-
+baseUrl = System.getenv('DELIUS_WRAPPER_URL') ?: "http://delius-wrapper-smoke-test.eu-west-2.elasticbeanstalk.com/"
 reportsDir = "build/geb-reports"
