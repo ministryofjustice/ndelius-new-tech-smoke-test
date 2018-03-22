@@ -47,4 +47,8 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
 
     }
 
+    def 'this test should fail'() {
+        given:
+        assert false
+    }
 }
