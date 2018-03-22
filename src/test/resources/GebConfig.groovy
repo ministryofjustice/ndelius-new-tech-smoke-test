@@ -6,12 +6,11 @@ driver = {
     System.setProperty('webdriver.chrome.driver', chromeDriverPath.getPath())
     def options = new ChromeOptions();
     options.addArguments("--headless");
+    options.addArguments("window-size=1920,1080");
     options.addArguments("--disable-gpu");
 
     def driverInstance = new ChromeDriver(options)
 
-
-    driverInstance.manage().window().maximize()
     driverInstance
 }
 
