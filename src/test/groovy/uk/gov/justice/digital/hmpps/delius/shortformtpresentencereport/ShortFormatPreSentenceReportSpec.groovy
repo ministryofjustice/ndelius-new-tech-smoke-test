@@ -8,6 +8,7 @@ import uk.gov.justice.digital.hmpps.delius.pages.IndexPage
 import uk.gov.justice.digital.hmpps.delius.pages.SFRPSOffenderDetailsPage
 import uk.gov.justice.digital.hmpps.delius.pages.SFRPSWelcomePage
 import uk.gov.justice.digital.hmpps.delius.pages.ShortFormatPreSentenceReportPageFrame
+import uk.gov.justice.digital.hmpps.delius.pages.ShortFormatPreSentenceReportUpdatePageFrame
 
 @Stepwise
 class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
@@ -46,6 +47,14 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
 
         then: 'I return to the document list'
         at DocumentListPage
+        and: 'My document is displayed'
+        documentRows.size() == 1
+        and: 'I can update my document'
+        firstDocumentUpdateLink.click(ShortFormatPreSentenceReportUpdatePageFrame)
+        and: 'I am taken to the last page in the report I edited'
+        withFrame(newTechFrame, SFRPSOffenderDetailsPage) {
+            saveDraftLink.isDisplayed()
+        }
 
     }
 }

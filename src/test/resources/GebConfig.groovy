@@ -20,5 +20,5 @@ static def isMac() {
 }
 
 
-baseUrl = System.getenv('DELIUS_WRAPPER_URL') ?: "http://delius-wrapper-smoke-test.eu-west-2.elasticbeanstalk.com/"
+baseUrl = System.getenv('DELIUS_WRAPPER_URL') ?: "http://localhost:3000/"
 reportsDir = "build/geb-reports"
