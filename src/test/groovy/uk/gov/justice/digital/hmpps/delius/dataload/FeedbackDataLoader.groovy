@@ -7,6 +7,6 @@ class FeedbackDataLoader {
     static def clear() {
         println 'Clearing all feedback'
         def deleteResult = MongoDbHelper.db().getCollection('events').deleteMany(eq("type", "search-feedback"))
-        println 'Feedbacl cleared. Rows deleted ' + deleteResult.deletedCount
+        println 'Feedback cleared. Rows deleted ' + deleteResult.deletedCount
     }
 }
