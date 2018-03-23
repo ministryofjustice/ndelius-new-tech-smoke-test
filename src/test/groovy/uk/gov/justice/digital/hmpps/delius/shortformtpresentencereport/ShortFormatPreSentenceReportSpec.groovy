@@ -12,7 +12,7 @@ import uk.gov.justice.digital.hmpps.delius.pages.ShortFormatPreSentenceReportPag
 @Stepwise
 class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
 
-    def setupSpec() {
+    def setup() {
         SFPSRDataLoader.clear()
         to IndexPage
     }
