@@ -21,6 +21,7 @@ dependencies {
     testCompile 'org.seleniumhq.selenium:selenium-java:3.0.1'
     testRuntime "org.seleniumhq.selenium:selenium-support:3.0.1"
     testCompile 'org.spockframework:spock-core:1.1-groovy-2.4-rc-3'
+    testCompile 'org.mongodb:mongodb-driver:3.6.3'
 }
 
 task wrapper(type: Wrapper) {
