@@ -2,6 +2,7 @@ package uk.gov.justice.digital.hmpps.delius.shortformtpresentencereport
 
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
+import uk.gov.justice.digital.hmpps.delius.dataload.SFPSRDataLoader
 import uk.gov.justice.digital.hmpps.delius.pages.DocumentListPage
 import uk.gov.justice.digital.hmpps.delius.pages.IndexPage
 import uk.gov.justice.digital.hmpps.delius.pages.SFRPSOffenderDetailsPage
@@ -12,6 +13,7 @@ import uk.gov.justice.digital.hmpps.delius.pages.ShortFormatPreSentenceReportPag
 class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
 
     def setupSpec() {
+        SFPSRDataLoader.clear()
         to IndexPage
     }
 
@@ -46,5 +48,4 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
         at DocumentListPage
 
     }
-
 }
