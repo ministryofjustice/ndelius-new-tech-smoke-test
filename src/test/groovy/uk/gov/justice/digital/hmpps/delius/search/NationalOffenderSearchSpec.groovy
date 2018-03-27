@@ -2,6 +2,7 @@ package uk.gov.justice.digital.hmpps.delius.search
 
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
+import spock.lang.Unroll
 import uk.gov.justice.digital.hmpps.delius.pages.IndexPage
 import uk.gov.justice.digital.hmpps.delius.pages.NationalOffenderSearchPageFrame
 import uk.gov.justice.digital.hmpps.delius.pages.NationalOffenderSearchPage
@@ -101,6 +102,33 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         withFrame(newTechFrame, NationalOffenderSearchPage) {
             waitFor{suggestionsFor('smith')}
         }
+    }
+
+    @Unroll
+    def 'Searching for a record by PNC returns one result'(searchTerm, displayPnc) {
+        given: 'I am on the search page'
+        to NationalOffenderSearchPageFrame
+
+        when: 'I search for a specific PNC'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms(searchTerm)
+        }
+
+        then: 'I see an offender record and the full PNC is displayed'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor {hasResults}
+            resultCount == 1
+            offenders[0].contains(displayPnc)
+        }
+
+        where:
+        searchTerm      | displayPnc
+        '2018/0123456X' | '2018/0123456X'
+        '2018/0123456x' | '2018/0123456X'
+        '18/0123456X'   | '2018/0123456X'
+        '18/0123456x'   | '2018/0123456X'
+        '18/123456X'    | '2018/0123456X'
+        '18/123456x'    | '2018/0123456X'
     }
 
     static def offender(String filename) {

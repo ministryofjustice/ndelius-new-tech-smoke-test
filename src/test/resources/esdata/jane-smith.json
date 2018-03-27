@@ -33,7 +33,7 @@
         "noFixedAbode": true,
         "notes": "string",
         "postcode": "string",
-        "streetName": "string",
+        "streetName": "2018",
         "telephoneNumber": "string",
         "town": "string"
       }
