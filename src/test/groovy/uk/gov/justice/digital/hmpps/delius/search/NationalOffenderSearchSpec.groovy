@@ -125,10 +125,35 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         searchTerm      | displayPnc
         '2018/0123456X' | '2018/0123456X'
         '2018/0123456x' | '2018/0123456X'
+        '2018/123456X'  | '2018/0123456X'
+        '2018/123456x'  | '2018/0123456X'
         '18/0123456X'   | '2018/0123456X'
         '18/0123456x'   | '2018/0123456X'
         '18/123456X'    | '2018/0123456X'
         '18/123456x'    | '2018/0123456X'
+    }
+
+    @Unroll
+    def 'Searching for a record by CRO returns one result'(searchTerm, displayCro) {
+        given: 'I am on the search page'
+        to NationalOffenderSearchPageFrame
+
+        when: 'I search for a specific CRO'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms(searchTerm)
+        }
+
+        then: 'I see an offender record and the full CRO is displayed'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor {hasResults}
+            resultCount == 1
+            offenders[0].contains(displayCro)
+        }
+
+        where:
+        searchTerm     | displayCro
+        'SF80/655108T' | 'SF80/655108T'
+        'sf80/655108t' | 'SF80/655108T'
     }
 
     static def offender(String filename) {
