@@ -88,6 +88,21 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         }
     }
 
+    def 'Search presents suggestions for near misses'() {
+        given: 'I am on the search page'
+        to NationalOffenderSearchPageFrame
+
+        when: 'I search for `smth`'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('smth')
+        }
+
+        then: 'I see a suggestions link for `smith`'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor{suggestionsFor('smith')}
+        }
+    }
+
     static def offender(String filename) {
         this.getClass().getResource(filename).text
     }

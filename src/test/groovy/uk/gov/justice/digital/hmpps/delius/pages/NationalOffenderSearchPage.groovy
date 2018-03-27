@@ -13,5 +13,6 @@ class NationalOffenderSearchPage extends Page {
          }}
         hasResults {$("#offender-results") }
         feedbackLink {$("a", text: "feedback")}
+        suggestionsFor {someText -> $("a", text: someText)}
     }
 }
