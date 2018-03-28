@@ -16,6 +16,7 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         def offenders = [:]
         offenders[1] = offender( '/esdata/john-smith.json' )
         offenders[2] = offender( '/esdata/jane-smith.json' )
+        offenders[3] = offender( '/esdata/sam-jones.json' )
         replace(offenders)
         to IndexPage
     }
@@ -104,7 +105,7 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         }
     }
 
-    @Unroll
+    @Unroll('#searchTerm should find offender with PNC #displayPnc')
     def 'Searching for a record by PNC returns one result'(searchTerm, displayPnc) {
         given: 'I am on the search page'
         to NationalOffenderSearchPageFrame
@@ -133,7 +134,7 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         '18/123456x'    | '2018/0123456X'
     }
 
-    @Unroll
+    @Unroll('#searchTerm should find offender with CRO #displayCro')
     def 'Searching for a record by CRO returns one result'(searchTerm, displayCro) {
         given: 'I am on the search page'
         to NationalOffenderSearchPageFrame
@@ -154,6 +155,61 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         searchTerm     | displayCro
         'SF80/655108T' | 'SF80/655108T'
         'sf80/655108t' | 'SF80/655108T'
+    }
+
+    def 'Searching for a record by DoB returns one result'() {
+        given: 'I am on the search page'
+        to NationalOffenderSearchPageFrame
+
+        when: 'I search for a specific DoB'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('1978/1/6')
+        }
+
+        then: 'I see a single offender record'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor {hasResults}
+            resultCount == 1
+            offenders[0].contains('X00001')
+            offenders[0].contains('06/01/1978')
+        }
+    }
+
+    def 'Searching for a soft deleted record returns no results'() {
+        given: 'I am on the search page'
+        to NationalOffenderSearchPageFrame
+
+        when: 'I search for a deleted offender by CRN'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('X00066')
+        }
+
+        then: 'I see no offender records'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor {hasResults}
+            resultCount == 0
+        }
+    }
+
+    def 'Searching by single letter returns offenders with that first name initial'() {
+        given: 'I am on the search page'
+        to NationalOffenderSearchPageFrame
+
+        when: 'I search for a first name initial'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('J')
+        }
+
+        then: 'I see offender records that have that first name initial'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor {hasResults}
+            resultCount == 2
+            offenders[0].contains('X00002')
+            offenders[0].contains('Jane')
+            offenders[1].contains('X00001')
+            offenders[1].contains('John')
+
+        }
     }
 
     static def offender(String filename) {
