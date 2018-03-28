@@ -32,10 +32,10 @@
         "district": "string",
         "noFixedAbode": true,
         "notes": "string",
-        "postcode": "string",
-        "streetName": "string",
+        "postcode": "655108T",
+        "streetName": "2018",
         "telephoneNumber": "string",
-        "town": "string"
+        "town": "SF80"
       }
     ],
     "emailAddresses": [],
