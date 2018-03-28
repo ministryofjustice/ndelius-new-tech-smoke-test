@@ -12,6 +12,6 @@ smoke test instance: https://search-offender-smoke-test-766apkmmedr4zssxm3og4sso
 1. Start the nDelius New Tech application
 1. Start the nDelius wrapper
 
-./gradlew clean test 
+`./gradlew clean test` 
 
 Reports can be found here: `build/reports/tests/test/index.html`
