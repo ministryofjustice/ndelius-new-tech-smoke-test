@@ -115,12 +115,14 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             fillCounterSignatureWith("Counter signature")
         }
 
+        when: 'I navigate back to the first page'
         withFrame(newTechFrame, SFRPSOffenderDetailsPage) {
             offenderDetailsLink.click()
             headingDisplayed
             saveAndContinue.click()
         }
 
+        and: 'navigate back to the sign & date you report page'
         withFrame(newTechFrame, SFRPSSentencingCourtDetailsPage) {
             headingDisplayed
             saveAndContinue.click()
@@ -166,12 +168,14 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             feedbackLink.click()
         }
 
+        and: 'I visit the feedback page'
         withFrame(newTechFrame, SFRPSFeedbackPage) {
             headingDisplayed
             fillFeedbackWith("It's brilliant")
             submitYourFeedbackButton.click()
         }
 
+        then: 'All the form fields contain the data I entered'
         withFrame(newTechFrame, SFRPSSignAndDateYourReportPage) {
             headingDisplayed
 
