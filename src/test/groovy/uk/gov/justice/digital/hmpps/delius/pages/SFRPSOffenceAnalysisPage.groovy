@@ -2,8 +2,10 @@ package uk.gov.justice.digital.hmpps.delius.pages
 
 class SFRPSOffenceAnalysisPage extends SFPSRBasePage {
 
+    static at = { heading == "Offence analysis" }
+
     static content = {
-        headingDisplayed { waitFor(5) { $("h1", text: "Offence analysis") } }
+        heading { $("h1").text() }
         fillOffenceAnalysisWith { text -> $("#offenceAnalysis").value(text) }
         fillPatternOfOffendingWith { text -> $("#patternOfOffending").value(text) }
     }

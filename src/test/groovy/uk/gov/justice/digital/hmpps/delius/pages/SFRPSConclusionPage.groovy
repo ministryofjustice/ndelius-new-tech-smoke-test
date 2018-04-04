@@ -2,8 +2,10 @@ package uk.gov.justice.digital.hmpps.delius.pages
 
 class SFRPSConclusionPage extends SFPSRBasePage {
 
+    static at = { heading ==  "Conclusion" }
+
     static content = {
-        headingDisplayed { waitFor(5) { $("h1", text: "Conclusion") } }
+        heading { $("h1").text() }
         fillProposalWith { text -> $("#proposal").value(text) }
     }
 }

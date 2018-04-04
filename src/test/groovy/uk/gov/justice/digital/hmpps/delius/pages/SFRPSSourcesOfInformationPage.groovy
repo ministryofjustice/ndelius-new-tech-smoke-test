@@ -2,8 +2,10 @@ package uk.gov.justice.digital.hmpps.delius.pages
 
 class SFRPSSourcesOfInformationPage extends SFPSRBasePage {
 
+    static at = {  heading == "Sources of information" }
+
     static content = {
-        headingDisplayed { waitFor(5) { $("h1", text: "Sources of information") } }
+        heading { $("h1").text() }
         interviewInformationSourceCheckBox { $("#interviewInformationSource") }
         serviceRecordsInformationSourceCheckBox { $("#serviceRecordsInformationSource") }
         cpsSummaryInformationSourceCheckBox { $("#cpsSummaryInformationSource") }
