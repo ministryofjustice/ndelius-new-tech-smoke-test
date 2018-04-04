@@ -4,8 +4,10 @@ import geb.Page
 
 class SFRPSCheckYourReportPage extends Page {
 
+    static at = { heading ==  "Check your report" }
+
     static content = {
-        headingDisplayed { waitFor(5) { $("h1", text: "Check your report") } }
+        heading { $("h1").text() }
         signAndDateYourReportButton { $("input[value='Sign and date your report']") }
     }
 }

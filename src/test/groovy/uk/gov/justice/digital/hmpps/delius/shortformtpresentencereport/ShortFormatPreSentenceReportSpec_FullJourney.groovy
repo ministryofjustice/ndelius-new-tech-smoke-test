@@ -22,21 +22,18 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         withFrame(newTechFrame, SFRPSOffenderDetailsPage) {
-            headingDisplayed
             fillAddressWith("22 Acacia Avenue")
             fillPncWith("2018/1234567A")
             saveAndContinue.click()
         }
 
         withFrame(newTechFrame, SFRPSSentencingCourtDetailsPage) {
-            headingDisplayed
             fillCourtWith("The court")
             fillLocalJusticeAreaWith("Cardiff")
             saveAndContinue.click()
         }
 
         withFrame(newTechFrame, SFRPSSourcesOfInformationPage) {
-            headingDisplayed
             interviewInformationSourceCheckBox.click()
             serviceRecordsInformationSourceCheckBox.click()
             cpsSummaryInformationSourceCheckBox.click()
@@ -52,7 +49,6 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         withFrame(newTechFrame, SFRPSOffenceDetailsPage) {
-            headingDisplayed
             fillMainOffenceWith("Main offence")
             fillOtherOffencesWith("Other offences")
             fillOffenceSummaryWith("Summary of offence")
@@ -60,14 +56,12 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         withFrame(newTechFrame, SFRPSOffenceAnalysisPage) {
-            headingDisplayed
             fillOffenceAnalysisWith("Offence analysis")
             fillPatternOfOffendingWith("Pattern of offending")
             saveAndContinue.click()
         }
 
         withFrame(newTechFrame, SFRPSOffenderAssessmentPage) {
-            headingDisplayed
             accommodationCheckBox.click()
             fillAccommodationWith("Accommodation")
             employmentCheckBox.click()
@@ -88,7 +82,6 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         withFrame(newTechFrame, SFRPSRiskAssessmentPage) {
-            headingDisplayed
             fillLikelihoodOfReOffendingWith("Likelihood of re-offending")
             fillRiskOfSeriousHarmWith("Risk of serious harm")
             setPreviousSupervisionResponseGood
@@ -97,18 +90,15 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         withFrame(newTechFrame, SFRPSConclusionPage) {
-            headingDisplayed
             fillProposalWith("Proposed sentence")
             saveAndContinue.click()
         }
 
         withFrame(newTechFrame, SFRPSCheckYourReportPage) {
-            headingDisplayed
             signAndDateYourReportButton.click()
         }
 
         withFrame(newTechFrame, SFRPSSignAndDateYourReportPage) {
-            headingDisplayed
             fillReportAuthorWith("Report author")
             fillOfficeWith("Office")
             fillCourtOfficePhoneNumberWith("01999 123456")
@@ -116,69 +106,59 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         when: 'I navigate back to the first page'
-        withFrame(newTechFrame, SFRPSOffenderDetailsPage) {
+        withFrame(newTechFrame, SFRPSSignAndDateYourReportPage) {
             offenderDetailsLink.click()
-            headingDisplayed
+        }
+
+        withFrame(newTechFrame, SFRPSOffenderDetailsPage) {
             saveAndContinue.click()
         }
 
         and: 'navigate back to the sign & date you report page'
         withFrame(newTechFrame, SFRPSSentencingCourtDetailsPage) {
-            headingDisplayed
             saveAndContinue.click()
         }
 
         withFrame(newTechFrame, SFRPSSourcesOfInformationPage) {
-            headingDisplayed
             saveAndContinue.click()
         }
 
         withFrame(newTechFrame, SFRPSOffenceDetailsPage) {
-            headingDisplayed
             saveAndContinue.click()
         }
 
         withFrame(newTechFrame, SFRPSOffenceAnalysisPage) {
-            headingDisplayed
             saveAndContinue.click()
         }
 
         withFrame(newTechFrame, SFRPSOffenderAssessmentPage) {
-            headingDisplayed
             saveAndContinue.click()
         }
 
         withFrame(newTechFrame, SFRPSRiskAssessmentPage) {
-            headingDisplayed
             saveAndContinue.click()
         }
 
         withFrame(newTechFrame, SFRPSConclusionPage) {
-            headingDisplayed
             saveAndContinue.click()
         }
 
         withFrame(newTechFrame, SFRPSCheckYourReportPage) {
-            headingDisplayed
             signAndDateYourReportButton.click()
         }
 
         withFrame(newTechFrame, SFRPSSignAndDateYourReportPage) {
-            headingDisplayed
             feedbackLink.click()
         }
 
         and: 'I visit the feedback page'
         withFrame(newTechFrame, SFRPSFeedbackPage) {
-            headingDisplayed
             fillFeedbackWith("It's brilliant")
             submitYourFeedbackButton.click()
         }
 
         then: 'All the form fields contain the data I entered'
         withFrame(newTechFrame, SFRPSSignAndDateYourReportPage) {
-            headingDisplayed
-
             visitedPages == "[1,2,3,4,5,6,7,8,9,10,11]"
             onBehalfOfUser == "92Q036CvVIRT/i428X3zpg=="
             entityId == "RRioaTyIHLGnja2CBw8hqg=="

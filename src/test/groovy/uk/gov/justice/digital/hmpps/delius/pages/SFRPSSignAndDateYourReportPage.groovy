@@ -2,8 +2,10 @@ package uk.gov.justice.digital.hmpps.delius.pages
 
 class SFRPSSignAndDateYourReportPage extends SFPSRBasePage {
 
+    static at = { heading == "Sign and date your report" }
+
     static content = {
-        headingDisplayed { waitFor(5) { $("h1", text: "Sign and date your report") } }
+        heading { $("h1").text() }
         fillReportAuthorWith { text -> $("#reportAuthor").value(text) }
         fillOfficeWith { text -> $("#office").value(text) }
         fillCourtOfficePhoneNumberWith { text -> $("#courtOfficePhoneNumber").value(text) }

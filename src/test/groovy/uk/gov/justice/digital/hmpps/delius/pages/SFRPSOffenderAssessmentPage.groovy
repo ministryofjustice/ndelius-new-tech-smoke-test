@@ -2,8 +2,10 @@ package uk.gov.justice.digital.hmpps.delius.pages
 
 class SFRPSOffenderAssessmentPage extends SFPSRBasePage {
 
+    static at = { heading == "Offender assessment" }
+
     static content = {
-        headingDisplayed { waitFor(5) { $("h1", text: "Offender assessment") } }
+        heading { $("h1").text() }
         accommodationCheckBox { $("#issueAccommodation") }
         fillAccommodationWith { text -> $("#issueAccommodationDetails").value(text) }
         employmentCheckBox { $("#issueEmployment") }
