@@ -46,9 +46,8 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
 
         then: 'I see a single offender record'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            waitFor {hasResults}
-            resultCount == 1
-            offenders[0].contains('X00001')
+            waitFor {resultCount == 1}
+            waitFor {offenders[0].contains('X00001')}
         }
     }
 
@@ -63,10 +62,9 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
 
         then: 'I see multiple offender records'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            waitFor {hasResults}
-            resultCount == 2
-            offenders[0].contains('Smith')
-            offenders[1].contains('Smith')
+            waitFor {resultCount == 2}
+            waitFor {offenders[0].contains('Smith')}
+            waitFor {offenders[1].contains('Smith')}
         }
     }
 
@@ -81,11 +79,10 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
 
         then: 'I see multiple offender records'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            waitFor {hasResults}
-            resultCount == 2
-            offenders[0].contains('John')
+            waitFor {resultCount == 2}
+            waitFor {offenders[0].contains('John')}
             offenders[0].contains('Smith')
-            offenders[1].contains('Jane')
+            waitFor {offenders[1].contains('Jane')}
             offenders[1].contains('Smith')
         }
     }
@@ -117,9 +114,8 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
 
         then: 'I see an offender record and the full PNC is displayed'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            waitFor {hasResults}
+            waitFor {offenders[0].contains(displayPnc)}
             resultCount == 1
-            offenders[0].contains(displayPnc)
         }
 
         where:
@@ -146,9 +142,8 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
 
         then: 'I see an offender record and the full CRO is displayed'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            waitFor {hasResults}
+            waitFor {offenders[0].contains(displayCro)}
             resultCount == 1
-            offenders[0].contains(displayCro)
         }
 
         where:
@@ -168,9 +163,8 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
 
         then: 'I see a single offender record'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            waitFor {hasResults}
+            waitFor {offenders[0].contains('X00001')}
             resultCount == 1
-            offenders[0].contains('X00001')
             offenders[0].contains('06/01/1978')
         }
     }
@@ -186,8 +180,7 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
 
         then: 'I see no offender records'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            waitFor {hasResults}
-            resultCount == 0
+            waitFor {resultCount == 0}
         }
     }
 
@@ -202,11 +195,9 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
 
         then: 'I see offender records that have that first name initial'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            waitFor {hasResults}
-            resultCount == 2
-            offenders[0].contains('X00002')
+            waitFor {offenders[0].contains('X00002')}
             offenders[0].contains('Jane')
-            offenders[1].contains('X00001')
+            waitFor {offenders[1].contains('X00001')}
             offenders[1].contains('John')
 
         }
