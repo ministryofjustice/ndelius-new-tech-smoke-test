@@ -1,10 +1,13 @@
 package uk.gov.justice.digital.hmpps.delius.pages
 
-import geb.Page
+class SFRPSOffenderDetailsPage extends SFPSRBasePage {
 
-class SFRPSOffenderDetailsPage extends Page {
+    static at = { heading == "Offender details" }
 
     static content = {
-        saveDraftLink {$("#exitLink") }
+        heading { $("h1").text() }
+        address { $("#address") }
+        fillAddressWith { text -> $("#address").value(text) }
+        fillPncWith { text -> $("#pnc").value(text) }
     }
 }

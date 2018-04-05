@@ -5,6 +5,7 @@ import spock.lang.Stepwise
 import uk.gov.justice.digital.hmpps.delius.dataload.SFPSRDataLoader
 import uk.gov.justice.digital.hmpps.delius.pages.DocumentListPage
 import uk.gov.justice.digital.hmpps.delius.pages.IndexPage
+import uk.gov.justice.digital.hmpps.delius.pages.SFRPSDraftSavedPage
 import uk.gov.justice.digital.hmpps.delius.pages.SFRPSOffenderDetailsPage
 import uk.gov.justice.digital.hmpps.delius.pages.SFRPSWelcomePage
 import uk.gov.justice.digital.hmpps.delius.pages.ShortFormatPreSentenceReportPageFrame
@@ -43,6 +44,11 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
         withFrame(newTechFrame, SFRPSOffenderDetailsPage) {
             waitFor {saveDraftLink.isDisplayed()}
             saveDraftLink.click()
+        }
+        and: 'I click view my document list'
+        withFrame(newTechFrame, SFRPSDraftSavedPage) {
+            waitFor {documentListLink.isDisplayed()}
+            documentListLink.click()
         }
 
         then: 'I return to the document list'
