@@ -9,6 +9,6 @@ class SFRPSWelcomePage extends Page {
     static content = {
         heading { $("h1").text() }
         startNowButton { $("input[value='Start now']") }
-
+        feedbackLink {$("a", text: "feedback")}
     }
 }

@@ -3,10 +3,13 @@ package uk.gov.justice.digital.hmpps.delius.dataload
 import com.mongodb.MongoClient
 import com.mongodb.MongoClientURI
 
+import static uk.gov.justice.digital.hmpps.delius.Config.mongoConnectionUrl
+import static uk.gov.justice.digital.hmpps.delius.Config.mongoDatabaseName
+
 
 class MongoDbHelper {
     static def db() {
-        MongoClient client = new MongoClient(new MongoClientURI(System.getenv('ANALYTICS_MONGO_CONNECTION') ?: 'mongodb://localhost'))
-        client.getDatabase(System.getenv('ANALYTICS_MONGO_DATABASE') ?: 'analytics')
+        MongoClient client = new MongoClient(new MongoClientURI(mongoConnectionUrl()))
+        client.getDatabase(mongoDatabaseName())
     }
 }
