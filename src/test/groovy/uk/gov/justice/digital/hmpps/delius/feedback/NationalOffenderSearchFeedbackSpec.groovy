@@ -15,7 +15,7 @@ import uk.gov.justice.digital.hmpps.delius.pages.NationalOffenderSearchPageFrame
 class NationalOffenderSearchFeedbackSpec extends GebReportingSpec {
 
     def setupSpec() {
-        FeedbackDataLoader.clear()
+        FeedbackDataLoader.clearNationalSearchFeedback()
         to IndexPage
     }
 
