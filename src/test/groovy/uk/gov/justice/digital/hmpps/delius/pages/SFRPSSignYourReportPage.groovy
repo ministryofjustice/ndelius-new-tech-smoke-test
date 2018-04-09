@@ -1,6 +1,6 @@
 package uk.gov.justice.digital.hmpps.delius.pages
 
-class SFRPSSignAndDateYourReportPage extends SFPSRBasePage {
+class SFRPSSignYourReportPage extends SFPSRBasePage {
 
     static at = { heading == "Sign your report" }
 
