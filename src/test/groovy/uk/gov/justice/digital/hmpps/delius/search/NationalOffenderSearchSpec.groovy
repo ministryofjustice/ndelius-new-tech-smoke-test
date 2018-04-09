@@ -211,7 +211,7 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         }
     }
 
-    def 'Previous searches are saved so are visible after returning to search'() {
+    def 'Previous search terms are saved so previous search is visible after returning to back the search page'() {
         given: 'I am on the search page'
         to NationalOffenderSearchPageFrame
 
