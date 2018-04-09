@@ -227,6 +227,22 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             courtOfficePhoneNumber == "01999 123456"
             counterSignature == "Counter signature"
             startDate != null
+
+            submitButton.click()
         }
+
+        and: 'I click view my document list'
+        withFrame(newTechFrame, SFRPSCompletedPage) {
+            documentListLink.click()
+        }
+
+        and: 'I return to the document list'
+        at DocumentListPage
+
+        and: 'My document is displayed'
+        documentRows.size() == 1
+
+        and: 'I can update my document'
+        firstDocumentUpdateLink.click(ShortFormatPreSentenceReportUpdatePageFrame)
     }
 }
