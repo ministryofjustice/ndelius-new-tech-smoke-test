@@ -1,8 +1,8 @@
 package uk.gov.justice.digital.hmpps.delius.pages
 
-class SFRPSSignAndDateYourReportPage extends SFPSRBasePage {
+class SFRPSSignYourReportPage extends SFPSRBasePage {
 
-    static at = { heading == "Sign and date your report" }
+    static at = { heading == "Sign your report" }
 
     static content = {
         heading { $("h1").text() }
@@ -10,6 +10,6 @@ class SFRPSSignAndDateYourReportPage extends SFPSRBasePage {
         fillOfficeWith { text -> $("#office").value(text) }
         fillCourtOfficePhoneNumberWith { text -> $("#courtOfficePhoneNumber").value(text) }
         fillCounterSignatureWith { text -> $("#counterSignature").value(text) }
-        submitAndViewYourDocumentListButton { $("input[value='Submit and view your document list']") }
+        submitButton { $("input[value='Submit and upload your report']") }
     }
 }

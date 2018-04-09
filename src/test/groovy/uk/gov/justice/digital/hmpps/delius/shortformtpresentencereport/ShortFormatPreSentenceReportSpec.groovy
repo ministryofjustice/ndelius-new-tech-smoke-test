@@ -42,12 +42,10 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
 
         when: 'I click the save draft link'
         withFrame(newTechFrame, SFRPSOffenderDetailsPage) {
-            waitFor {saveDraftLink.isDisplayed()}
             saveDraftLink.click()
         }
         and: 'I click view my document list'
         withFrame(newTechFrame, SFRPSDraftSavedPage) {
-            waitFor {documentListLink.isDisplayed()}
             documentListLink.click()
         }
 

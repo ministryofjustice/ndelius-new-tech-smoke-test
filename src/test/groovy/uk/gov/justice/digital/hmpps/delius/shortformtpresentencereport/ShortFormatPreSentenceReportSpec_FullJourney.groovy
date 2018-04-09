@@ -95,10 +95,10 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         withFrame(newTechFrame, SFRPSCheckYourReportPage) {
-            signAndDateYourReportButton.click()
+            signYourReportButton.click()
         }
 
-        withFrame(newTechFrame, SFRPSSignAndDateYourReportPage) {
+        withFrame(newTechFrame, SFRPSSignYourReportPage) {
             fillReportAuthorWith("Report author")
             fillOfficeWith("Office")
             fillCourtOfficePhoneNumberWith("01999 123456")
@@ -106,7 +106,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         when: 'I navigate back to the first page'
-        withFrame(newTechFrame, SFRPSSignAndDateYourReportPage) {
+        withFrame(newTechFrame, SFRPSSignYourReportPage) {
             offenderDetailsLink.click()
         }
 
@@ -144,10 +144,10 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         withFrame(newTechFrame, SFRPSCheckYourReportPage) {
-            signAndDateYourReportButton.click()
+            signYourReportButton.click()
         }
 
-        withFrame(newTechFrame, SFRPSSignAndDateYourReportPage) {
+        withFrame(newTechFrame, SFRPSSignYourReportPage) {
             feedbackLink.click()
         }
 
@@ -158,7 +158,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         then: 'All the form fields contain the data I entered'
-        withFrame(newTechFrame, SFRPSSignAndDateYourReportPage) {
+        withFrame(newTechFrame, SFRPSSignYourReportPage) {
             visitedPages == "[1,2,3,4,5,6,7,8,9,10,11]"
             onBehalfOfUser == "92Q036CvVIRT/i428X3zpg=="
             entityId == "RRioaTyIHLGnja2CBw8hqg=="
@@ -227,6 +227,28 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             courtOfficePhoneNumber == "01999 123456"
             counterSignature == "Counter signature"
             startDate != null
+
+            submitButton.click()
         }
+
+        and: 'I click view my document list'
+        withFrame(newTechFrame, SFRPSCompletedPage) {
+            documentListLink.click()
+        }
+
+        and: 'I return to the document list'
+        at DocumentListPage
+
+        and: 'My document is displayed'
+        documentRows.size() == 1
+
+        and: 'I can update my document'
+        firstDocumentUpdateLink.click(ShortFormatPreSentenceReportUpdatePageFrame)
+
+        and: 'I am on the sign you report page'
+        withFrame(newTechFrame, SFRPSSignYourReportPage) {
+            true
+        }
+
     }
 }
