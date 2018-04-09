@@ -21,6 +21,14 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         to IndexPage
     }
 
+    def setup() {
+        // clear any previous searches stored in local storage
+        to NationalOffenderSearchPageFrame
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('')
+            waitFor {resultCount == 0}
+        }
+    }
     def 'Offender national Search presents search box'() {
 
         given: 'I am on the search page'
@@ -47,7 +55,7 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         then: 'I see a single offender record'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
             waitFor {resultCount == 1}
-            waitFor {offenders[0].contains('X00001')}
+            offenders[0].contains('X00001')
         }
     }
 
@@ -63,8 +71,8 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         then: 'I see multiple offender records'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
             waitFor {resultCount == 2}
-            waitFor {offenders[0].contains('Smith')}
-            waitFor {offenders[1].contains('Smith')}
+            offenders[0].contains('Smith')
+            offenders[1].contains('Smith')
         }
     }
 
@@ -80,9 +88,9 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         then: 'I see multiple offender records'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
             waitFor {resultCount == 2}
-            waitFor {offenders[0].contains('John')}
+            offenders[0].contains('John')
             offenders[0].contains('Smith')
-            waitFor {offenders[1].contains('Jane')}
+            offenders[1].contains('Jane')
             offenders[1].contains('Smith')
         }
     }
@@ -197,11 +205,32 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         withFrame(newTechFrame, NationalOffenderSearchPage) {
             waitFor {offenders[0].contains('X00002')}
             offenders[0].contains('Jane')
-            waitFor {offenders[1].contains('X00001')}
+            offenders[1].contains('X00001')
             offenders[1].contains('John')
 
         }
     }
+
+    def 'Previous searches are saved so are visible after returning to search'() {
+        given: 'I am on the search page'
+        to NationalOffenderSearchPageFrame
+
+        when: 'I search for an offender'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('smith')
+            waitFor {resultCount == 2}
+        }
+        and: 'Navigate back to search page'
+        to NationalOffenderSearchPageFrame
+
+        then: 'I see offender records from previous search'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor {resultCount == 2}
+            offenders[0].contains('Smith')
+            offenders[1].contains('Smith')
+        }
+    }
+
 
     static def offender(String filename) {
         this.getClass().getResource(filename).text
