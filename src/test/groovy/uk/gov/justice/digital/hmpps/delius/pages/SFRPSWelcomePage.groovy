@@ -4,8 +4,11 @@ import geb.Page
 
 class SFRPSWelcomePage extends Page {
 
-    static content = {
-        startNowButton {$("input[value='Start now']") }
+    static at = { heading == "Short Format Pre-sentence Report" }
 
+    static content = {
+        heading { $("h1").text() }
+        startNowButton { $("input[value='Start now']") }
+        feedbackLink {$("a", text: "feedback")}
     }
 }

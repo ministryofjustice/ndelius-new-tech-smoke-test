@@ -2,6 +2,8 @@ package uk.gov.justice.digital.hmpps.delius.dataload
 
 import com.mashape.unirest.http.Unirest
 
+import static uk.gov.justice.digital.hmpps.delius.Config.elasticSearchBaseUrl
+
 
 class ESDataLoader {
     static def replace(data) {
@@ -79,7 +81,4 @@ class ESDataLoader {
 
     }
 
-    static private elasticSearchBaseUrl() {
-        return System.getenv('ELASTIC_SEARCH_URL') ?: "https://search-offender-smoke-test-766apkmmedr4zssxm3og4ssohq.eu-west-2.es.amazonaws.com/"
-    }
 }
