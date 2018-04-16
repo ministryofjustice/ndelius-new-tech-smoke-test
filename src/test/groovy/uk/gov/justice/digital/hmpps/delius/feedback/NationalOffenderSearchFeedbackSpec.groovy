@@ -25,6 +25,7 @@ class NationalOffenderSearchFeedbackSpec extends GebReportingSpec {
         to NationalOffenderSearchPageFrame
         withFrame(newTechFrame, NationalOffenderSearchPage) {
             feedbackLink.click(NationalOffenderSearchFeedbackPage)
+            fillEmailWith("foo@bar.com")
             selectRole('Case Administrator')
             selectProvider('CRC')
             selectRegion('London')
@@ -38,6 +39,7 @@ class NationalOffenderSearchFeedbackSpec extends GebReportingSpec {
 
         then: 'I see the feedback previously submitted'
         feedbackRows.size() == 1
+        feedbackRows.text().contains('foo@bar.com')
         feedbackRows.text().contains('Case Administrator')
         feedbackRows.text().contains('CRC')
         feedbackRows.text().contains('London')

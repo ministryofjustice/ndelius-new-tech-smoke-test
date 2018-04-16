@@ -7,6 +7,7 @@ class NationalOffenderSearchFeedbackPage extends Page {
 
     static content = {
         heading { $("h1").text() }
+        fillEmailWith{email -> $("#email").value(email)}
         selectRole {role -> $("#role").value(role)}
         selectProvider {provider -> $("#provider").value(provider)}
         selectRegion {region -> $("#region").value(region)}
