@@ -14,6 +14,12 @@
         "dateOfBirth": {
           "type":   "date",
           "format": "yyyy-MM-dd||yyyy/MM/dd||dd-MM-yy||dd/MM/yy||dd-MM-yyyy||dd/MM/yyyy"
+        },
+        "offenderManagers": {
+          "type": "nested",
+          "properties": {
+            "probationArea.code": {"type": "keyword"}
+          }
         }
       }
     }
