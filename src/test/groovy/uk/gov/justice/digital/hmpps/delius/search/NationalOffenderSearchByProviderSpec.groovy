@@ -30,7 +30,7 @@ class NationalOffenderSearchByProviderSpec extends GebReportingSpec {
     }
 
 
-    def 'Searching in National Search mode finds all matches regardless of provider'() {
+    def 'Searching with no filters selected finds all matches regardless of provider'() {
         given: 'I am on the search page'
         to NationalOffenderSearchPageFrame
 
