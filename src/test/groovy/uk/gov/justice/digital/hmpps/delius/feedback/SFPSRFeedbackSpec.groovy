@@ -19,6 +19,11 @@ class SFPSRFeedbackSpec extends GebReportingSpec {
         to ShortFormatPreSentenceReportPageFrame
         withFrame(newTechFrame, SFRPSWelcomePage) {
             feedbackLink.click(SFPSRFeedbackPage)
+            fillEmailWith("foo@bar.com")
+            selectRole('Case Administrator')
+            selectProvider('CRC')
+            selectRegion('London')
+            selectRating('Satisfied')
             fillFeedbackWith('Fantastic service!')
             submitFeedbackButton.click()
         }
@@ -28,6 +33,11 @@ class SFPSRFeedbackSpec extends GebReportingSpec {
 
         then: 'I see the feedback previously submitted'
         feedbackRows.size() == 1
+        feedbackRows.text().contains('foo@bar.com')
+        feedbackRows.text().contains('Case Administrator')
+        feedbackRows.text().contains('CRC')
+        feedbackRows.text().contains('London')
+        feedbackRows.text().contains('Satisfied')
         feedbackRows.text().contains('Fantastic service!')
     }
 
