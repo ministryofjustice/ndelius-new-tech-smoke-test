@@ -17,6 +17,10 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         offenders[1] = offender( '/esdata/john-smith.json' )
         offenders[2] = offender( '/esdata/jane-smith.json' )
         offenders[3] = offender( '/esdata/sam-jones.json' )
+        offenders[4] = offender( '/esdata/antonio-gramsci-n01.json' )
+        offenders[5] = offender( '/esdata/antonio-gramsci-n02.json' )
+        offenders[6] = offender( '/esdata/antonio-gramsci-n03.json' )
+        offenders[7] = offender( '/esdata/anne-gramsci-n02.json' )
         replace(offenders)
         to IndexPage
     }
@@ -230,6 +234,43 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
             offenders[1].contains('Smith')
         }
     }
+
+    def 'Searching with no filters selected finds all matches regardless of provider'() {
+        given: 'I am on the search page'
+        to NationalOffenderSearchPageFrame
+
+        when: 'I search for a matching surname'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('gramsci')
+        }
+
+        then: 'I see multiple offender records'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor {resultCount == 4}
+        }
+    }
+
+
+    def 'Searching with filters selected finds only those matching the active provider'() {
+        given: 'I am on the search page'
+        to NationalOffenderSearchPageFrame
+
+        when: 'I search for a matching surname'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('gramsci')
+            waitFor {resultCount == 4}
+        }
+        and: 'I select an area filter'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            selectProviderFilter('N02', 'N01')
+        }
+
+        then: 'I see filtered multiple offender records'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor {resultCount == 3}
+        }
+    }
+
 
 
     static def offender(String filename) {
