@@ -21,6 +21,7 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         offenders[5] = offender( '/esdata/antonio-gramsci-n02.json' )
         offenders[6] = offender( '/esdata/antonio-gramsci-n03.json' )
         offenders[7] = offender( '/esdata/anne-gramsci-n02.json' )
+        offenders[8] = offender( '/esdata/antonio-gramsci-c20.json' )
         replace(offenders)
         to IndexPage
     }
@@ -246,7 +247,7 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
 
         then: 'I see multiple offender records'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            waitFor {resultCount == 4}
+            waitFor {resultCount == 5}
         }
     }
 
@@ -258,7 +259,7 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         when: 'I search for a matching surname'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
             enterSearchTerms('gramsci')
-            waitFor {resultCount == 4}
+            waitFor {resultCount == 5}
         }
         and: 'I select an area filter'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
