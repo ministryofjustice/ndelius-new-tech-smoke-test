@@ -152,9 +152,9 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         and: 'I visit the feedback page'
-        withFrame(newTechFrame, SFRPSFeedbackPage) {
+        withFrame(newTechFrame, SFPSRFeedbackPage) {
             fillFeedbackWith("It's brilliant")
-            submitYourFeedbackButton.click()
+            submitFeedbackButton.click()
         }
 
         then: 'All the form fields contain the data I entered'
