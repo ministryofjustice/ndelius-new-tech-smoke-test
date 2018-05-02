@@ -29,6 +29,7 @@
         "from": "2017-01-16",
         "to": "2017-01-16",
         "addressNumber": "string",
+        "addressNumber": "string",
         "buildingName": "string",
         "county": "string",
         "district": "string",

@@ -16,7 +16,7 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         def offenders = [:]
         offenders[1] = offender( '/esdata/john-smith.json' )
         offenders[2] = offender( '/esdata/jane-smith.json' )
-        offenders[3] = offender( '/esdata/sam-jones.json' )
+        offenders[3] = offender( '/esdata/sam-jones-deleted.json' )
         offenders[4] = offender( '/esdata/antonio-gramsci-n01.json' )
         offenders[5] = offender( '/esdata/antonio-gramsci-n02.json' )
         offenders[6] = offender( '/esdata/antonio-gramsci-n03.json' )
@@ -24,6 +24,12 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         offenders[8] = offender( '/esdata/antonio-gramsci-c20.json' )
         replace(offenders)
         to IndexPage
+        to NationalOffenderSearchPageFrame
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('male female')
+            // wait for all ES data to be loaded (all records minus deleted should be displayed)
+            waitFor {resultCount == offenders.size() - 1}
+        }
     }
 
     def setup() {
