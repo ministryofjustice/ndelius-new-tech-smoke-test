@@ -23,4 +23,4 @@ static def isMac() {
 baseUrl = System.getenv('DELIUS_WRAPPER_URL') ?: "http://localhost:3000/"
 reportsDir = "build/geb-reports"
 atCheckWaiting = true
-
+waiting.timeout = 10
