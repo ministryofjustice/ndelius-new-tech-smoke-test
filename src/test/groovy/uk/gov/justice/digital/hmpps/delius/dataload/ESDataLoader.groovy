@@ -1,6 +1,7 @@
 package uk.gov.justice.digital.hmpps.delius.dataload
 
 import com.mashape.unirest.http.Unirest
+import groovy.json.JsonSlurper
 
 import static uk.gov.justice.digital.hmpps.delius.Config.elasticSearchBaseUrl
 
@@ -20,6 +21,13 @@ class ESDataLoader {
     static def load(Map<Long, String> offenders) {
         println 'Loading data'
         offenders.each {key, offender -> loadOffender( key, offender)}
+    }
+
+    static def hasLoaded(Map<Long, String> offenders) {
+        println 'Checking data is loaded'
+        def jsonSlurper = new JsonSlurper()
+        def details = jsonSlurper.parse(new URL(elasticSearchBaseUrl() + "offender/_count"))
+        details.count == offenders.size()
     }
 
     static def loadOffender(key, offender) {

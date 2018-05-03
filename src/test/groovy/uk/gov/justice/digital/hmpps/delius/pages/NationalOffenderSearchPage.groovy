@@ -15,5 +15,7 @@ class NationalOffenderSearchPage extends Page {
         feedbackLink {$("a", text: "feedback")}
         suggestionsFor {someText -> $("a", text: someText)}
         selectProviderFilter {area1, area2 -> $("input[value=${area1}]").click(); $("input[value=${area2}]").click(); }
+        myProvidersFilter { $("#filters-my-providers") }
+        otherProvidersFilter { $("#filters-all-providers") }
     }
 }
