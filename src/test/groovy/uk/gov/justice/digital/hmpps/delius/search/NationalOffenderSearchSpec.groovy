@@ -7,6 +7,7 @@ import uk.gov.justice.digital.hmpps.delius.pages.IndexPage
 import uk.gov.justice.digital.hmpps.delius.pages.NationalOffenderSearchPageFrame
 import uk.gov.justice.digital.hmpps.delius.pages.NationalOffenderSearchPage
 
+import static uk.gov.justice.digital.hmpps.delius.dataload.ESDataLoader.hasLoaded
 import static uk.gov.justice.digital.hmpps.delius.dataload.ESDataLoader.replace
 
 @Stepwise
@@ -24,11 +25,8 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         offenders[8] = offender( '/esdata/antonio-gramsci-c20.json' )
         replace(offenders)
         to IndexPage
-        to NationalOffenderSearchPageFrame
-        withFrame(newTechFrame, NationalOffenderSearchPage) {
-            enterSearchTerms('male female')
-            // wait for all ES data to be loaded (all records minus deleted should be displayed)
-            waitFor {resultCount == offenders.size() - 1}
+        waitFor {
+            hasLoaded(offenders)
         }
     }
 
@@ -214,11 +212,9 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
 
         then: 'I see offender records that have that first name initial'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            waitFor {offenders[0].contains('X00002')}
-            offenders[0].contains('Jane')
-            offenders[1].contains('X00001')
-            offenders[1].contains('John')
-
+            // order not known so try either john or jane
+            waitFor {offenders[0].contains('X00002') || offenders[0].contains('X00001')}
+            offenders[1].contains('X00001') || offenders[1].contains('X00002')
         }
     }
 
@@ -258,6 +254,25 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
     }
 
 
+    def 'Filters will be displayed with my providers and other providers'() {
+        given: 'I am on the search page'
+        to NationalOffenderSearchPageFrame
+
+        when: 'I search for a matching surname'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('gramsci')
+        }
+
+        then: 'I should see the my providers filter'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor({myProvidersFilter.isDisplayed()})
+        }
+        and: 'I should see the other providers filter'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor({otherProvidersFilter.isDisplayed()})
+        }
+
+    }
     def 'Searching with filters selected finds only those matching the active provider'() {
         given: 'I am on the search page'
         to NationalOffenderSearchPageFrame
