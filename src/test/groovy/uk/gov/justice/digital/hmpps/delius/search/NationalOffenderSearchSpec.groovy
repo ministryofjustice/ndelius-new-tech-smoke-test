@@ -213,8 +213,10 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         then: 'I see offender records that have that first name initial'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
             // order not known so try either john or jane
-            waitFor {offenders[0].contains('X00002') || offenders[0].contains('X00001')}
-            offenders[1].contains('X00001') || offenders[1].contains('X00002')
+            waitFor {offenders[0].contains('Jane') || offenders[0].contains('John')}
+            offenders[1].contains('John') || offenders[1].contains('Jane')
+            offenders[0].contains('X00001') || offenders[0].contains('X00002')
+            offenders[1].contains('X00002') || offenders[1].contains('X00001')
         }
     }
 
