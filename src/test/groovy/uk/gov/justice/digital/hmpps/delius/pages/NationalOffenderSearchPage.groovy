@@ -15,6 +15,14 @@ class NationalOffenderSearchPage extends Page {
         feedbackLink {$("a", text: "feedback")}
         suggestionsFor {someText -> $("a", text: someText)}
         selectProviderFilter {area1, area2 -> $("input[value=${area1}]").click(); $("input[value=${area2}]").click(); }
+        selectAnyInMyProviderFilter {$("#filters-my-providers input[type='checkbox']").first().click()}
+        selectAnyInOtherProviderFilter {$("#filters-all-providers input[type='checkbox']").first().click()}
+        deselectAllMyProvidersSelectedFilters(required: false) {
+            $("#filters-my-providers input[type='checkbox']").forEach({checkbox -> checkbox.value(false)})
+        }
+        deselectAllOtherProvidersSelectedFilters(required: false) {
+            $("#filters-all-providers input[type='checkbox']").forEach({checkbox -> checkbox.value(false)})
+        }
         myProvidersFilter { $("#filters-my-providers") }
         otherProvidersFilter { $("#filters-all-providers") }
     }
