@@ -14,4 +14,7 @@ class Config {
     static newTechFeedbackBaseUrl() {
         System.getenv('NEW_TECH_FEEDBACK_URL') ?: 'http://feedback.user:changeit@localhost:9000/feedback'
     }
+    static newTechBaseUrl() {
+        System.getenv('NEW_TECH_BASE_URL') ?: 'http://localhost:9000/'
+    }
 }
