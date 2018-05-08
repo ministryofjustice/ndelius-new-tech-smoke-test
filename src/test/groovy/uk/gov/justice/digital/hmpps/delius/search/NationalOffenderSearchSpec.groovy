@@ -36,6 +36,8 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         withFrame(newTechFrame, NationalOffenderSearchPage) {
             enterSearchTerms('')
             waitFor {resultCount == 0}
+            deselectAllMyProvidersSelectedFilters()
+            deselectAllOtherProvidersSelectedFilters()
         }
     }
     def 'Offender national Search presents search box'() {
