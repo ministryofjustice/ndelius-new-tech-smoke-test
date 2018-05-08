@@ -28,7 +28,7 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
         offenders[8] = offender( '/esdata/antonio-gramsci-c20.json' )
         replace(offenders)
         to IndexPage
-        waitFor {
+        waitFor(10) {
             hasLoaded(offenders)
         }
         setup()
