@@ -3,7 +3,6 @@ package uk.gov.justice.digital.hmpps.delius.analytics
 import geb.spock.GebReportingSpec
 import groovy.json.JsonSlurper
 import spock.lang.Stepwise
-import uk.gov.justice.digital.hmpps.delius.pages.DocumentListPage
 import uk.gov.justice.digital.hmpps.delius.pages.IndexPage
 import uk.gov.justice.digital.hmpps.delius.pages.NationalOffenderSearchPage
 import uk.gov.justice.digital.hmpps.delius.pages.NationalOffenderSearchPageFrame
@@ -60,11 +59,13 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
         }
 
         then: 'No filter used analytic is incremented'
-        def analytics = analytics()
-        analytics.hasUsedMyProvidersFilterCount == 0
-        analytics.hasUsedOtherProvidersFilterCount == 0
-        analytics.hasUsedBothProvidersFilterCount == 0
-        analytics.hasNotUsedFilterCount == 1
+        waitFor {
+            def analytics = analytics()
+            analytics.hasUsedMyProvidersFilterCount == 0
+            analytics.hasUsedOtherProvidersFilterCount == 0
+            analytics.hasUsedBothProvidersFilterCount == 0
+            analytics.hasNotUsedFilterCount == 1
+        }
     }
 
     def 'Selecting an area from my providers filter should increment hasUsedMyProvidersFilterCount count'() {
@@ -83,11 +84,13 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
         }
 
         then: 'My filter used analytic is incremented'
-        def analytics = analytics()
-        analytics.hasUsedMyProvidersFilterCount == 1
-        analytics.hasUsedOtherProvidersFilterCount == 0
-        analytics.hasUsedBothProvidersFilterCount == 0
-        analytics.hasNotUsedFilterCount == 1
+        waitFor {
+            def analytics = analytics()
+            analytics.hasUsedMyProvidersFilterCount == 1
+            analytics.hasUsedOtherProvidersFilterCount == 0
+            analytics.hasUsedBothProvidersFilterCount == 0
+            analytics.hasNotUsedFilterCount == 1
+        }
     }
 
     def 'Selecting an area from other providers filter should increment hasUsedOtherProvidersFilterCount count'() {
@@ -106,11 +109,13 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
         }
 
         then: 'Other filter used analytic is incremented'
-        def analytics = analytics()
-        analytics.hasUsedMyProvidersFilterCount == 1
-        analytics.hasUsedOtherProvidersFilterCount == 1
-        analytics.hasUsedBothProvidersFilterCount == 0
-        analytics.hasNotUsedFilterCount == 1
+        waitFor {
+            def analytics = analytics()
+            analytics.hasUsedMyProvidersFilterCount == 1
+            analytics.hasUsedOtherProvidersFilterCount == 1
+            analytics.hasUsedBothProvidersFilterCount == 0
+            analytics.hasNotUsedFilterCount == 1
+        }
     }
 
     def 'Selecting an area from other providers and my filters should increment hasUsedBothProvidersFilterCount count'() {
@@ -129,16 +134,18 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
         }
         and: 'I select an area from my filter'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            selectAnyInMyProviderFilter()
+            selectNorthEastInMyProviderFilter()
             waitFor {resultCount > 1}
         }
 
         then: 'Other filter used analytic is incremented'
-        def analytics = analytics()
-        analytics.hasUsedMyProvidersFilterCount == 1
-        analytics.hasUsedOtherProvidersFilterCount == 1
-        analytics.hasUsedBothProvidersFilterCount == 1
-        analytics.hasNotUsedFilterCount == 1
+        waitFor {
+            def analytics = analytics()
+            analytics.hasUsedMyProvidersFilterCount == 1
+            analytics.hasUsedOtherProvidersFilterCount == 1
+            analytics.hasUsedBothProvidersFilterCount == 1
+            analytics.hasNotUsedFilterCount == 1
+        }
     }
 
 

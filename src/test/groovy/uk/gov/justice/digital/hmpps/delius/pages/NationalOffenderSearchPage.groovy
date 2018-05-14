@@ -16,6 +16,7 @@ class NationalOffenderSearchPage extends Page {
         suggestionsFor {someText -> $("a", text: someText)}
         selectProviderFilter {area1, area2 -> $("input[value=${area1}]").click(); $("input[value=${area2}]").click(); }
         selectAnyInMyProviderFilter {$("#filters-my-providers input[type='checkbox']").first().click()}
+        selectNorthEastInMyProviderFilter {$("#filters-my-providers input[value='N02']").first().click()}
         selectAnyInOtherProviderFilter {$("#filters-all-providers input[type='checkbox']").first().click()}
         deselectAllMyProvidersSelectedFilters(required: false) {
             $("#filters-my-providers input[type='checkbox']").forEach({checkbox -> checkbox.value(false)})
