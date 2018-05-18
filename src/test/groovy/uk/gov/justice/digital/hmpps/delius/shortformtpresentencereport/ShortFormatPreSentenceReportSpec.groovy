@@ -58,10 +58,15 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
         at DocumentListPage
         and: 'My document is displayed'
         documentRows.size() == 1
-        and: 'I can update my document'
+        and: 'I select the document to update'
         firstDocumentUpdateLink.click(ShortFormatPreSentenceReportUpdatePageFrame)
+        and: 'I select the continue now button'
+        withFrame(newTechFrame, SFRPSWelcomePage) {
+            continueNowButton.click()
+        }
         and: 'I am taken to the last page in the report I edited'
-        withFrame(newTechFrame, SFRPSOffenderDetailsPage) {
+        withWindow("report-popup") {
+            at(SFRPSOffenderDetailsPage)
             saveDraftLink.isDisplayed()
         }
 

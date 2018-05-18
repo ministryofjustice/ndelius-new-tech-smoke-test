@@ -271,12 +271,17 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         and: 'My document is displayed'
         documentRows.size() == 1
 
-        and: 'I can update my document'
+        and: 'I select the document to update'
         firstDocumentUpdateLink.click(ShortFormatPreSentenceReportUpdatePageFrame)
 
+        and: 'I select the continue now button'
+        withFrame(newTechFrame, SFRPSWelcomePage) {
+            continueNowButton.click()
+        }
+
         and: 'I am on the sign you report page'
-        withFrame(newTechFrame, SFRPSSignYourReportPage) {
-            true
+        withWindow("report-popup") {
+            at(SFRPSSignYourReportPage)
         }
 
     }
