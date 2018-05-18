@@ -41,14 +41,19 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
         }
 
         when: 'I click the save draft link'
-        withFrame(newTechFrame, SFRPSOffenderDetailsPage) {
+        withWindow("report-popup") {
+            page(SFRPSOffenderDetailsPage)
             saveDraftLink.click()
         }
-        and: 'I click view my document list'
-        withFrame(newTechFrame, SFRPSDraftSavedPage) {
+        and: 'I click close window'
+        withWindow("report-popup") {
+            page(SFRPSDraftSavedPage)
+            closeLink.click()
+        }
+        and: 'I click back to document list link '
+        withFrame(newTechFrame, SFRPSWelcomePage) {
             documentListLink.click()
         }
-
         then: 'I return to the document list'
         at DocumentListPage
         and: 'My document is displayed'

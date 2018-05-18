@@ -10,5 +10,6 @@ class SFRPSWelcomePage extends Page {
         heading { $("h1").text() }
         startNowButton { $("input[value='Start now']") }
         feedbackLink {$("a", text: "feedback")}
+        documentListLink {$("a", text: "Back to document list")}
     }
 }

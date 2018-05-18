@@ -21,19 +21,22 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             startNowButton.click()
         }
 
-        withFrame(newTechFrame, SFRPSOffenderDetailsPage) {
+        withWindow("report-popup") {
+            page(SFRPSOffenderDetailsPage)
             fillAddressWith("22 Acacia Avenue")
             fillPncWith("2018/1234567A")
             saveAndContinue.click()
         }
 
-        withFrame(newTechFrame, SFRPSSentencingCourtDetailsPage) {
+        withWindow("report-popup") {
+            page(SFRPSSentencingCourtDetailsPage)
             fillCourtWith("The court")
             fillLocalJusticeAreaWith("Cardiff")
             saveAndContinue.click()
         }
 
-        withFrame(newTechFrame, SFRPSSourcesOfInformationPage) {
+        withWindow("report-popup") {
+            page(SFRPSSourcesOfInformationPage)
             interviewInformationSourceCheckBox.click()
             serviceRecordsInformationSourceCheckBox.click()
             cpsSummaryInformationSourceCheckBox.click()
@@ -48,20 +51,23 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             saveAndContinue.click()
         }
 
-        withFrame(newTechFrame, SFRPSOffenceDetailsPage) {
+        withWindow("report-popup") {
+            page(SFRPSOffenceDetailsPage)
             fillMainOffenceWith("Main offence")
             fillOtherOffencesWith("Other offences")
             fillOffenceSummaryWith("Summary of offence")
             saveAndContinue.click()
         }
 
-        withFrame(newTechFrame, SFRPSOffenceAnalysisPage) {
+        withWindow("report-popup") {
+            page(SFRPSOffenceAnalysisPage)
             fillOffenceAnalysisWith("Offence analysis")
             fillPatternOfOffendingWith("Pattern of offending")
             saveAndContinue.click()
         }
 
-        withFrame(newTechFrame, SFRPSOffenderAssessmentPage) {
+        withWindow("report-popup") {
+            page(SFRPSOffenderAssessmentPage)
             accommodationCheckBox.click()
             fillAccommodationWith("Accommodation")
             employmentCheckBox.click()
@@ -81,7 +87,8 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             saveAndContinue.click()
         }
 
-        withFrame(newTechFrame, SFRPSRiskAssessmentPage) {
+        withWindow("report-popup") {
+            page(SFRPSRiskAssessmentPage)
             fillLikelihoodOfReOffendingWith("Likelihood of re-offending")
             fillRiskOfSeriousHarmWith("Risk of serious harm")
             setPreviousSupervisionResponseGood
@@ -89,16 +96,19 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             saveAndContinue.click()
         }
 
-        withFrame(newTechFrame, SFRPSConclusionPage) {
+        withWindow("report-popup") {
+            page(SFRPSConclusionPage)
             fillProposalWith("Proposed sentence")
             saveAndContinue.click()
         }
 
-        withFrame(newTechFrame, SFRPSCheckYourReportPage) {
+        withWindow("report-popup") {
+            page(SFRPSCheckYourReportPage)
             signYourReportButton.click()
         }
 
-        withFrame(newTechFrame, SFRPSSignYourReportPage) {
+        withWindow("report-popup") {
+            page(SFRPSSignYourReportPage)
             fillReportAuthorWith("Report author")
             fillOfficeWith("Office")
             fillCourtOfficePhoneNumberWith("01999 123456")
@@ -106,59 +116,72 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         when: 'I navigate back to the first page'
-        withFrame(newTechFrame, SFRPSSignYourReportPage) {
+        withWindow("report-popup") {
+            page(SFRPSSignYourReportPage)
             offenderDetailsLink.click()
         }
 
-        withFrame(newTechFrame, SFRPSOffenderDetailsPage) {
+        withWindow("report-popup") {
+            page(SFRPSOffenderDetailsPage)
             saveAndContinue.click()
         }
 
         and: 'navigate back to the sign & date you report page'
-        withFrame(newTechFrame, SFRPSSentencingCourtDetailsPage) {
+        withWindow("report-popup") {
+            page(SFRPSSentencingCourtDetailsPage)
             saveAndContinue.click()
         }
 
-        withFrame(newTechFrame, SFRPSSourcesOfInformationPage) {
+        withWindow("report-popup") {
+            page(SFRPSSourcesOfInformationPage)
             saveAndContinue.click()
         }
 
-        withFrame(newTechFrame, SFRPSOffenceDetailsPage) {
+        withWindow("report-popup") {
+            page(SFRPSOffenceDetailsPage)
             saveAndContinue.click()
         }
 
-        withFrame(newTechFrame, SFRPSOffenceAnalysisPage) {
+        withWindow("report-popup") {
+            page(SFRPSOffenceAnalysisPage)
             saveAndContinue.click()
         }
 
-        withFrame(newTechFrame, SFRPSOffenderAssessmentPage) {
+        withWindow("report-popup") {
+            page(SFRPSOffenderAssessmentPage)
             saveAndContinue.click()
         }
 
-        withFrame(newTechFrame, SFRPSRiskAssessmentPage) {
+        withWindow("report-popup") {
+            page(SFRPSRiskAssessmentPage)
             saveAndContinue.click()
         }
 
-        withFrame(newTechFrame, SFRPSConclusionPage) {
+        withWindow("report-popup") {
+            page(SFRPSConclusionPage)
             saveAndContinue.click()
         }
 
-        withFrame(newTechFrame, SFRPSCheckYourReportPage) {
+        withWindow("report-popup") {
+            page(SFRPSCheckYourReportPage)
             signYourReportButton.click()
         }
 
-        withFrame(newTechFrame, SFRPSSignYourReportPage) {
+        withWindow("report-popup") {
+            page(SFRPSSignYourReportPage)
             feedbackLink.click()
         }
 
         and: 'I visit the feedback page'
-        withFrame(newTechFrame, SFPSRFeedbackPage) {
+        withWindow("report-popup") {
+            page(SFPSRFeedbackPage)
             fillFeedbackWith("It's brilliant")
             submitFeedbackButton.click()
         }
 
         then: 'All the form fields contain the data I entered'
-        withFrame(newTechFrame, SFRPSSignYourReportPage) {
+        withWindow("report-popup") {
+            page(SFRPSSignYourReportPage)
             visitedPages == "[1,2,3,4,5,6,7,8,9,10,11]"
             onBehalfOfUser == "92Q036CvVIRT/i428X3zpg=="
             entityId == "RRioaTyIHLGnja2CBw8hqg=="
@@ -231,8 +254,14 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             submitButton.click()
         }
 
-        and: 'I click view my document list'
-        withFrame(newTechFrame, SFRPSCompletedPage) {
+
+        and: 'I click close window'
+        withWindow("report-popup") {
+            page(SFRPSCompletedPage)
+            closeLink.click()
+        }
+        and: 'I click back to document list link '
+        withFrame(newTechFrame, SFRPSWelcomePage) {
             documentListLink.click()
         }
 
