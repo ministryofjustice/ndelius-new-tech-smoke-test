@@ -41,12 +41,12 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
         }
 
         when: 'I click the save draft link'
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSOffenderDetailsPage)
             saveDraftLink.click()
         }
         and: 'I click close window'
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSDraftSavedPage)
             closeLink.click()
         }
@@ -65,7 +65,7 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
             continueNowButton.click()
         }
         and: 'I am taken to the last page in the report I edited'
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSOffenderDetailsPage)
             saveDraftLink.isDisplayed()
         }

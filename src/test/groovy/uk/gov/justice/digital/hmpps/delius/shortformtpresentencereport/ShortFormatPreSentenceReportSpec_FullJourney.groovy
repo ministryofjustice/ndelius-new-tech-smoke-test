@@ -21,21 +21,21 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             startNowButton.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSOffenderDetailsPage)
             fillAddressWith("22 Acacia Avenue")
             fillPncWith("2018/1234567A")
             saveAndContinue.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSSentencingCourtDetailsPage)
             fillCourtWith("The court")
             fillLocalJusticeAreaWith("Cardiff")
             saveAndContinue.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSSourcesOfInformationPage)
             interviewInformationSourceCheckBox.click()
             serviceRecordsInformationSourceCheckBox.click()
@@ -51,7 +51,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             saveAndContinue.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSOffenceDetailsPage)
             fillMainOffenceWith("Main offence")
             fillOtherOffencesWith("Other offences")
@@ -59,14 +59,14 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             saveAndContinue.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSOffenceAnalysisPage)
             fillOffenceAnalysisWith("Offence analysis")
             fillPatternOfOffendingWith("Pattern of offending")
             saveAndContinue.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSOffenderAssessmentPage)
             accommodationCheckBox.click()
             fillAccommodationWith("Accommodation")
@@ -87,7 +87,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             saveAndContinue.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSRiskAssessmentPage)
             fillLikelihoodOfReOffendingWith("Likelihood of re-offending")
             fillRiskOfSeriousHarmWith("Risk of serious harm")
@@ -96,18 +96,18 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             saveAndContinue.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSConclusionPage)
             fillProposalWith("Proposed sentence")
             saveAndContinue.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSCheckYourReportPage)
             signYourReportButton.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSSignYourReportPage)
             fillReportAuthorWith("Report author")
             fillOfficeWith("Office")
@@ -116,71 +116,71 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         when: 'I navigate back to the first page'
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSSignYourReportPage)
             offenderDetailsLink.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSOffenderDetailsPage)
             saveAndContinue.click()
         }
 
         and: 'navigate back to the sign & date you report page'
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSSentencingCourtDetailsPage)
             saveAndContinue.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSSourcesOfInformationPage)
             saveAndContinue.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSOffenceDetailsPage)
             saveAndContinue.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSOffenceAnalysisPage)
             saveAndContinue.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSOffenderAssessmentPage)
             saveAndContinue.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSRiskAssessmentPage)
             saveAndContinue.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSConclusionPage)
             saveAndContinue.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSCheckYourReportPage)
             signYourReportButton.click()
         }
 
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSSignYourReportPage)
             feedbackLink.click()
         }
 
         and: 'I visit the feedback page'
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFPSRFeedbackPage)
             fillFeedbackWith("It's brilliant")
             submitFeedbackButton.click()
         }
 
         then: 'All the form fields contain the data I entered'
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSSignYourReportPage)
             visitedPages == "[1,2,3,4,5,6,7,8,9,10,11]"
             onBehalfOfUser == "92Q036CvVIRT/i428X3zpg=="
@@ -256,7 +256,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
 
         and: 'I click close window'
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSCompletedPage)
             closeLink.click()
         }
@@ -280,7 +280,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         and: 'I am on the sign you report page'
-        withWindow("report-popup") {
+        withWindow("reportpopup") {
             at(SFRPSSignYourReportPage)
         }
 
