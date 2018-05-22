@@ -8,6 +8,6 @@ class SFRPSCompletedPage extends Page {
 
     static content = {
         heading { $("h1").text() }
-        closeLink {$("#document-list a") }
+        closeLink {$("#close-report a") }
     }
 }
