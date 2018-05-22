@@ -41,22 +41,32 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
         }
 
         when: 'I click the save draft link'
-        withFrame(newTechFrame, SFRPSOffenderDetailsPage) {
+        withWindow("reportpopup") {
+            at(SFRPSOffenderDetailsPage)
             saveDraftLink.click()
         }
-        and: 'I click view my document list'
-        withFrame(newTechFrame, SFRPSDraftSavedPage) {
+        and: 'I click close window'
+        withWindow("reportpopup") {
+            at(SFRPSDraftSavedPage)
+            closeLink.click()
+        }
+        and: 'I click back to document list link '
+        withFrame(newTechFrame, SFRPSWelcomePage) {
             documentListLink.click()
         }
-
         then: 'I return to the document list'
         at DocumentListPage
         and: 'My document is displayed'
         documentRows.size() == 1
-        and: 'I can update my document'
+        and: 'I select the document to update'
         firstDocumentUpdateLink.click(ShortFormatPreSentenceReportUpdatePageFrame)
+        and: 'I select the continue now button'
+        withFrame(newTechFrame, SFRPSWelcomePage) {
+            continueNowButton.click()
+        }
         and: 'I am taken to the last page in the report I edited'
-        withFrame(newTechFrame, SFRPSOffenderDetailsPage) {
+        withWindow("reportpopup") {
+            at(SFRPSOffenderDetailsPage)
             saveDraftLink.isDisplayed()
         }
 
