@@ -1,6 +1,7 @@
 package uk.gov.justice.digital.hmpps.delius.shortformtpresentencereport
 
 import geb.spock.GebReportingSpec
+import org.openqa.selenium.Dimension
 import spock.lang.Stepwise
 import uk.gov.justice.digital.hmpps.delius.dataload.SFPSRDataLoader
 import uk.gov.justice.digital.hmpps.delius.pages.*
@@ -21,6 +22,10 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             startNowButton.click()
         }
 
+        withWindow("reportpopup") {
+            // make popup big enough so no inputs are below the footer
+            getDriver().manage().window().setSize(new Dimension(830, 2000))
+        }
         withWindow("reportpopup") {
             at(SFRPSOffenderDetailsPage)
             fillAddressWith("22 Acacia Avenue")

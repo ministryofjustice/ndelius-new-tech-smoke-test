@@ -8,6 +8,6 @@ class SFRPSCheckYourReportPage extends Page {
 
     static content = {
         heading { $("h1").text() }
-        signYourReportButton { $("input[value='Sign your report']") }
+        signYourReportButton { $("button", text: "Sign") }
     }
 }
