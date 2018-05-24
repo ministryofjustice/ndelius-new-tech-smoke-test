@@ -6,7 +6,11 @@ import uk.gov.justice.digital.hmpps.delius.dataload.SFPSRDataLoader
 import uk.gov.justice.digital.hmpps.delius.pages.DocumentListPage
 import uk.gov.justice.digital.hmpps.delius.pages.IndexPage
 import uk.gov.justice.digital.hmpps.delius.pages.SFRPSDraftSavedPage
+import uk.gov.justice.digital.hmpps.delius.pages.SFRPSOffenceAnalysisPage
+import uk.gov.justice.digital.hmpps.delius.pages.SFRPSOffenceDetailsPage
 import uk.gov.justice.digital.hmpps.delius.pages.SFRPSOffenderDetailsPage
+import uk.gov.justice.digital.hmpps.delius.pages.SFRPSSentencingCourtDetailsPage
+import uk.gov.justice.digital.hmpps.delius.pages.SFRPSSourcesOfInformationPage
 import uk.gov.justice.digital.hmpps.delius.pages.SFRPSWelcomePage
 import uk.gov.justice.digital.hmpps.delius.pages.ShortFormatPreSentenceReportPageFrame
 import uk.gov.justice.digital.hmpps.delius.pages.ShortFormatPreSentenceReportUpdatePageFrame
@@ -70,5 +74,48 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
             saveDraftLink.isDisplayed()
         }
 
+    }
+
+    def 'Changes in popup should not be overwritten when Continuing from document list'() {
+        given: 'I fill some details in the offence details page'
+        to ShortFormatPreSentenceReportPageFrame
+        withFrame(newTechFrame, SFRPSWelcomePage) {
+            startNowButton.click()
+        }
+        withWindow("reportpopup") {
+            at(SFRPSOffenderDetailsPage)
+            saveAndContinue.click()
+        }
+        withWindow("reportpopup") {
+            at(SFRPSSentencingCourtDetailsPage)
+            fillLocalJusticeAreaWith("Cardiff")
+            saveAndContinue.click()
+        }
+        withWindow("reportpopup") {
+            at(SFRPSSourcesOfInformationPage)
+            saveAndContinue.click()
+        }
+        withWindow("reportpopup") {
+            at(SFRPSOffenceDetailsPage)
+        }
+        and: 'I go back to start page via the document list'
+        to DocumentListPage
+        firstDocumentUpdateLink.click(ShortFormatPreSentenceReportUpdatePageFrame)
+        and: 'Fill in details in the popuop window'
+        withWindow("reportpopup") {
+            at(SFRPSOffenceDetailsPage)
+            fillMainOffenceWith("Main offence")
+            fillOtherOffencesWith("Other offences")
+            fillOffenceSummaryWith("Summary of offence")
+            saveAndContinue.click()
+        }
+        when: 'I click continue now'
+        withFrame(newTechFrame, SFRPSWelcomePage) {
+            continueNowButton.click()
+        }
+        then: 'I should be presented with the offence analysis page'
+        withWindow("reportpopup") {
+            at(SFRPSOffenceAnalysisPage)
+        }
     }
 }
