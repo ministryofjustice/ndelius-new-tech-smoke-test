@@ -11,6 +11,7 @@ class SFPSRFeedbackSpec_legacyDataFormat extends GebReportingSpec {
     def setupSpec() {
         FeedbackDataLoader.clearSfpsrFeedback()
         FeedbackDataLoader.seedLegacySfpsrFeedbackDataFormat()
+        FeedbackDataLoader.seedLotsOfSfpsrAnalyticsData()
         to IndexPage
     }
 
