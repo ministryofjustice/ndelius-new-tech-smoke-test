@@ -10,6 +10,7 @@ class SFPSRFeedbackSpec extends GebReportingSpec {
 
     def setupSpec() {
         FeedbackDataLoader.clearSfpsrFeedback()
+        FeedbackDataLoader.seedLotsOfSfpsrAnalyticsData()
         to IndexPage
     }
 
