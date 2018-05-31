@@ -6,7 +6,7 @@ public class SFPSRBasePage extends Page {
 
     static content = {
         saveDraftLink { $("#exitLink") }
-        saveAndContinue { $("button" , text: "Save") }
+        saveAndContinue { $("button" , text: "Continue") }
         offenderDetailsLink { $( "a", text: "Offender details") }
         feedbackLink { $( "a", text: "feedback") }
 
