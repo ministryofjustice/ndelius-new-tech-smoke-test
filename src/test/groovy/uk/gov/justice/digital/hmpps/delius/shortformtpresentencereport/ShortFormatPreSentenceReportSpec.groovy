@@ -118,4 +118,22 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
             at(SFRPSOffenceAnalysisPage)
         }
     }
+    def 'New report that is not continued when update should navigate to page 2'() {
+        given: 'I create a new report'
+        to ShortFormatPreSentenceReportPageFrame
+        and: 'I return to document list'
+        to DocumentListPage
+        and: 'Update that new report'
+        firstDocumentUpdateLink.click(ShortFormatPreSentenceReportUpdatePageFrame)
+
+        when: 'Continue to edit the report'
+        withFrame(newTechFrame, SFRPSWelcomePage) {
+            continueNowButton.click()
+        }
+
+        then: 'I am taken to the second page in the report'
+        withWindow("reportpopup") {
+            at(SFRPSOffenderDetailsPage)
+        }
+    }
 }
