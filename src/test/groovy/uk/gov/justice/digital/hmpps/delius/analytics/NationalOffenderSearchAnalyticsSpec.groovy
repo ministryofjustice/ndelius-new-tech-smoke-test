@@ -89,7 +89,7 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
             analytics.hasUsedMyProvidersFilterCount == 1
             analytics.hasUsedOtherProvidersFilterCount == 0
             analytics.hasUsedBothProvidersFilterCount == 0
-            analytics.hasNotUsedFilterCount == 1
+            analytics.hasNotUsedFilterCount > 0
         }
     }
 
