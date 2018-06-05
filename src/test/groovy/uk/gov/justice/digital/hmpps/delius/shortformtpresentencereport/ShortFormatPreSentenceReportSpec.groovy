@@ -115,6 +115,7 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
         }
         then: 'I should be presented with the offence analysis page'
         withWindow("reportpopup") {
+            report("popup")
             at(SFRPSOffenceAnalysisPage)
         }
     }
