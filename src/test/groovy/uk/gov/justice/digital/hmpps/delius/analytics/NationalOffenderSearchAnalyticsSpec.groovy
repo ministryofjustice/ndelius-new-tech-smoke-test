@@ -34,6 +34,15 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
         clearSearchRequests()
     }
 
+    def clearAndWaitSearchRequests() {
+        clearSearchRequests()
+        waitFor {
+            def analytics = analytics()
+            // no rows when property is null
+            analytics.hasUsedMyProvidersFilterCount == null
+        }
+    }
+
     def setup() {
         // clear any previous searches stored in local storage
         to NationalOffenderSearchPageFrame
@@ -41,11 +50,11 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
             enterSearchTerms('zzzzzzzz') // initial search to clear first use banner and allow filters to be deselected
             waitFor {resultCount == 0}
             enterSearchTerms('') // clear local storage
-            waitFor {resultCount == 0}
             deselectAllMyProvidersSelectedFilters()
             deselectAllOtherProvidersSelectedFilters()
         }
         to IndexPage
+        clearAndWaitSearchRequests()
     }
 
     def 'Selecting no filter should increment hasNotUsedFilterCount count'() {
@@ -89,7 +98,7 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
             analytics.hasUsedMyProvidersFilterCount == 1
             analytics.hasUsedOtherProvidersFilterCount == 0
             analytics.hasUsedBothProvidersFilterCount == 0
-            analytics.hasNotUsedFilterCount > 0
+            analytics.hasNotUsedFilterCount == 0
         }
     }
 
@@ -111,10 +120,10 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
         then: 'Other filter used analytic is incremented'
         waitFor {
             def analytics = analyticsFor("filterCounts")
-            analytics.hasUsedMyProvidersFilterCount == 1
+            analytics.hasUsedMyProvidersFilterCount == 0
             analytics.hasUsedOtherProvidersFilterCount == 1
             analytics.hasUsedBothProvidersFilterCount == 0
-            analytics.hasNotUsedFilterCount == 1
+            analytics.hasNotUsedFilterCount == 0
         }
     }
 
@@ -140,11 +149,11 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
 
         then: 'Other filter used analytic is incremented'
         waitFor {
-            def analytics = analyticsFor("filterCounts")
-            analytics.hasUsedMyProvidersFilterCount == 1
-            analytics.hasUsedOtherProvidersFilterCount == 1
+            def analytics = analytics("filterCounts")
+            analytics.hasUsedMyProvidersFilterCount == 0
+            analytics.hasUsedOtherProvidersFilterCount == 0
             analytics.hasUsedBothProvidersFilterCount == 1
-            analytics.hasNotUsedFilterCount == 1
+            analytics.hasNotUsedFilterCount == 0
         }
     }
 
