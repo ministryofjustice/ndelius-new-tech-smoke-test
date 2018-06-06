@@ -108,6 +108,7 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
             fillOtherOffencesWith("Other offences")
             fillOffenceSummaryWith("Summary of offence")
             saveAndContinue.click()
+            at(SFRPSOffenceAnalysisPage)
         }
         when: 'I click continue now'
         withFrame(newTechFrame, SFRPSWelcomePage) {
