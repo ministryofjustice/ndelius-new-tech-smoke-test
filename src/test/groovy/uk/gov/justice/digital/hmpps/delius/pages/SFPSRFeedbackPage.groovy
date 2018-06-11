@@ -12,7 +12,7 @@ class SFPSRFeedbackPage extends Page {
         selectProvider {provider -> $("#provider").value(provider)}
         selectRegion {region -> $("#region").value(region)}
         selectRating {rating -> $("input", value: rating).click()}
-        fillFeedbackWith {feedback -> $("#feedback  .ql-editor").leftShift(feedback)}
+        fillFeedbackWith {feedback -> $("#feedback").value(feedback)}
         submitFeedbackButton {$("input", type: "submit")}
     }
 }
