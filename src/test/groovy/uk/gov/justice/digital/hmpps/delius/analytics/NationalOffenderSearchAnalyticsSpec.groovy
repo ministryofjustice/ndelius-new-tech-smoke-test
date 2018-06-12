@@ -60,7 +60,7 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
 
         then: 'No filter used analytic is incremented'
         waitFor {
-            def analytics = analytics()
+            def analytics = analyticsFor("filterCounts")
             analytics.hasUsedMyProvidersFilterCount == 0
             analytics.hasUsedOtherProvidersFilterCount == 0
             analytics.hasUsedBothProvidersFilterCount == 0
@@ -85,7 +85,7 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
 
         then: 'My filter used analytic is incremented'
         waitFor {
-            def analytics = analytics()
+            def analytics = analyticsFor("filterCounts")
             analytics.hasUsedMyProvidersFilterCount == 1
             analytics.hasUsedOtherProvidersFilterCount == 0
             analytics.hasUsedBothProvidersFilterCount == 0
@@ -110,7 +110,7 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
 
         then: 'Other filter used analytic is incremented'
         waitFor {
-            def analytics = analytics()
+            def analytics = analyticsFor("filterCounts")
             analytics.hasUsedMyProvidersFilterCount == 1
             analytics.hasUsedOtherProvidersFilterCount == 1
             analytics.hasUsedBothProvidersFilterCount == 0
@@ -140,7 +140,7 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
 
         then: 'Other filter used analytic is incremented'
         waitFor {
-            def analytics = analytics()
+            def analytics = analyticsFor("filterCounts")
             analytics.hasUsedMyProvidersFilterCount == 1
             analytics.hasUsedOtherProvidersFilterCount == 1
             analytics.hasUsedBothProvidersFilterCount == 1
@@ -148,10 +148,54 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
         }
     }
 
+    def 'Broad search type is recorded'() {
+        given: 'I am on the search page'
+        to NationalOffenderSearchPageFrame
+        def previousAnalytics = analyticsFor("searchTypeCounts")
+
+        when: 'I search for a matching surname'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('gramsci')
+            waitFor {resultCount == 5}
+        }
+
+        then: 'search type counts increase by 1'
+        waitFor {
+            def analytics = analyticsFor("searchTypeCounts")
+            analytics.broad == previousAnalytics.broad + 1
+        }
+    }
+
+    def 'Exact search type is recorded'() {
+        given: 'I am on the search page'
+        to NationalOffenderSearchPageFrame
+        def previousAnalytics = analyticsFor("searchTypeCounts")
+        if (previousAnalytics.exact == null) {
+            previousAnalytics.exact = 0
+        }
+
+        when: 'I search for a matching surname'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('gramsci')
+            waitFor {resultCount == 5}
+        }
+
+        and: 'I select the `Match all terms` radio button'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            selectMatchAllTerms()
+            waitFor {resultCount == 5}
+        }
+
+        then: 'search type counts increase by 1'
+        waitFor {
+            def analytics = analyticsFor("searchTypeCounts")
+            analytics.exact == previousAnalytics.exact + 1
+        }
+    }
 
 
     static def offender(String filename) {
         this.getClass().getResource(filename).text
     }
-    static def analytics() {new JsonSlurper().parse(new URL(newTechBaseUrl() + "nationalSearch/analytics/filterCounts"))}
+    static def analyticsFor(String metric) {new JsonSlurper().parse(new URL(newTechBaseUrl() + "nationalSearch/analytics/${metric}"))}
 }

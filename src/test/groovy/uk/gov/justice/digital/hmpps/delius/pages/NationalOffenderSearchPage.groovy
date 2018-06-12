@@ -26,5 +26,6 @@ class NationalOffenderSearchPage extends Page {
         }
         myProvidersFilter { $("#filters-my-providers") }
         otherProvidersFilter { $("#filters-all-providers") }
+        selectMatchAllTerms { $("#match-all-terms-yes").click() }
     }
 }
