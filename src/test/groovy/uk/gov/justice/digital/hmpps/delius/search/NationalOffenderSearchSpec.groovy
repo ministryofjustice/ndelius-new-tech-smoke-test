@@ -38,6 +38,7 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
             waitFor {resultCount == 0}
             deselectAllMyProvidersSelectedFilters()
             deselectAllOtherProvidersSelectedFilters()
+            deselectMatchAllTerms()
         }
     }
     def 'Offender national Search presents search box'() {
@@ -294,6 +295,94 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         then: 'I see filtered multiple offender records'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
             waitFor {resultCount == 3}
+        }
+    }
+
+    def 'Searching with multiple basic terms and `Match all terms` set to Yes returns one result'() {
+        given: 'I am on the search page'
+        to NationalOffenderSearchPageFrame
+
+        when: 'I search using multiple terms that produce multiple results'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('gramsci anne')
+            waitFor {resultCount == 5}
+        }
+
+        and: 'I select `Match all terms`'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            selectMatchAllTerms()
+        }
+
+        then: 'I see a single offender record'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor {resultCount == 1}
+            offenders[0].contains('X00007')
+        }
+    }
+
+    def 'Searching with surname and PNC and `Match all terms` set to Yes returns one result'() {
+        given: 'I am on the search page'
+        to NationalOffenderSearchPageFrame
+
+        when: 'I search using multiple terms that produce multiple results'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('smith 2018/0123456X')
+            waitFor {resultCount == 2}
+        }
+
+        and: 'I select `Match all terms`'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            selectMatchAllTerms()
+        }
+
+        then: 'I see a single offender record'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor {resultCount == 1}
+            offenders[0].contains('X00001')
+        }
+    }
+
+    def 'Searching with surname and CRO and `Match all terms` set to Yes returns one result'() {
+        given: 'I am on the search page'
+        to NationalOffenderSearchPageFrame
+
+        when: 'I search using multiple terms that produce multiple results'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('smith SF80/655108T')
+            waitFor {resultCount == 2}
+        }
+
+        and: 'I select `Match all terms`'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            selectMatchAllTerms()
+        }
+
+        then: 'I see a single offender record'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor {resultCount == 1}
+            offenders[0].contains('X00001')
+        }
+    }
+
+    def 'Searching with surname and DoB and `Match all terms` set to Yes returns one result'() {
+        given: 'I am on the search page'
+        to NationalOffenderSearchPageFrame
+
+        when: 'I search using multiple terms that produce multiple results'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('smith 1978/1/6')
+            waitFor {resultCount == 2}
+        }
+
+        and: 'I select `Match all terms`'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            selectMatchAllTerms()
+        }
+
+        then: 'I see a single offender record'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor {resultCount == 1}
+            offenders[0].contains('X00001')
         }
     }
 
