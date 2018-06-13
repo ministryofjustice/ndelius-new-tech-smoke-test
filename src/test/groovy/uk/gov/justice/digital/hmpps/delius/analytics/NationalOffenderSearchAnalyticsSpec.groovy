@@ -160,7 +160,6 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
     def 'Broad search type is recorded'() {
         given: 'I am on the search page'
         to NationalOffenderSearchPageFrame
-        def previousAnalytics = analyticsFor("searchTypeCounts")
 
         when: 'I search for a matching surname'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
@@ -171,17 +170,13 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
         then: 'search type counts increase by 1'
         waitFor {
             def analytics = analyticsFor("searchTypeCounts")
-            analytics.broad == previousAnalytics.broad + 1
+            analytics.broad == 1
         }
     }
 
     def 'Exact search type is recorded'() {
         given: 'I am on the search page'
         to NationalOffenderSearchPageFrame
-        def previousAnalytics = analyticsFor("searchTypeCounts")
-        if (previousAnalytics.exact == null) {
-            previousAnalytics.exact = 0
-        }
 
         when: 'I search for a matching surname'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
@@ -198,7 +193,7 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
         then: 'search type counts increase by 1'
         waitFor {
             def analytics = analyticsFor("searchTypeCounts")
-            analytics.exact == previousAnalytics.exact + 1
+            analytics.exact == 1
         }
     }
 
