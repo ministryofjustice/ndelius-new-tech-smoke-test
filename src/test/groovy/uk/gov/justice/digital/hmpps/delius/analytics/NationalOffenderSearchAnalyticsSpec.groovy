@@ -37,7 +37,7 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
     def clearAndWaitSearchRequests() {
         clearSearchRequests()
         waitFor {
-            def analytics = analytics()
+            def analytics = analyticsFor("filterCounts")
             // no rows when property is null
             analytics.hasUsedMyProvidersFilterCount == null
         }
