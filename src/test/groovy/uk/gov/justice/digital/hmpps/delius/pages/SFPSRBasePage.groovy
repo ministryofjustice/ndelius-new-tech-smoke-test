@@ -64,6 +64,10 @@ public class SFPSRBasePage extends Page {
         issueHealthDetails { $( "#issueHealthDetails").value() }
         issueBehaviourDetails { $( "#issueBehaviourDetails").value() }
         issueOtherDetails { $( "#issueOtherDetails").value() }
+        experienceTrauma { $( "#experienceTrauma").value() }
+        experienceTraumaDetails { $( "#experienceTraumaDetails").value() }
+        caringResponsibilities { $( "#caringResponsibilities").value() }
+        caringResponsibilitiesDetails { $( "#caringResponsibilitiesDetails").value() }
 
         likelihoodOfReOffending { $( "#likelihoodOfReOffending").value() }
         riskOfSeriousHarm { $( "#riskOfSeriousHarm").value() }

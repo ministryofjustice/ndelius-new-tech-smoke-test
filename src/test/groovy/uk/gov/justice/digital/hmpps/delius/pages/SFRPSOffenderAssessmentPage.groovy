@@ -22,5 +22,10 @@ class SFRPSOffenderAssessmentPage extends SFPSRBasePage {
         fillBehaviourWith { text -> $("#issueBehaviourDetails").value(text) }
         otherCheckBox { $("#issueOther") }
         fillOtherWith { text -> $("#issueOtherDetails").value(text) }
+        setExperienceTraumaYes { $( "#experienceTrauma_yes").value("yes") }
+        fillExperienceTraumaDetailsWith { text -> $("#experienceTraumaDetails").value(text) }
+        setCaringResponsibilitiesYes { $( "#caringResponsibilities_yes").value("yes") }
+        fillCaringResponsibilitiesDetailsWith { text -> $("#caringResponsibilitiesDetails").value(text) }
+
     }
 }

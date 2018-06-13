@@ -24,7 +24,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
         withWindow("reportpopup") {
             // make popup big enough so no inputs are below the footer
-            getDriver().manage().window().setSize(new Dimension(830, 2000))
+            getDriver().manage().window().setSize(new Dimension(830, 3000))
         }
         withWindow("reportpopup") {
             at(SFRPSOffenderDetailsPage)
@@ -89,6 +89,10 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             fillBehaviourWith("Behaviour")
             otherCheckBox.click()
             fillOtherWith("Other")
+            setExperienceTraumaYes
+            fillExperienceTraumaDetailsWith('Experience Trauma')
+            setCaringResponsibilitiesYes
+            fillCaringResponsibilitiesDetailsWith('Caring Responsibilities')
             saveAndContinue.click()
         }
 
@@ -241,6 +245,11 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             issueHealthDetails == "Health"
             issueBehaviourDetails == "Behaviour"
             issueOtherDetails == "Other"
+
+            experienceTrauma == "yes"
+            experienceTraumaDetails == "Experience Trauma"
+            caringResponsibilities == "yes"
+            caringResponsibilitiesDetails == "Caring Responsibilities"
 
             likelihoodOfReOffending == "Likelihood of re-offending"
             riskOfSeriousHarm == "Risk of serious harm"
