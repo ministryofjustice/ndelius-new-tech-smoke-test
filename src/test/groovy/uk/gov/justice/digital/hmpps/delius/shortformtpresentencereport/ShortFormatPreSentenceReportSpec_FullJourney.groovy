@@ -246,7 +246,6 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             issueBehaviourDetails == "Behaviour"
             issueOtherDetails == "Other"
 
-            report("hidden")
             experienceTrauma == "yes"
             experienceTraumaDetails == "Experience Trauma"
             caringResponsibilities == "yes"
