@@ -52,6 +52,7 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
             enterSearchTerms('') // clear local storage
             deselectAllMyProvidersSelectedFilters()
             deselectAllOtherProvidersSelectedFilters()
+            deselectMatchAllTerms()
         }
         to IndexPage
         clearAndWaitSearchRequests()
