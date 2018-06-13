@@ -149,7 +149,7 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
 
         then: 'Other filter used analytic is incremented'
         waitFor {
-            def analytics = analytics("filterCounts")
+            def analytics = analyticsFor("filterCounts")
             analytics.hasUsedMyProvidersFilterCount == 0
             analytics.hasUsedOtherProvidersFilterCount == 0
             analytics.hasUsedBothProvidersFilterCount == 1
