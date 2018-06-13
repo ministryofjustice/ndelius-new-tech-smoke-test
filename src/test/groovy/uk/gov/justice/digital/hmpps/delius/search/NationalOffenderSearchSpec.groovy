@@ -304,6 +304,7 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
 
         when: 'I search using multiple terms that produce multiple results'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor{ matchAllTerms == "broad" }
             enterSearchTerms('gramsci anne')
             waitFor {resultCount == 5}
         }
@@ -326,6 +327,7 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
 
         when: 'I search using multiple terms that produce multiple results'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor{ matchAllTerms == "broad" }
             enterSearchTerms('smith 2018/0123456X')
             waitFor {resultCount == 2}
         }
@@ -348,6 +350,7 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
 
         when: 'I search using multiple terms that produce multiple results'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor{ matchAllTerms == "broad" }
             enterSearchTerms('smith SF80/655108T')
             waitFor {resultCount == 2}
         }
@@ -370,6 +373,7 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
 
         when: 'I search using multiple terms that produce multiple results'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
+            waitFor{ matchAllTerms == "broad" }
             enterSearchTerms('smith 1978/1/6')
             waitFor {resultCount == 2}
         }
