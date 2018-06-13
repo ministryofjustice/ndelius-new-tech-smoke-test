@@ -22,7 +22,6 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
         SFPSRDataLoader.clear()
         to IndexPage
     }
-
     def 'Welcome page is displayed'() {
 
         given: 'I am on the create Short Format Pre Sentence Report home page'
@@ -75,7 +74,6 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
         }
 
     }
-
     def 'Changes in popup should not be overwritten when Continuing from document list'() {
         given: 'I fill some details in the offence details page'
         to ShortFormatPreSentenceReportPageFrame
@@ -101,13 +99,16 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
         and: 'I go back to start page via the document list'
         to DocumentListPage
         firstDocumentUpdateLink.click(ShortFormatPreSentenceReportUpdatePageFrame)
-        and: 'Fill in details in the popuop window'
+        and: 'Fill in details in the popup window'
         withWindow("reportpopup") {
             at(SFRPSOffenceDetailsPage)
             fillMainOffenceWith("Main offence")
             fillOtherOffencesWith("Other offences")
             fillOffenceSummaryWith("Summary of offence")
+            simulateUserPause() // since writes are async, we need the above changes to be written before we next, else writes may get out of order
             saveAndContinue.click()
+            at(SFRPSOffenceAnalysisPage)
+            waitFor {SFPSRDataLoader.reportAtPage(6)}
         }
         when: 'I click continue now'
         withFrame(newTechFrame, SFRPSWelcomePage) {
@@ -134,6 +135,14 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
         then: 'I am taken to the second page in the report'
         withWindow("reportpopup") {
             at(SFRPSOffenderDetailsPage)
+        }
+    }
+
+    def simulateUserPause() {
+        int waitForSeconds = 1
+        def originalMilliseconds = System.currentTimeMillis()
+        waitFor(waitForSeconds + 1, 0.5) {
+            (System.currentTimeMillis() - originalMilliseconds) > (waitForSeconds * 1000)
         }
     }
 }
