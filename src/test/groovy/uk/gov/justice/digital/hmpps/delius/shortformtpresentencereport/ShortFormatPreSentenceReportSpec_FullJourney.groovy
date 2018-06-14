@@ -108,6 +108,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         withWindow("reportpopup") {
             at(SFRPSConclusionPage)
             fillProposalWith("Proposed sentence")
+            setConsideredQualityDiversityYes
             saveAndContinue.click()
         }
 
@@ -257,6 +258,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             additionalPreviousSupervision == "Additional previous supervision"
 
             proposal == "Proposed sentence"
+            consideredQualityDiversity == "yes"
 
             reportAuthor == "Report author"
             office == "Office"

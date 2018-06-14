@@ -7,5 +7,6 @@ class SFRPSConclusionPage extends SFPSRBasePage {
     static content = {
         heading { $("h1").text() }
         fillProposalWith { text -> $("#proposal  .ql-editor").leftShift(text) }
+        setConsideredQualityDiversityYes { $( "#consideredQualityDiversity_yes").value("yes") }
     }
 }
