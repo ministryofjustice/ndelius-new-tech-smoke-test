@@ -75,6 +75,8 @@ public class SFPSRBasePage extends Page {
         additionalPreviousSupervision { $( "#additionalPreviousSupervision").value() }
 
         proposal { $( "#proposal").value() }
+        consideredQualityDiversity { $( "#consideredQualityDiversity").value() }
+
 
         reportAuthor { $( "#reportAuthor").value() }
         office { $( "#office").value() }
