@@ -48,11 +48,12 @@ class NationalOffenderSearchAnalyticsSpec extends GebReportingSpec {
         to NationalOffenderSearchPageFrame
         withFrame(newTechFrame, NationalOffenderSearchPage) {
             enterSearchTerms('zzzzzzzz') // initial search to clear first use banner and allow filters to be deselected
-            waitFor {resultCount == 0}
+            waitFor {zeroResultsFound}
             enterSearchTerms('') // clear local storage
             deselectAllMyProvidersSelectedFilters()
             deselectAllOtherProvidersSelectedFilters()
             deselectMatchAllTerms()
+            waitFor {resultCount == 0}
         }
         to IndexPage
         clearAndWaitSearchRequests()

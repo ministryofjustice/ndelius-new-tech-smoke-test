@@ -34,11 +34,13 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         // clear any previous searches stored in local storage
         to NationalOffenderSearchPageFrame
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            enterSearchTerms('')
-            waitFor {resultCount == 0}
+            enterSearchTerms('zzzzzzzz') // initial search to clear first use banner and allow filters to be deselected
+            waitFor {zeroResultsFound}
+            enterSearchTerms('') // clear local storage
             deselectAllMyProvidersSelectedFilters()
             deselectAllOtherProvidersSelectedFilters()
             deselectMatchAllTerms()
+            waitFor {resultCount == 0}
         }
     }
     def 'Offender national Search presents search box'() {

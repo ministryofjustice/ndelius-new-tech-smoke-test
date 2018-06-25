@@ -8,6 +8,7 @@ class NationalOffenderSearchPage extends Page {
         searchTerms { $("input[name=searchTerms]") }
         enterSearchTerms {searchTerm -> searchTerms.value(searchTerm)}
         resultCount { $(".offenderDetailsRow").size() }
+        zeroResultsFound {$("h2 span", text: "0 results found")}
         offenders {$(".offenderDetailsRow").collect {
             it.text()
          }}
