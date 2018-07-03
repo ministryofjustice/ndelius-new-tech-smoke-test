@@ -28,8 +28,6 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
         withWindow("reportpopup") {
             at(SFRPSOffenderDetailsPage)
-            fillAddressWith("22 Acacia Avenue")
-            fillPncWith("2018/1234567A")
             saveAndContinue.click()
         }
 
