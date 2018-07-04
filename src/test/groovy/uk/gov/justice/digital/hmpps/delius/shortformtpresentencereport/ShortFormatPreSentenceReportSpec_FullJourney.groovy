@@ -190,82 +190,84 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         then: 'All the form fields contain the data I entered'
         withWindow("reportpopup") {
             at(SFRPSSignYourReportPage)
-            visitedPages == "[1,2,3,4,5,6,7,8,9,10,11]"
-            onBehalfOfUser == "92Q036CvVIRT/i428X3zpg=="
-            entityId == "RRioaTyIHLGnja2CBw8hqg=="
-            documentId != null
-            pncSupplied == "false"
-            addressSupplied == "false"
+            assert visitedPages == "[1,2,3,4,5,6,7,8,9,10,11]"
+            assert onBehalfOfUser == "92Q036CvVIRT/i428X3zpg=="
+            assert entityId == "RRioaTyIHLGnja2CBw8hqg=="
+            assert documentId != null
+            assert pncSupplied == "true"
+            assert addressSupplied == "true"
 
-            name == "xylkFTVA6GXA1GRZZxZ4MA=="
-            dateOfBirth == "twqjuUftRY5xaB556mJb6A=="
-            age == "RRioaTyIHLGnja2CBw8hqg=="
-            address == "ykrB30Y0rBHZonvbLA5mQlbcDC5KyebnSauCsmz6zmA="
-            crn == "v5LH8B7tJKI7fEc9uM76SQ=="
-            pnc == "8zu4lHB2HOhhelHmBCXTGw=="
+            assert name == "ueW/gfIx+T7QsLH5eFvYsg=="
+            assert dateOfBirth == "67jD2g1wdu4d2u2EL6FqOg=="
+            assert age == "xZOZtUiYrNABLROslAT4sw=="
+            assert address == "zgoNUeRn7CZ/8xMKAAXj/NBvKig5LmTej9TGm0WNfa8nxOOoSgnwzH1S+QlqkcnjrTJ/+Z0o0d2i2cpU2htbvw=="
+            assert crn == "v5LH8B7tJKI7fEc9uM76SQ=="
+            assert pnc == "gHYQKWx6gGbP7qo+wsQf6w=="
 
-            court == "QLoQsxswhfduyDSX4gvmsQ=="
-            dateOfHearing == "igY1rhdHh6XNlTto+oNRSw=="
-            localJusticeArea == "GoLwo2nCnYgh1QImL5p0Jw=="
+            assert court == "QLoQsxswhfduyDSX4gvmsQ=="
+            assert dateOfHearing == "igY1rhdHh6XNlTto+oNRSw=="
+            assert localJusticeArea == "GoLwo2nCnYgh1QImL5p0Jw=="
 
-            interviewInformationSource == "true"
-            serviceRecordsInformationSource == "true"
-            cpsSummaryInformationSource == "true"
-            oasysAssessmentsInformationSource == "true"
-            previousConvictionsInformationSource == "true"
-            victimStatementInformationSource == "true"
-            childrenServicesInformationSource == "true"
-            policeInformationSource == "true"
-            sentencingGuidelinesInformationSource == "true"
-            otherInformationSource == "true"
-            otherInformationDetails == "Other information details"
+            assert interviewInformationSource == "true"
+            assert serviceRecordsInformationSource == "true"
+            assert cpsSummaryInformationSource == "true"
+            assert oasysAssessmentsInformationSource == "true"
+            assert previousConvictionsInformationSource == "true"
+            assert victimStatementInformationSource == "true"
+            assert childrenServicesInformationSource == "true"
+            assert policeInformationSource == "true"
+            assert sentencingGuidelinesInformationSource == "true"
+            assert otherInformationSource == "true"
+            assert otherInformationDetails.contains("Other information details")
 
-            mainOffence == "Main offence"
-            otherOffences == "Other offences"
-            offenceSummary == "Summary of offence"
+            assert mainOffence.contains("Main offence")
+            assert otherOffences.contains("Other offences")
+            assert offenceSummary.contains("Summary of offence")
 
-            offenceAnalysis == "Offence analysis"
-            patternOfOffending == "Pattern of offending"
+            assert offenceAnalysis.contains("Offence analysis")
+            assert patternOfOffending.contains("Pattern of offending")
 
-            issueAccommodation == "true"
-            issueEmployment == "true"
-            issueFinance == "true"
-            issueRelationships == "true"
-            issueSubstanceMisuse == "true"
-            issueHealth == "true"
-            issueBehaviour == "true"
-            issueOther == "true"
+            assert issueAccommodation.contains("true")
+            assert issueEmployment.contains("true")
+            assert issueFinance.contains("true")
+            assert issueRelationships.contains("true")
+            assert issueSubstanceMisuse.contains("true")
+            assert issueHealth.contains("true")
+            assert issueBehaviour.contains("true")
+            assert issueOther.contains("true")
 
-            issueAccommodationDetails == "Accommodation"
-            issueEmploymentDetails == "Employment"
-            issueFinanceDetails == "Finance"
-            issueRelationshipsDetails == "Relationships"
-            issueSubstanceMisuseDetails == "Substance misuse"
-            issueHealthDetails == "Health"
-            issueBehaviourDetails == "Behaviour"
-            issueOtherDetails == "Other"
+            assert issueAccommodationDetails.contains("Accommodation")
+            assert issueEmploymentDetails.contains("Employment")
+            assert issueFinanceDetails.contains("Finance")
+            assert issueRelationshipsDetails.contains("Relationships")
+            assert issueSubstanceMisuseDetails.contains("Substance misuse")
+            assert issueHealthDetails.contains("Health")
+            assert issueBehaviourDetails.contains("Behaviour")
+            assert issueOtherDetails.contains("Other")
 
-            experienceTrauma == "yes"
-            experienceTraumaDetails == "Experience Trauma"
-            caringResponsibilities == "yes"
-            caringResponsibilitiesDetails == "Caring Responsibilities"
+            assert experienceTrauma.contains("yes")
+            assert experienceTraumaDetails.contains("Experience Trauma")
+            assert caringResponsibilities.contains("yes")
+            assert caringResponsibilitiesDetails.contains("Caring Responsibilities")
 
-            likelihoodOfReOffending == "Likelihood of re-offending"
-            riskOfSeriousHarm == "Risk of serious harm"
-            previousSupervisionResponse == "Good"
-            additionalPreviousSupervision == "Additional previous supervision"
+            assert likelihoodOfReOffending.contains("Likelihood of re-offending")
+            assert riskOfSeriousHarm.contains("Risk of serious harm")
+            assert previousSupervisionResponse.contains("Good")
+            assert additionalPreviousSupervision.contains("Additional previous supervision")
 
-            proposal == "Proposed sentence"
-            consideredQualityDiversity == "yes"
+            assert proposal.contains("Proposed sentence")
+            assert consideredQualityDiversity.contains("yes")
 
-            reportAuthor == "Report author"
-            office == "Office"
-            reportDate == new Date().format("dd/MM/yyyy")
-            courtOfficePhoneNumber == "01999 123456"
-            counterSignature == "Counter signature"
-            startDate != null
+            assert reportAuthor.contains("Report author")
+            assert office.contains("Office")
+            assert reportDate == new Date().format("dd/MM/yyyy")
+            assert courtOfficePhoneNumber.contains("01999 123456")
+            assert counterSignature.contains("Counter signature")
+            assert startDate != null
 
-            submitButton.click()
+            assert submitButton.click()
+
+            return true
         }
 
 
@@ -283,7 +285,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         at DocumentListPage
 
         and: 'My document is displayed'
-        documentRows.size() == 1
+        assert documentRows.size() == 1
 
         and: 'I select the document to update'
         firstDocumentUpdateLink.click(ShortFormatPreSentenceReportUpdatePageFrame)
