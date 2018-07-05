@@ -3,14 +3,14 @@ package uk.gov.justice.digital.hmpps.delius.shortformtpresentencereport
 import geb.spock.GebReportingSpec
 import org.openqa.selenium.Dimension
 import spock.lang.Stepwise
-import uk.gov.justice.digital.hmpps.delius.dataload.SFPSRDataLoader
+import uk.gov.justice.digital.hmpps.delius.dataload.ReportDataLoader
 import uk.gov.justice.digital.hmpps.delius.pages.*
 
 @Stepwise
 class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
     def setup() {
-        SFPSRDataLoader.clear()
+        ReportDataLoader.clear()
         to IndexPage
     }
 

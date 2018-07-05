@@ -2,7 +2,7 @@ package uk.gov.justice.digital.hmpps.delius.shortformtpresentencereport
 
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
-import uk.gov.justice.digital.hmpps.delius.dataload.SFPSRDataLoader
+import uk.gov.justice.digital.hmpps.delius.dataload.ReportDataLoader
 import uk.gov.justice.digital.hmpps.delius.pages.DocumentListPage
 import uk.gov.justice.digital.hmpps.delius.pages.IndexPage
 import uk.gov.justice.digital.hmpps.delius.pages.SFRPSDraftSavedPage
@@ -19,7 +19,7 @@ import uk.gov.justice.digital.hmpps.delius.pages.ShortFormatPreSentenceReportUpd
 class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
 
     def setup() {
-        SFPSRDataLoader.clear()
+        ReportDataLoader.clear()
         to IndexPage
     }
     def 'Welcome page is displayed'() {
@@ -108,7 +108,7 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
             simulateUserPause() // since writes are async, we need the above changes to be written before we next, else writes may get out of order
             saveAndContinue.click()
             at(SFRPSOffenceAnalysisPage)
-            waitFor {SFPSRDataLoader.reportAtPage(6)}
+            waitFor {ReportDataLoader.reportAtPage(6)}
         }
         when: 'I click continue now'
         withFrame(newTechFrame, SFRPSWelcomePage) {
