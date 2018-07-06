@@ -197,10 +197,10 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             assert pncSupplied == "true"
             assert addressSupplied == "true"
 
-            assert name == "ueW/gfIx+T7QsLH5eFvYsg=="
+            assert name == "EmgDFTi7h7SjKyIeG6NiZQ=="
             assert dateOfBirth == "67jD2g1wdu4d2u2EL6FqOg=="
             assert age == "xZOZtUiYrNABLROslAT4sw=="
-            assert address == "zgoNUeRn7CZ/8xMKAAXj/NBvKig5LmTej9TGm0WNfa8nxOOoSgnwzH1S+QlqkcnjrTJ/+Z0o0d2i2cpU2htbvw=="
+            assert address == "54QF/34mAxz/8pae5KfKCym488JZMHolQ3oZJXgHLDn2eNiymhED2Qcnsct1O+h2MbYjFEWnY1G/XTUpRpFSeRYDizGZi4nvn4DzFDAVPc8="
             assert crn == "v5LH8B7tJKI7fEc9uM76SQ=="
             assert pnc == "gHYQKWx6gGbP7qo+wsQf6w=="
 
