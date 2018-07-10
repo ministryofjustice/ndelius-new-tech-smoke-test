@@ -23,6 +23,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         }
         then: 'I am at the Prisoner details page'
         withWindow("reportpopup") {
+            report("popup")
             at(PP1PrisonerDetailsPage)
         }
     }
