@@ -1,5 +1,6 @@
 package uk.gov.justice.digital.hmpps.delius.paroleparom1report
 
+import geb.driver.CachingDriverFactory
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 import uk.gov.justice.digital.hmpps.delius.dataload.ReportDataLoader
@@ -9,6 +10,8 @@ import uk.gov.justice.digital.hmpps.delius.pages.*
 class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
     def setup() {
+        resetBrowser()
+        CachingDriverFactory.clearCacheAndQuitDriver()
         ReportDataLoader.clear()
         to IndexPage
     }
