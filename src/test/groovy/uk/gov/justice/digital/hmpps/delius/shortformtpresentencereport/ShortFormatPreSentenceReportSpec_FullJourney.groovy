@@ -203,7 +203,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             assert name == "EmgDFTi7h7SjKyIeG6NiZQ=="
             assert dateOfBirth == "67jD2g1wdu4d2u2EL6FqOg=="
             assert age == "xZOZtUiYrNABLROslAT4sw=="
-            assert address == "54QF/34mAxz/8pae5KfKCym488JZMHolQ3oZJXgHLDn2eNiymhED2Qcnsct1O+h2MbYjFEWnY1G/XTUpRpFSeRYDizGZi4nvn4DzFDAVPc8="
+            assert address == "V/lG6VLFD0oe0ATA89ibXvNOb0NYY89IPNYpZ5aF/c30hkEudqZ6d4IYWQwK5BTDkGS1TCKmWW0yJmzEKblMB/W8snR+3rxG89hNe/+pXV4="
             assert crn == "v5LH8B7tJKI7fEc9uM76SQ=="
             assert pnc == "gHYQKWx6gGbP7qo+wsQf6w=="
 
