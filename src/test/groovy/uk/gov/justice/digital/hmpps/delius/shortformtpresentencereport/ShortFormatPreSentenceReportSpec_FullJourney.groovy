@@ -1,5 +1,6 @@
 package uk.gov.justice.digital.hmpps.delius.shortformtpresentencereport
 
+import geb.driver.CachingDriverFactory
 import geb.spock.GebReportingSpec
 import org.openqa.selenium.Dimension
 import spock.lang.Stepwise
@@ -10,6 +11,8 @@ import uk.gov.justice.digital.hmpps.delius.pages.*
 class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
     def setup() {
+        resetBrowser()
+        CachingDriverFactory.clearCacheAndQuitDriver()
         ReportDataLoader.clear()
         to IndexPage
     }
