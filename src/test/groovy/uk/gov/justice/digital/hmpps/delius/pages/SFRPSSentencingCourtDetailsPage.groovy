@@ -6,7 +6,6 @@ class SFRPSSentencingCourtDetailsPage extends SFPSRBasePage {
 
     static content = {
         heading { $("h1").text() }
-        fillCourtWith { text -> $("#court").value(text) }
         fillLocalJusticeAreaWith { text -> $("#localJusticeArea").value(text) }
     }
 }
