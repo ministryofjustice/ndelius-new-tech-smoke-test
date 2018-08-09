@@ -36,7 +36,6 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
         withWindow("reportpopup") {
             at(SFRPSSentencingCourtDetailsPage)
-            fillCourtWith("The court")
             fillLocalJusticeAreaWith("Cardiff")
             saveAndContinue.click()
         }
@@ -207,8 +206,8 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             assert crn == "v5LH8B7tJKI7fEc9uM76SQ=="
             assert pnc == "gHYQKWx6gGbP7qo+wsQf6w=="
 
-            assert court == "QLoQsxswhfduyDSX4gvmsQ=="
-            assert dateOfHearing == "igY1rhdHh6XNlTto+oNRSw=="
+            assert court == "h7MBpp9IR8kIdeTf8grydw=="
+            assert dateOfHearing == "o0Visp+OX0kRPpoKW4hx2g=="
             assert localJusticeArea == "GoLwo2nCnYgh1QImL5p0Jw=="
 
             assert interviewInformationSource == "true"
