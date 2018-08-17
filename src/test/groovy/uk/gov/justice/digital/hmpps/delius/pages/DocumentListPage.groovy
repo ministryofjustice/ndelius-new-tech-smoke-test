@@ -14,5 +14,6 @@ class DocumentListPage extends Page {
     static content = {
         documentRows {$('table tbody tr')}
         firstDocumentUpdateLink {$("a", text: "Update")}
+        firstDocumentViewLink {$("a", text: "View")}
     }
 }
