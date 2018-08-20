@@ -11,5 +11,6 @@ class SFRPSSignYourReportPage extends SFPSRBasePage {
         fillCourtOfficePhoneNumberWith { text -> $("#courtOfficePhoneNumber").value(text) }
         fillCounterSignatureWith { text -> $("#counterSignature").value(text) }
         submitButton { $("button", text: "Submit") }
+
     }
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.Dimension
 import spock.lang.Stepwise
 import uk.gov.justice.digital.hmpps.delius.dataload.ReportDataLoader
 import uk.gov.justice.digital.hmpps.delius.pages.*
+import uk.gov.justice.digital.hmpps.delius.util.PDFReader
 
 @Stepwise
 class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
@@ -52,62 +53,62 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             policeInformationSourceCheckBox.click()
             sentencingGuidelinesInformationSourceCheckBox.click()
             otherInformationSourceCheckBox.click()
-            fillOtherInformationDetailsWith("Other information details")
+            fillOtherInformationDetailsWith("Other information details text")
             saveAndContinue.click()
         }
 
         withWindow("reportpopup") {
             at(SFRPSOffenceDetailsPage)
-            fillMainOffenceWith("Main offence")
-            fillOtherOffencesWith("Other offences")
-            fillOffenceSummaryWith("Summary of offence")
+            fillMainOffenceWith("Main offence text")
+            fillOtherOffencesWith("Other offences text")
+            fillOffenceSummaryWith("Summary of offence text")
             saveAndContinue.click()
         }
 
         withWindow("reportpopup") {
             at(SFRPSOffenceAnalysisPage)
-            fillOffenceAnalysisWith("Offence analysis")
-            fillPatternOfOffendingWith("Pattern of offending")
+            fillOffenceAnalysisWith("Offence analysis text")
+            fillPatternOfOffendingWith("Pattern of offending text")
             saveAndContinue.click()
         }
 
         withWindow("reportpopup") {
             at(SFRPSOffenderAssessmentPage)
             accommodationCheckBox.click()
-            fillAccommodationWith("Accommodation")
+            fillAccommodationWith("Accommodation text")
             employmentCheckBox.click()
-            fillEmploymentWith("Employment")
+            fillEmploymentWith("Employment text")
             financeCheckBox.click()
-            fillFinanceWith("Finance")
+            fillFinanceWith("Finance text")
             relationshipsCheckBox.click()
-            fillRelationshipsWith("Relationships")
+            fillRelationshipsWith("Relationships text")
             substanceMisuseCheckBox.click()
-            fillSubstanceMisuseWith("Substance misuse")
+            fillSubstanceMisuseWith("Substance misuse text")
             healthCheckBox.click()
-            fillHealthWith("Health")
+            fillHealthWith("Health text")
             behaviourCheckBox.click()
-            fillBehaviourWith("Behaviour")
+            fillBehaviourWith("Behaviour text")
             otherCheckBox.click()
-            fillOtherWith("Other")
+            fillOtherWith("Other text")
             setExperienceTraumaYes
-            fillExperienceTraumaDetailsWith('Experience Trauma')
+            fillExperienceTraumaDetailsWith('Experience Trauma text')
             setCaringResponsibilitiesYes
-            fillCaringResponsibilitiesDetailsWith('Caring Responsibilities')
+            fillCaringResponsibilitiesDetailsWith('Caring Responsibilities text')
             saveAndContinue.click()
         }
 
         withWindow("reportpopup") {
             at(SFRPSRiskAssessmentPage)
-            fillLikelihoodOfReOffendingWith("Likelihood of re-offending")
-            fillRiskOfSeriousHarmWith("Risk of serious harm")
+            fillLikelihoodOfReOffendingWith("Likelihood of re-offending text")
+            fillRiskOfSeriousHarmWith("Risk of serious harm text")
             setPreviousSupervisionResponseGood
-            fillAdditionalPreviousSupervisionWith("Additional previous supervision")
+            fillAdditionalPreviousSupervisionWith("Additional previous supervision text")
             saveAndContinue.click()
         }
 
         withWindow("reportpopup") {
             at(SFRPSConclusionPage)
-            fillProposalWith("Proposed sentence")
+            fillProposalWith("Proposed sentence text")
             setConsideredQualityDiversityYes
             saveAndContinue.click()
         }
@@ -119,10 +120,10 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
         withWindow("reportpopup") {
             at(SFRPSSignYourReportPage)
-            fillReportAuthorWith("Report author")
-            fillOfficeWith("Office")
+            fillReportAuthorWith("Report author text")
+            fillOfficeWith("Office text")
             fillCourtOfficePhoneNumberWith("01999 123456")
-            fillCounterSignatureWith("Counter signature")
+            fillCounterSignatureWith("Counter signature text")
         }
 
         when: 'I navigate back to the first page'
@@ -220,14 +221,14 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             assert policeInformationSource == "true"
             assert sentencingGuidelinesInformationSource == "true"
             assert otherInformationSource == "true"
-            assert otherInformationDetails.contains("Other information details")
+            assert otherInformationDetails.contains("Other information details text")
 
-            assert mainOffence.contains("Main offence")
-            assert otherOffences.contains("Other offences")
-            assert offenceSummary.contains("Summary of offence")
+            assert mainOffence.contains("Main offence text")
+            assert otherOffences.contains("Other offences text")
+            assert offenceSummary.contains("Summary of offence text")
 
-            assert offenceAnalysis.contains("Offence analysis")
-            assert patternOfOffending.contains("Pattern of offending")
+            assert offenceAnalysis.contains("Offence analysis text")
+            assert patternOfOffending.contains("Pattern of offending text")
 
             assert issueAccommodation.contains("true")
             assert issueEmployment.contains("true")
@@ -238,33 +239,33 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             assert issueBehaviour.contains("true")
             assert issueOther.contains("true")
 
-            assert issueAccommodationDetails.contains("Accommodation")
-            assert issueEmploymentDetails.contains("Employment")
-            assert issueFinanceDetails.contains("Finance")
-            assert issueRelationshipsDetails.contains("Relationships")
-            assert issueSubstanceMisuseDetails.contains("Substance misuse")
-            assert issueHealthDetails.contains("Health")
-            assert issueBehaviourDetails.contains("Behaviour")
-            assert issueOtherDetails.contains("Other")
+            assert issueAccommodationDetails.contains("Accommodation text")
+            assert issueEmploymentDetails.contains("Employment text")
+            assert issueFinanceDetails.contains("Finance text")
+            assert issueRelationshipsDetails.contains("Relationships text")
+            assert issueSubstanceMisuseDetails.contains("Substance misuse text")
+            assert issueHealthDetails.contains("Health text")
+            assert issueBehaviourDetails.contains("Behaviour text")
+            assert issueOtherDetails.contains("Other text")
 
             assert experienceTrauma.contains("yes")
-            assert experienceTraumaDetails.contains("Experience Trauma")
+            assert experienceTraumaDetails.contains("Experience Trauma text")
             assert caringResponsibilities.contains("yes")
-            assert caringResponsibilitiesDetails.contains("Caring Responsibilities")
+            assert caringResponsibilitiesDetails.contains("Caring Responsibilities text")
 
-            assert likelihoodOfReOffending.contains("Likelihood of re-offending")
-            assert riskOfSeriousHarm.contains("Risk of serious harm")
+            assert likelihoodOfReOffending.contains("Likelihood of re-offending text")
+            assert riskOfSeriousHarm.contains("Risk of serious harm text")
             assert previousSupervisionResponse.contains("Good")
-            assert additionalPreviousSupervision.contains("Additional previous supervision")
+            assert additionalPreviousSupervision.contains("Additional previous supervision text")
 
-            assert proposal.contains("Proposed sentence")
+            assert proposal.contains("Proposed sentence text")
             assert consideredQualityDiversity.contains("yes")
 
-            assert reportAuthor.contains("Report author")
-            assert office.contains("Office")
+            assert reportAuthor.contains("Report author text")
+            assert office.contains("Office text")
             assert reportDate == new Date().format("dd/MM/yyyy")
             assert courtOfficePhoneNumber.contains("01999 123456")
-            assert counterSignature.contains("Counter signature")
+            assert counterSignature.contains("Counter signature text")
             assert startDate != null
 
             assert submitButton.click()
@@ -288,6 +289,34 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
         and: 'My document is displayed'
         assert documentRows.size() == 1
+
+        and: 'I download the PDF'
+        def content = PDFReader.textContent(downloadBytes(firstDocumentViewLink.@href.replace('pdf', 'view_pdf')))
+        content.contains 'Other information details text'
+        content.contains 'Main offence text'
+        content.contains 'Other offences text'
+        content.contains 'Summary of offence text'
+        content.contains 'Offence analysis text'
+        content.contains 'Pattern of offending text'
+        content.contains 'Accommodation text'
+        content.contains 'Employment text'
+        content.contains 'Finance text'
+        content.contains 'Relationships text'
+        content.contains 'Substance misuse text'
+        content.contains 'Health text'
+        content.contains 'Behaviour text'
+        content.contains 'Other text'
+        content.contains 'Experience Trauma text'
+        content.contains 'Caring Responsibilities text'
+        content.contains 'Likelihood of re-offending text'
+        content.contains 'Risk of serious harm text'
+        content.contains 'Additional previous supervision text'
+        content.contains 'Proposed sentence text'
+        content.contains 'Report author text'
+        content.contains 'Office text'
+        content.contains '01999 123456'
+        content.contains 'Counter signature text'
+
 
         and: 'I select the document to update'
         firstDocumentUpdateLink.click(ShortFormatPreSentenceReportUpdatePageFrame)
