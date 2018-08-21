@@ -2,7 +2,7 @@ package uk.gov.justice.digital.hmpps.delius.pages
 
 import geb.Page
 
-class DocumentListPage extends Page {
+class SFPSRDocumentListPage extends Page {
     static url = '/sfpsr_list'
 
     static at = {

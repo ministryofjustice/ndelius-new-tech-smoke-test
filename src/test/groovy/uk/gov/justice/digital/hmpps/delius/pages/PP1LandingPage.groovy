@@ -9,5 +9,6 @@ class PP1LandingPage extends Page {
     static content = {
         heading { $("h1").text() }
         startNowButton { $("button", text: "Start now") }
+        documentListLink {$("a", text: "Back to document list")}
     }
 }

@@ -4,7 +4,7 @@ import geb.driver.CachingDriverFactory
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 import uk.gov.justice.digital.hmpps.delius.dataload.ReportDataLoader
-import uk.gov.justice.digital.hmpps.delius.pages.DocumentListPage
+import uk.gov.justice.digital.hmpps.delius.pages.SFPSRDocumentListPage
 import uk.gov.justice.digital.hmpps.delius.pages.IndexPage
 import uk.gov.justice.digital.hmpps.delius.pages.SFRPSDraftSavedPage
 import uk.gov.justice.digital.hmpps.delius.pages.SFRPSOffenceAnalysisPage
@@ -61,7 +61,7 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
             documentListLink.click()
         }
         then: 'I return to the document list'
-        at DocumentListPage
+        at SFPSRDocumentListPage
         and: 'My document is displayed'
         documentRows.size() == 1
         and: 'I select the document to update'
@@ -100,7 +100,7 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
             at(SFRPSOffenceDetailsPage)
         }
         and: 'I go back to start page via the document list'
-        to DocumentListPage
+        to SFPSRDocumentListPage
         firstDocumentUpdateLink.click(ShortFormatPreSentenceReportUpdatePageFrame)
         and: 'Fill in details in the popup window'
         withWindow("reportpopup") {
@@ -126,7 +126,7 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
         given: 'I create a new report'
         to ShortFormatPreSentenceReportPageFrame
         and: 'I return to document list'
-        to DocumentListPage
+        to SFPSRDocumentListPage
         and: 'Update that new report'
         firstDocumentUpdateLink.click(ShortFormatPreSentenceReportUpdatePageFrame)
 

@@ -5,6 +5,7 @@ import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 import uk.gov.justice.digital.hmpps.delius.dataload.ReportDataLoader
 import uk.gov.justice.digital.hmpps.delius.pages.*
+import uk.gov.justice.digital.hmpps.delius.util.PDFReader
 
 @Stepwise
 class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
@@ -76,5 +77,31 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             true
         }
+        and: 'I close the popup window'
+        withWindow("reportpopup") {
+            at(PP1CurrentSentencePlanPage)
+            saveDraftLink.click()
+            at(PP1DraftPage)
+            closeLink.click()
+        }
+        and: 'I click back to document list link '
+        withFrame(newTechFrame, PP1LandingPage) {
+            documentListLink.click()
+        }
+
+        and: 'I return to the document list'
+        at PP1DocumentListPage
+
+        and: 'My document is displayed'
+        assert documentRows.size() == 1
+
+
+        and: 'I download the PDF'
+        def content = PDFReader.textContent(downloadBytes(firstDocumentViewLink.@href.replace('pdf', 'view_pdf')))
+        content.contains 'Prisoner contact detail text'
+        content.contains 'Prisoner contact family detail text'
+        content.contains 'Prisoner contact agencies detail text'
+        content.contains 'Interventions detail text'
+        content.contains 'interventions summary text'
     }
 }
