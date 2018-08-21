@@ -5,6 +5,8 @@ import geb.Page;
 public class PP1BasePage extends Page {
 
     static content = {
+        heading { $("h1").text() }
+
         saveDraftLink { $("#exitLink") }
         saveAndContinue { $("button" , text: "Continue") }
 
@@ -12,5 +14,12 @@ public class PP1BasePage extends Page {
         onBehalfOfUser { $( "#onBehalfOfUser").value() }
         entityId { $( "#entityId").value() }
         documentId { $( "#documentId").value() }
+
+        prisonerContactDetail { $( "#prisonerContactDetail").value() }
+        prisonerContactFamilyDetail { $( "#prisonerContactFamilyDetail").value() }
+        prisonerContactAgenciesDetail { $( "#prisonerContactAgenciesDetail").value() }
+
+        interventionsDetail { $( "#interventionsDetail").value() }
+        interventionsSummary { $( "#interventionsSummary").value() }
     }
 }

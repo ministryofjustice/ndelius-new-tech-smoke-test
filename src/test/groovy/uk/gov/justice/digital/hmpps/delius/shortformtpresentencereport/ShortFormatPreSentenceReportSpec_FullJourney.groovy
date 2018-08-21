@@ -285,7 +285,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         and: 'I return to the document list'
-        at DocumentListPage
+        at SFPSRDocumentListPage
 
         and: 'My document is displayed'
         assert documentRows.size() == 1
