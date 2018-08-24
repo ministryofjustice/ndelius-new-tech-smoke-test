@@ -51,6 +51,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the OPD pathway page'
         withWindow("reportpopup") {
             at(PP1OPDPathwayPage)
+            setOPDPathwayServicesYes()
             saveAndContinue.click()
         }
         and: 'I complete the Behaviour in prison page'
@@ -71,6 +72,8 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert prisonerContactDetail.contains("Prisoner contact detail text")
             assert prisonerContactFamilyDetail.contains("Prisoner contact family detail text")
             assert prisonerContactAgenciesDetail.contains("Prisoner contact agencies detail text")
+
+            assert consideredForOPDPathwayServices == "yes"
 
             assert interventionsDetail.contains("Interventions detail text")
             assert interventionsSummary.contains("interventions summary text")

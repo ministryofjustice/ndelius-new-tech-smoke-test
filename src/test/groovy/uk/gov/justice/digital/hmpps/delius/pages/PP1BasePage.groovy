@@ -19,6 +19,9 @@ public class PP1BasePage extends Page {
         prisonerContactFamilyDetail { $( "#prisonerContactFamilyDetail").value() }
         prisonerContactAgenciesDetail { $( "#prisonerContactAgenciesDetail").value() }
 
+        consideredForOPDPathwayServices  { $( "#consideredForOPDPathwayServices").value() }
+
+
         interventionsDetail { $( "#interventionsDetail").value() }
         interventionsSummary { $( "#interventionsSummary").value() }
     }
