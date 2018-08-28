@@ -68,6 +68,12 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             fillInterventionsSummaryWith("interventions summary text")
             saveAndContinue.click()
         }
+        and: 'I complete the Current sentence plan page'
+        withWindow("reportpopup") {
+            at(PP1CurrentSentencePlanPage)
+            fillSentencePlanWith("Current sentence plan detail text")
+            saveAndContinue.click()
+        }
         then: 'I am on the current sentence plan page with all fields saved'
         withWindow("reportpopup") {
             at(PP1CurrentSentencePlanPage)
