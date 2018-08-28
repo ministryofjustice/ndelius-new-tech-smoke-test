@@ -106,5 +106,6 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'Prisoner contact agencies detail text'
         content.contains 'Interventions detail text'
         content.contains 'interventions summary text'
+        content.contains 'The prisoner has met the OPD screening criteria'
     }
 }
