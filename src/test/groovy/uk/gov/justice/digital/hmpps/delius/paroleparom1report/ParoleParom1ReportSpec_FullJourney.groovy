@@ -57,6 +57,8 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Behaviour in prison page'
         withWindow("reportpopup") {
             at(PP1BehaviourInPrisonPage)
+            fillBehaviourDetailWith("Prisoner behaviour in prison text")
+            fillRotlSummaryWith("RoTL summary text")
             saveAndContinue.click()
         }
         and: 'I complete the Interventions page'
