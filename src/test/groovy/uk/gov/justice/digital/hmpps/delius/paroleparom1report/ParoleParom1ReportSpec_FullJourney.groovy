@@ -75,10 +75,10 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert prisonerContactFamilyDetail.contains("Prisoner contact family detail text")
             assert prisonerContactAgenciesDetail.contains("Prisoner contact agencies detail text")
 
+            assert consideredForOPDPathwayServices == "yes"
+
             assert behaviourDetail.contains("Prisoner behaviour in prison text")
             assert rotlSummary.contains("RoTL summary text")
-
-            assert consideredForOPDPathwayServices == "yes"
 
             assert interventionsDetail.contains("Interventions detail text")
             assert interventionsSummary.contains("interventions summary text")
@@ -109,10 +109,10 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'Prisoner contact detail text'
         content.contains 'Prisoner contact family detail text'
         content.contains 'Prisoner contact agencies detail text'
+        content.contains 'The prisoner has met the OPD screening criteria'
         content.contains 'Prisoner behaviour in prison text'
         content.contains 'RoTL summary text'
         content.contains 'Interventions detail text'
         content.contains 'interventions summary text'
-        content.contains 'The prisoner has met the OPD screening criteria'
     }
 }
