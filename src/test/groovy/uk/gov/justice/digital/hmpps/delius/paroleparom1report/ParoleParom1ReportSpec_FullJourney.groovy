@@ -74,17 +74,22 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             fillSentencePlanWith("Current sentence plan detail text")
             saveAndContinue.click()
         }
-        then: 'I am on the current sentence plan page with all fields saved'
+        then: 'I am on the MAPPA page with all fields saved'
         withWindow("reportpopup") {
-            at(PP1CurrentSentencePlanPage)
+            at(PP1MappaPage)
             assert prisonerContactDetail.contains("Prisoner contact detail text")
             assert prisonerContactFamilyDetail.contains("Prisoner contact family detail text")
             assert prisonerContactAgenciesDetail.contains("Prisoner contact agencies detail text")
+
+            assert behaviourDetail.contains("Prisoner behaviour in prison text")
+            assert rotlSummary.contains("RoTL summary text")
 
             assert consideredForOPDPathwayServices == "yes"
 
             assert interventionsDetail.contains("Interventions detail text")
             assert interventionsSummary.contains("interventions summary text")
+
+            assert sentencePlan.contains("Current sentence plan detail text")
 
             true
         }
