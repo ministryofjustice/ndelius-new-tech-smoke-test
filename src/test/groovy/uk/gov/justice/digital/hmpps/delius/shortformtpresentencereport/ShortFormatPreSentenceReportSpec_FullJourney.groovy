@@ -28,7 +28,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
         withWindow("reportpopup") {
             // make popup big enough so no inputs are below the footer
-            getDriver().manage().window().setSize(new Dimension(830, 3000))
+            getDriver().manage().window().setSize(new Dimension(830, 3500))
         }
         withWindow("reportpopup") {
             at(SFRPSOffenderDetailsPage)
