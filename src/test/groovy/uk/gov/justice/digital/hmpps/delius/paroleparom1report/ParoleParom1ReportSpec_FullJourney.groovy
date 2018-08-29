@@ -2,6 +2,7 @@ package uk.gov.justice.digital.hmpps.delius.paroleparom1report
 
 import geb.driver.CachingDriverFactory
 import geb.spock.GebReportingSpec
+import org.openqa.selenium.Dimension
 import spock.lang.Stepwise
 import uk.gov.justice.digital.hmpps.delius.dataload.ReportDataLoader
 import uk.gov.justice.digital.hmpps.delius.pages.*
@@ -25,6 +26,10 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         withFrame(newTechFrame, PP1LandingPage) {
             startNowButton.click()
         }
+        withWindow("reportpopup") {
+            // make popup big enough so no inputs are below the footer
+            getDriver().manage().window().setSize(new Dimension(830, 3500))
+        }
         and: 'I complete the Prisoner details page'
         withWindow("reportpopup") {
             at(PP1PrisonerDetailsPage)
@@ -46,6 +51,10 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Victims page'
         withWindow("reportpopup") {
             at(PP1VictimsPage)
+            fillVictimsImpactDetailsWith("Victims impact detail text")
+            setVictimsSubmitVPSYes()
+            setVictimsEngagedInVCSYes()
+            fillVictimsVLOContactDatesWith("30/03/2018")
             saveAndContinue.click()
         }
         and: 'I complete the OPD pathway page'
@@ -80,6 +89,11 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert prisonerContactDetail.contains("Prisoner contact detail text")
             assert prisonerContactFamilyDetail.contains("Prisoner contact family detail text")
             assert prisonerContactAgenciesDetail.contains("Prisoner contact agencies detail text")
+
+            assert victimsImpactDetails.contains("Victims impact detail text")
+            assert victimsVLOContactDate == "30/03/2018"
+            assert victimsEngagedInVCS == "yes"
+            assert victimsSubmitVPS == "yes"
 
             assert consideredForOPDPathwayServices == "yes"
 
@@ -117,11 +131,20 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'Prisoner contact detail text'
         content.contains 'Prisoner contact family detail text'
         content.contains 'Prisoner contact agencies detail text'
+
+        content.contains 'Victims impact detail text'
+        content.contains "Victim Liaison Officer (VLO) contacted 30/03/2018"
+        content.contains "Victim Contact Scheme (VCS) engagement Yes"
+        content.contains "Victim Personal Statement (VPS) Yes"
+
         content.contains 'The prisoner has met the OPD screening criteria'
+
         content.contains 'Prisoner behaviour in prison text'
         content.contains 'RoTL summary text'
+
         content.contains 'Interventions detail text'
         content.contains 'interventions summary text'
+
         content.contains 'Current sentence plan detail text'
     }
 }
