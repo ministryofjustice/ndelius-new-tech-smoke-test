@@ -95,7 +95,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         }
         and: 'I close the popup window'
         withWindow("reportpopup") {
-            at(PP1CurrentSentencePlanPage)
+            at(PP1MappaPage)
             saveDraftLink.click()
             at(PP1DraftPage)
             closeLink.click()
