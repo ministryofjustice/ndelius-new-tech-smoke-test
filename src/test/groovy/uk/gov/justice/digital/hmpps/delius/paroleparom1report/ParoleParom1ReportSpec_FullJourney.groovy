@@ -77,9 +77,15 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             fillInterventionsSummaryWith("interventions summary text")
             saveAndContinue.click()
         }
-        then: 'I am on the current sentence plan page with all fields saved'
+        and: 'I complete the Current sentence plan page'
         withWindow("reportpopup") {
             at(PP1CurrentSentencePlanPage)
+            fillSentencePlanWith("Current sentence plan detail text")
+            saveAndContinue.click()
+        }
+        then: 'I am on the MAPPA page with all fields saved'
+        withWindow("reportpopup") {
+            at(PP1MappaPage)
             assert prisonerContactDetail.contains("Prisoner contact detail text")
             assert prisonerContactFamilyDetail.contains("Prisoner contact family detail text")
             assert prisonerContactAgenciesDetail.contains("Prisoner contact agencies detail text")
@@ -97,11 +103,13 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert interventionsDetail.contains("Interventions detail text")
             assert interventionsSummary.contains("interventions summary text")
 
+            assert sentencePlan.contains("Current sentence plan detail text")
+
             true
         }
         and: 'I close the popup window'
         withWindow("reportpopup") {
-            at(PP1CurrentSentencePlanPage)
+            at(PP1MappaPage)
             saveDraftLink.click()
             at(PP1DraftPage)
             closeLink.click()
@@ -129,13 +137,14 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains "Victim Contact Scheme (VCS) engagement Yes"
         content.contains "Victim Personal Statement (VPS) Yes"
 
-        content.contains 'Interventions detail text'
-        content.contains 'interventions summary text'
-
         content.contains 'The prisoner has met the OPD screening criteria'
 
         content.contains 'Prisoner behaviour in prison text'
         content.contains 'RoTL summary text'
 
+        content.contains 'Interventions detail text'
+        content.contains 'interventions summary text'
+
+        content.contains 'Current sentence plan detail text'
     }
 }
