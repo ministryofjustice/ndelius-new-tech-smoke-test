@@ -83,9 +83,48 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             fillSentencePlanWith("Current sentence plan detail text")
             saveAndContinue.click()
         }
-        then: 'I am on the MAPPA page with all fields saved'
+
+        and: 'I complete the MAPPA page'
         withWindow("reportpopup") {
             at(PP1MappaPage)
+            saveAndContinue.click()
+        }
+        and: 'I complete the Current risk assessment page'
+        withWindow("reportpopup") {
+            at(PP1CurrentRiskAssessmentPage)
+            saveAndContinue.click()
+        }
+        and: 'I complete the RoSH community page'
+        withWindow("reportpopup") {
+            at(PP1RoshCommunityPage)
+            saveAndContinue.click()
+        }
+        and: 'I complete the RoSH custody page'
+        withWindow("reportpopup") {
+            at(PP1RoshCustodyPage)
+            saveAndContinue.click()
+        }
+        and: 'I complete the Risk to the prisoner page'
+        withWindow("reportpopup") {
+            at(PP1RiskToPrisonerPage)
+            saveAndContinue.click()
+        }
+
+        and: 'I complete the RoSH analysis page'
+        withWindow("reportpopup") {
+            at(PP1RoshAnalysisPage)
+            fillNatureOfRisk("Nature of risk detail text")
+            fillIncreaseFactors("Increase factors detail text")
+            fillDecreaseFactors("Decrease factors detail text")
+            fillLikelihoodFurtherOffending("Likelihood of reoffending detail text")
+            setRiskOfAbscondingYes()
+            fillRiskOfAbscondingDetails("Risk of absconding detail text")
+            saveAndContinue.click()
+        }
+
+        then: 'I am on the Risk Management Plan (RMP) page with all fields saved'
+        withWindow("reportpopup") {
+            at(PP1RmpPage)
             assert prisonerContactDetail.contains("Prisoner contact detail text")
             assert prisonerContactFamilyDetail.contains("Prisoner contact family detail text")
             assert prisonerContactAgenciesDetail.contains("Prisoner contact agencies detail text")
@@ -105,11 +144,19 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             assert sentencePlan.contains("Current sentence plan detail text")
 
+            // Page 15 - RoSH analysis
+            assert natureOfRisk.contains("Nature of risk detail text")
+            assert increaseFactors.contains("Increase factors detail text")
+            assert decreaseFactors.contains("Decrease factors detail text")
+            assert likelihoodFurtherOffending.contains("Likelihood of reoffending detail text")
+            assert riskOfAbsconding == "yes"
+            assert riskOfAbscondingDetails.contains("Risk of absconding detail text")
+
             true
         }
         and: 'I close the popup window'
         withWindow("reportpopup") {
-            at(PP1MappaPage)
+            at(PP1RmpPage)
             saveDraftLink.click()
             at(PP1DraftPage)
             closeLink.click()
@@ -146,5 +193,11 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'interventions summary text'
 
         content.contains 'Current sentence plan detail text'
+
+        content.contains 'Nature of risk detail text'
+        content.contains 'Increase factors detail text'
+        content.contains 'Decrease factors detail text'
+        content.contains 'Likelihood of reoffending detail text'
+        content.contains 'Risk of absconding detail text'
     }
 }
