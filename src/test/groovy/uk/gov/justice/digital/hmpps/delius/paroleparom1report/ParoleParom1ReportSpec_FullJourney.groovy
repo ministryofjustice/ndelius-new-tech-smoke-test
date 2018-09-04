@@ -148,7 +148,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert natureOfRisk.contains("Nature of risk detail text")
             assert increaseFactors.contains("Increase factors detail text")
             assert decreaseFactors.contains("Decrease factors detail text")
-            assert likelihoodOfFurtherOffending.contains("Likelihood of reoffending detail text")
+            assert likelihoodFurtherOffending.contains("Likelihood of reoffending detail text")
             assert riskOfAbsconding == "yes"
             assert riskOfAbscondingDetails.contains("Risk of absconding detail text")
 
