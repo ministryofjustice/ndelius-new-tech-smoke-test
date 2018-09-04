@@ -193,5 +193,11 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'interventions summary text'
 
         content.contains 'Current sentence plan detail text'
+
+        content.contains 'Nature of risk detail text'
+        content.contains 'Increase factors detail text'
+        content.contains 'Decrease factors detail text'
+        content.contains 'Likelihood of reoffending detail text'
+        content.contains 'Risk of absconding detail text'
     }
 }
