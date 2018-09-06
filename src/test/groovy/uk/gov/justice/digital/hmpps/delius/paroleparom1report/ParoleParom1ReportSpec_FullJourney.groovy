@@ -122,9 +122,25 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             saveAndContinue.click()
         }
 
-        then: 'I am on the Risk Management Plan (RMP) page with all fields saved'
+        and: 'I complete the Risk Management Plan (RMP) page'
         withWindow("reportpopup") {
-            at(PP1RmpPage)
+            at(PP1RiskManagementPlanPage)
+
+            fillAgencies("Agencies text")
+            fillSupport("Support text")
+            fillControl("Control text")
+            fillRiskMeasures("Risk Measures text")
+            fillAgencyActions("Agency Actions text")
+            fillAdditionalConditions("Additional conditions text")
+            fillLevelOfContact("Level of contact text")
+            fillContingencyPlan("Contingency plan text")
+
+            saveAndContinue.click()
+        }
+
+        then: 'I am on the Resettlement plan for release page with all fields saved'
+        withWindow("reportpopup") {
+            at(PP1ResettlementPlanPage)
             assert prisonerContactDetail.contains("Prisoner contact detail text")
             assert prisonerContactFamilyDetail.contains("Prisoner contact family detail text")
             assert prisonerContactAgenciesDetail.contains("Prisoner contact agencies detail text")
@@ -152,11 +168,21 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert riskOfAbsconding == "yes"
             assert riskOfAbscondingDetails.contains("Risk of absconding detail text")
 
+            // Page 16 - Risk Management Plan (RMP)
+            assert agencies.contains("Agencies text")
+            assert support.contains("Support text")
+            assert control.contains("Control text")
+            assert riskMeasures.contains("Risk Measures text")
+            assert agencyActions.contains("Agency Actions text")
+            assert additionalConditions.contains("Additional conditions text")
+            assert levelOfContact.contains("Level of contact text")
+            assert contingencyPlan.contains("Contingency plan text")
+
             true
         }
         and: 'I close the popup window'
         withWindow("reportpopup") {
-            at(PP1RmpPage)
+            at(PP1ResettlementPlanPage)
             saveDraftLink.click()
             at(PP1DraftPage)
             closeLink.click()
@@ -199,5 +225,14 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'Decrease factors detail text'
         content.contains 'Likelihood of reoffending detail text'
         content.contains 'Risk of absconding detail text'
+
+        content.contains 'Agencies text'
+        content.contains 'Support text'
+        content.contains 'Control text'
+        content.contains 'Risk Measures text'
+        content.contains 'Agency Actions text'
+        content.contains 'Additional conditions text'
+        content.contains 'Level of contact text'
+        content.contains 'Contingency plan text'
     }
 }
