@@ -6,8 +6,6 @@ class SFRPSOffenceDetailsPage extends SFPSRBasePage {
 
     static content = {
         heading { $("h1").text() }
-        fillMainOffenceWith { text -> $("#mainOffence .ql-editor").leftShift(text) }
-        fillOtherOffencesWith { text -> $("#otherOffences .ql-editor").leftShift(text) }
         fillOffenceSummaryWith { text -> $("#offenceSummary .ql-editor").leftShift(text) }
     }
 }

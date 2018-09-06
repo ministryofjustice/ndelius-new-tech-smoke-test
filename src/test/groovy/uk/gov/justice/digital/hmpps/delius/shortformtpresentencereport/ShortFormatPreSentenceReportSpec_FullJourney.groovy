@@ -59,8 +59,6 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
         withWindow("reportpopup") {
             at(SFRPSOffenceDetailsPage)
-            fillMainOffenceWith("Main offence text")
-            fillOtherOffencesWith("Other offences text")
             fillOffenceSummaryWith("Summary of offence text")
             saveAndContinue.click()
         }
@@ -223,8 +221,8 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             assert otherInformationSource == "true"
             assert otherInformationDetails.contains("Other information details text")
 
-            assert mainOffence.contains("Main offence text")
-            assert otherOffences.contains("Other offences text")
+            assert mainOffence.contains("SBUwBklowRLAnuXlGCbj6sZ15z4ukGrNlJKEXaB7h86/e3XW6dyDDBGTTCGk+VELwJUzzSjZHa7VHMRO9PCHrEldFEftqvwhG5cyWTfnU8Y=")
+            assert otherOffences.contains("SBUwBklowRLAnuXlGCbj6sIJQuZ2XEsp4s/F2pbyq9sbEcOO6wb+ftNZTx4PW95+l/hJJqKgjiXF2u8LVe/1RryQjOx2GO5O6gyvk6kJI+0vp+ZzMThBsX36WZ8PCTZaJL7xjyACsNQ96yIo/i/+QjpocVRUdlqF7KmUqiAFhA6eaRYhVQ/KuNg82ctRBcmf3Z7fZHUvPmkLnx1fi0H1dRfI2Ih+U8L8qYK22FlLj/o=")
             assert offenceSummary.contains("Summary of offence text")
 
             assert offenceAnalysis.contains("Offence analysis text")
@@ -293,8 +291,8 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         and: 'I download the PDF'
         def content = PDFReader.textContent(downloadBytes(firstDocumentViewLink.@href.replace('pdf', 'view_pdf')))
         content.contains 'Other information details text'
-        content.contains 'Main offence text'
-        content.contains 'Other offences text'
+        content.contains 'Obtaining a money transfer by deception'
+        content.contains 'Dishonestly retaining a wrongful credit'
         content.contains 'Summary of offence text'
         content.contains 'Offence analysis text'
         content.contains 'Pattern of offending text'
