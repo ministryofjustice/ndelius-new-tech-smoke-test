@@ -26,8 +26,20 @@ public class PP1BasePage extends Page {
 
         consideredForOPDPathwayServices  { $( "#consideredForOPDPathwayServices").value() }
 
-
         interventionsDetail { $( "#interventionsDetail").value() }
         interventionsSummary { $( "#interventionsSummary").value() }
+
+        sourcesPreviousConvictions { $( "#sourcesPreviousConvictions").value() }
+        sourcesCPSDocuments { $( "#sourcesCPSDocuments").value() }
+        sourcesJudgesComments { $( "#sourcesJudgesComments").value() }
+        sourcesParoleDossier { $( "#sourcesParoleDossier").value() }
+        sourcesPreviousParoleReports { $( "#sourcesPreviousParoleReports").value() }
+        sourcesPreSentenceReport { $( "#sourcesPreSentenceReport").value() }
+        sourcesProbationCaseRecord { $( "#sourcesProbationCaseRecord").value() }
+        sourcesOther { $( "#sourcesOther").value() }
+        sourcesOtherDetail { $( "#sourcesOtherDetail").value() }
+        sourcesAssessmentList { $( "#sourcesAssessmentList").value() }
+        sourceLimitations { $( "#sourceLimitations").value() }
+        sourceLimitationsDetail { $( "#sourceLimitationsDetail").value() }
     }
 }
