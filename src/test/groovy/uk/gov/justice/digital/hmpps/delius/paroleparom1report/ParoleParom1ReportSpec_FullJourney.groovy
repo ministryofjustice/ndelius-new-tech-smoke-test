@@ -147,6 +147,8 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Supervision plan for release page'
         withWindow("reportpopup") {
             at(PP1SupervisionPlanPage)
+            setSupervisionPlanRequiredYes()
+            fillSupervisionPlanDetailWith "supervision plan detail text"
             saveAndContinue.click()
         }
 
@@ -221,6 +223,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert levelOfContact.contains("Level of contact text")
             assert contingencyPlan.contains("Contingency plan text")
 
+            assert supervisionPlanRequired == "yes"
+            assert supervisionPlanDetail.contains("supervision plan detail text")
+
             assert sourcesPreviousConvictions == "true"
             assert sourcesCPSDocuments == "true"
             assert sourcesJudgesComments == "true"
@@ -290,6 +295,8 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'Additional conditions text'
         content.contains 'Level of contact text'
         content.contains 'Contingency plan text'
+
+        content.contains 'supervision plan detail text'
 
         content.contains "Previous convictions Yes"
         content.contains "CPS documents Yes"
