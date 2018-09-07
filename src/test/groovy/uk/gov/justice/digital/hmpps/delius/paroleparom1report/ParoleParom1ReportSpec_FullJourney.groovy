@@ -138,9 +138,52 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             saveAndContinue.click()
         }
 
-        then: 'I am on the Resettlement plan for release page with all fields saved'
+        and: 'I complete the Resettlement plan for release page'
         withWindow("reportpopup") {
             at(PP1ResettlementPlanPage)
+            saveAndContinue.click()
+        }
+
+        and: 'I complete the Supervision plan for release page'
+        withWindow("reportpopup") {
+            at(PP1SupervisionPlanPage)
+            saveAndContinue.click()
+        }
+
+        and: 'I complete the Recommendation page'
+        withWindow("reportpopup") {
+            at(PP1RecommendationPage)
+            saveAndContinue.click()
+        }
+
+        and: 'I complete the Oral hearing'
+        withWindow("reportpopup") {
+            at(PP1OralHearingPage)
+            saveAndContinue.click()
+        }
+
+        and: 'I complete the Sources'
+        withWindow("reportpopup") {
+            at(PP1SourcesPage)
+            clickSourcesPreviousConvictions()
+            clickSourcesCPSDocuments()
+            clickSourcesJudgesComments()
+            clickSourcesParoleDossier()
+            clickSourcesPreviousParoleReports()
+            clickSourcesPreSentenceReport()
+            clickSourcesProbationCaseRecord()
+            clickSourcesOther()
+            fillSourcesOtherDetailWith "sources other detail text"
+            fillSourcesAssessmentListWith "sources assessment list text"
+            setSourceLimitationsYes()
+            fillSourceLimitationsDetailWith "source limitations detail text"
+            saveAndContinue.click()
+        }
+
+
+        then: 'I am on the check your report page'
+        withWindow("reportpopup") {
+            at(PP1CheckYourReportPage)
             assert prisonerContactDetail.contains("Prisoner contact detail text")
             assert prisonerContactFamilyDetail.contains("Prisoner contact family detail text")
             assert prisonerContactAgenciesDetail.contains("Prisoner contact agencies detail text")
@@ -178,11 +221,24 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert levelOfContact.contains("Level of contact text")
             assert contingencyPlan.contains("Contingency plan text")
 
+            assert sourcesPreviousConvictions == "true"
+            assert sourcesCPSDocuments == "true"
+            assert sourcesJudgesComments == "true"
+            assert sourcesParoleDossier == "true"
+            assert sourcesPreviousParoleReports == "true"
+            assert sourcesPreSentenceReport == "true"
+            assert sourcesProbationCaseRecord == "true"
+            assert sourcesOther == "true"
+            assert sourcesOtherDetail.contains("sources other detail text")
+            assert sourcesAssessmentList.contains("sources assessment list text")
+            assert sourceLimitations == "yes"
+            assert sourceLimitationsDetail.contains("source limitations detail text")
+
             true
         }
         and: 'I close the popup window'
         withWindow("reportpopup") {
-            at(PP1ResettlementPlanPage)
+            at(PP1CheckYourReportPage)
             saveDraftLink.click()
             at(PP1DraftPage)
             closeLink.click()
@@ -234,5 +290,18 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'Additional conditions text'
         content.contains 'Level of contact text'
         content.contains 'Contingency plan text'
+
+        content.contains "Previous convictions Yes"
+        content.contains "CPS documents Yes"
+        content.contains "Judges comments Yes"
+        content.contains "Parole dossier Yes"
+        content.contains "Probation case records Yes"
+        content.contains "Pre-sentence report Yes"
+        content.contains "Previous parole reports Yes"
+        content.contains "Other Yes"
+        content.contains 'sources other detail text'
+        content.contains 'sources assessment list text'
+        content.contains 'source limitations detail text'
+
     }
 }
