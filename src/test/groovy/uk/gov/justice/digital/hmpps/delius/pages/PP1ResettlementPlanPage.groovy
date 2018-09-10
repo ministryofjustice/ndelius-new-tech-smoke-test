@@ -4,4 +4,9 @@ class PP1ResettlementPlanPage extends PP1BasePage {
 
     static at = { heading == "Resettlement plan for release" }
 
+    static content = {
+        setResettlementplanYes { $("#resettlementPlan_yes").value("yes") }
+        fillResettlementPlanDetail { text -> $("#resettlementPlanDetail .ql-editor").leftShift(text) }
+    }
+
 }

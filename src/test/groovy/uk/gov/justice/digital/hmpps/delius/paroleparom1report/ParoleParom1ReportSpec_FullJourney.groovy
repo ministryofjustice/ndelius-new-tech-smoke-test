@@ -141,6 +141,10 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Resettlement plan for release page'
         withWindow("reportpopup") {
             at(PP1ResettlementPlanPage)
+
+            setResettlementplanYes()
+            fillResettlementPlanDetail("Resettlement plan detail text")
+
             saveAndContinue.click()
         }
 
