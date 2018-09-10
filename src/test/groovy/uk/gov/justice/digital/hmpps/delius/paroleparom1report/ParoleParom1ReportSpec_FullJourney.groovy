@@ -159,6 +159,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Recommendation page'
         withWindow("reportpopup") {
             at(PP1RecommendationPage)
+            fillRecommendationWith "recommendation text"
             saveAndContinue.click()
         }
 
@@ -229,6 +230,8 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             assert supervisionPlanRequired == "yes"
             assert supervisionPlanDetail.contains("supervision plan detail text")
+
+            assert recommendation.contains("recommendation text")
 
             assert sourcesPreviousConvictions == "true"
             assert sourcesCPSDocuments == "true"
@@ -301,6 +304,8 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'Contingency plan text'
 
         content.contains 'supervision plan detail text'
+
+        content.contains 'recommendation text'
 
         content.contains "Previous convictions Yes"
         content.contains "CPS documents Yes"

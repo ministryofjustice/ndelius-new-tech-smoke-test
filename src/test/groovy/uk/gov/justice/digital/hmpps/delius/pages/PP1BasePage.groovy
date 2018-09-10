@@ -32,6 +32,8 @@ public class PP1BasePage extends Page {
         supervisionPlanRequired{ $( "#supervisionPlanRequired").value() }
         supervisionPlanDetail{ $( "#supervisionPlanDetail").value() }
 
+        recommendation { $( "#recommendation").value() }
+
         sourcesPreviousConvictions { $( "#sourcesPreviousConvictions").value() }
         sourcesCPSDocuments { $( "#sourcesCPSDocuments").value() }
         sourcesJudgesComments { $( "#sourcesJudgesComments").value() }

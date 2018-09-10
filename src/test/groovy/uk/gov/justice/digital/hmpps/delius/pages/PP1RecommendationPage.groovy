@@ -4,4 +4,8 @@ class PP1RecommendationPage extends PP1BasePage {
 
     static at = { heading == "Recommendation" }
 
+    static content = {
+        fillRecommendationWith { text -> $("#recommendation .ql-editor").leftShift(text) }
+    }
+
 }
