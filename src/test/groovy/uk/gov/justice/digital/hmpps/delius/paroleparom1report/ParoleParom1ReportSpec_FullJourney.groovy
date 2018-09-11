@@ -107,6 +107,10 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Risk to the prisoner page'
         withWindow("reportpopup") {
             at(PP1RiskToPrisonerPage)
+            setSelfHarmCommunityYes()
+            setSelfHarmCustodyYes()
+            setOthersHarmCommunityYes()
+            setOthersHarmCustodyYes()
             saveAndContinue.click()
         }
 
