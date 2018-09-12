@@ -166,6 +166,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Oral hearing'
         withWindow("reportpopup") {
             at(PP1OralHearingPage)
+            fillOralHearingWith "oral hearing text"
             saveAndContinue.click()
         }
 
