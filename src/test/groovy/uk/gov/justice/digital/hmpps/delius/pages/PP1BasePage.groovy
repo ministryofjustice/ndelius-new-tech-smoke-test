@@ -21,6 +21,9 @@ public class PP1BasePage extends Page {
 
         victimsImpactDetails  { $( "#victimsImpactDetails").value() }
         victimsVLOContactDate  { $( "#victimsVLOContactDate").value() }
+        victimsVLOContactDate_day  { $( "#victimsVLOContactDate_day").value() }
+        victimsVLOContactDate_month  { $( "#victimsVLOContactDate_month").value() }
+        victimsVLOContactDate_year  { $( "#victimsVLOContactDate_year").value() }
         victimsEngagedInVCS  { $( "#victimsEngagedInVCS").value() }
         victimsSubmitVPS  { $( "#victimsSubmitVPS").value() }
 

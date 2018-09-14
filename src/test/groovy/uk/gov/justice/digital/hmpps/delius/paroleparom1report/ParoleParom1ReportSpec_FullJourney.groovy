@@ -202,6 +202,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             assert victimsImpactDetails.contains("Victims impact detail text")
             assert victimsVLOContactDate == "30/03/2018"
+            assert victimsVLOContactDate_day == "30"
+            assert victimsVLOContactDate_month == "03"
+            assert victimsVLOContactDate_year == "2018"
             assert victimsEngagedInVCS == "yes"
             assert victimsSubmitVPS == "yes"
 
