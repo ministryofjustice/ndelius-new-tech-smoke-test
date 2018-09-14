@@ -41,8 +41,8 @@ public class SFPSRBasePage extends Page {
         otherInformationSource { $( "#otherInformationSource").value() }
         otherInformationDetails { $( "#otherInformationDetails").value() }
 
-        mainOffence { $( "#mainOffence").value() }
-        otherOffences { $( "#otherOffences").value() }
+        fillMainOffenceWith { text -> $("#mainOffence .ql-editor").leftShift(text) }
+        fillOtherOffencesWith { text -> $("#otherOffences .ql-editor").leftShift(text) }
         offenceSummary { $( "#offenceSummary").value() }
 
         offenceAnalysis { $( "#offenceAnalysis").value() }

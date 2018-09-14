@@ -105,8 +105,6 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
         and: 'Fill in details in the popup window'
         withWindow("reportpopup") {
             at(SFRPSOffenceDetailsPage)
-            fillMainOffenceWith("Main offence")
-            fillOtherOffencesWith("Other offences")
             fillOffenceSummaryWith("Summary of offence")
             simulateUserPause() // since writes are async, we need the above changes to be written before we next, else writes may get out of order
             saveAndContinue.click()
