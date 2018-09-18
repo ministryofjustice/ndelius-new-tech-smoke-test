@@ -107,6 +107,11 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the RoSH custody page'
         withWindow("reportpopup") {
             at(PP1RoshCustodyPage)
+            setRoshCustodyPublicLow()
+            setRoshCustodyKnownAdultMedium()
+            setRoshCustodyChildrenHigh()
+            setRoshCustodyPrisonersVeryHigh()
+            setRoshCustodyStaffLow()
             saveAndContinue.click()
         }
         and: 'I complete the Risk to the prisoner page'
