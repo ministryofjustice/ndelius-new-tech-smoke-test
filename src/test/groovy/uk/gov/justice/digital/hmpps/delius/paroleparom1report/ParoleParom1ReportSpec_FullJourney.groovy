@@ -306,6 +306,28 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
         content.contains 'Current sentence plan detail text'
 
+        content.contains 'Current RoSH: community'
+        content.contains 'Public'
+        content.contains 'Known adult'
+        content.contains 'Children'
+        content.contains 'Prisoners'
+        content.contains 'Staff'
+        content.contains 'Low'
+        content.contains 'Medium'
+        content.contains 'High'
+        content.contains 'Very high'
+
+        content.contains 'Current RoSH: custody'
+        content.contains 'Public'
+        content.contains 'Known adult'
+        content.contains 'Children'
+        content.contains 'Prisoners'
+        content.contains 'Staff'
+        content.contains 'Low'
+        content.contains 'Medium'
+        content.contains 'High'
+        content.contains 'Very high'
+        
         content.contains 'Nature of risk detail text'
         content.contains 'Increase factors detail text'
         content.contains 'Decrease factors detail text'
