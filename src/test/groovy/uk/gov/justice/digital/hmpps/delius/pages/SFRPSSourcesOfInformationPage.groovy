@@ -14,6 +14,7 @@ class SFRPSSourcesOfInformationPage extends SFPSRBasePage {
         victimStatementInformationSourceCheckBox { $("#victimStatementInformationSource") }
         childrenServicesInformationSourceCheckBox { $("#childrenServicesInformationSource") }
         policeInformationSourceCheckBox { $("#policeInformationSource") }
+        domesticAbuseInformationSourceCheckBox { $("#domesticAbuseInformationSource") }
         sentencingGuidelinesInformationSourceCheckBox { $("#sentencingGuidelinesInformationSource") }
         otherInformationSourceCheckBox { $("#otherInformationSource") }
         fillOtherInformationDetailsWith { text -> $("#otherInformationDetails .ql-editor").leftShift(text) }

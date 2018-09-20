@@ -52,6 +52,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             childrenServicesInformationSourceCheckBox.click()
             policeInformationSourceCheckBox.click()
             sentencingGuidelinesInformationSourceCheckBox.click()
+            domesticAbuseInformationSourceCheckBox.click()
             otherInformationSourceCheckBox.click()
             fillOtherInformationDetailsWith("Other information details text")
             saveAndContinue.click()
@@ -220,6 +221,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             assert childrenServicesInformationSource == "true"
             assert policeInformationSource == "true"
             assert sentencingGuidelinesInformationSource == "true"
+            assert domesticAbuseInformationSource == "true"
             assert otherInformationSource == "true"
             assert otherInformationDetails.contains("Other information details text")
 
