@@ -1,5 +1,6 @@
 package uk.gov.justice.digital.hmpps.delius.search
 
+import geb.driver.CachingDriverFactory
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 import spock.lang.Unroll
@@ -31,17 +32,8 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
     }
 
     def setup() {
-        // clear any previous searches stored in local storage
-        to NationalOffenderSearchPageFrame
-        withFrame(newTechFrame, NationalOffenderSearchPage) {
-            enterSearchTerms('zzzzzzzz') // initial search to clear first use banner and allow filters to be deselected
-            waitFor {zeroResultsFound}
-            enterSearchTerms('') // clear local storage
-            deselectAllMyProvidersSelectedFilters()
-            deselectAllOtherProvidersSelectedFilters()
-            deselectMatchAllTerms()
-            waitFor {resultCount == 0}
-        }
+        resetBrowser()
+        CachingDriverFactory.clearCacheAndQuitDriver()
     }
     def 'Offender national Search presents search box'() {
 
@@ -93,6 +85,14 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
     def 'Searching for non-unique records with partial matches returns multiple results ordered'() {
         given: 'I am on the search page'
         to NationalOffenderSearchPageFrame
+
+        and: 'Match any term is selected'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('john smith')
+            waitFor {resultCount > 0}
+            deselectMatchAllTerms()
+        }
+
 
         when: 'I search for a matching surname and firstname'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
@@ -210,6 +210,13 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         given: 'I am on the search page'
         to NationalOffenderSearchPageFrame
 
+        and: 'Match any term is selected'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('john smith')
+            waitFor {resultCount > 0}
+            deselectMatchAllTerms()
+        }
+
         when: 'I search for a first name initial'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
             enterSearchTerms('J')
@@ -218,6 +225,7 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         then: 'I see offender records that have that first name initial'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
             // order not known so try either john or jane
+            waitFor {resultCount > 1}
             waitFor {offenders[0].contains('Jane') || offenders[0].contains('John')}
             offenders[1].contains('John') || offenders[1].contains('Jane')
             offenders[0].contains('X00001') || offenders[0].contains('X00002')
@@ -304,10 +312,17 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         given: 'I am on the search page'
         to NationalOffenderSearchPageFrame
 
+        and: 'Match any term is initially selected'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('john smith')
+            waitFor {resultCount > 0}
+            deselectMatchAllTerms()
+        }
+
         when: 'I search using multiple terms that produce multiple results'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            waitFor{ matchAllTerms == "broad" }
             enterSearchTerms('gramsci anne')
+            waitFor{ matchAllTerms == "broad" }
             waitFor {resultCount == 5}
         }
 
@@ -327,10 +342,17 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         given: 'I am on the search page'
         to NationalOffenderSearchPageFrame
 
+        and: 'Match any term is initially selected'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('john smith')
+            waitFor {resultCount > 0}
+            deselectMatchAllTerms()
+        }
+
         when: 'I search using multiple terms that produce multiple results'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            waitFor{ matchAllTerms == "broad" }
             enterSearchTerms('smith 2018/0123456X')
+            waitFor{ matchAllTerms == "broad" }
             waitFor {resultCount == 2}
         }
 
@@ -350,10 +372,17 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         given: 'I am on the search page'
         to NationalOffenderSearchPageFrame
 
+        and: 'Match any term is initially selected'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('john smith')
+            waitFor {resultCount > 0}
+            deselectMatchAllTerms()
+        }
+
         when: 'I search using multiple terms that produce multiple results'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            waitFor{ matchAllTerms == "broad" }
             enterSearchTerms('smith SF80/655108T')
+            waitFor{ matchAllTerms == "broad" }
             waitFor {resultCount == 2}
         }
 
@@ -373,10 +402,17 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         given: 'I am on the search page'
         to NationalOffenderSearchPageFrame
 
+        and: 'Match any term is initially selected'
+        withFrame(newTechFrame, NationalOffenderSearchPage) {
+            enterSearchTerms('john smith')
+            waitFor {resultCount > 0}
+            deselectMatchAllTerms()
+        }
+
         when: 'I search using multiple terms that produce multiple results'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            waitFor{ matchAllTerms == "broad" }
             enterSearchTerms('smith 1978/1/6')
+            waitFor{ matchAllTerms == "broad" }
             waitFor {resultCount == 2}
         }
 
