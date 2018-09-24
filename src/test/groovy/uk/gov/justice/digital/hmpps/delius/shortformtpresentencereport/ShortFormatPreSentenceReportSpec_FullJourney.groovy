@@ -179,18 +179,6 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             signYourReportButton.click()
         }
 
-        withWindow("reportpopup") {
-            at(SFRPSSignYourReportPage)
-            feedbackLink.click()
-        }
-
-        and: 'I visit the feedback page'
-        withWindow("reportpopup") {
-            at(SFPSRFeedbackPage)
-            fillFeedbackWith("It's brilliant")
-            submitFeedbackButton.click()
-        }
-
         then: 'All the form fields contain the data I entered'
         withWindow("reportpopup") {
             at(SFRPSSignYourReportPage)
