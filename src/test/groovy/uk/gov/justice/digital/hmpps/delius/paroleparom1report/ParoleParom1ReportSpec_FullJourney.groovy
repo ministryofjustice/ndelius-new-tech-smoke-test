@@ -87,6 +87,10 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the MAPPA page'
         withWindow("reportpopup") {
             at(PP1MappaPage)
+            setEligibleForMappaYes()
+            fillScreenedDateWith("30/03/2018")
+            setMappaCategory1()
+            setMappaLevel2()
             saveAndContinue.click()
         }
         and: 'I complete the Current risk assessment page'
