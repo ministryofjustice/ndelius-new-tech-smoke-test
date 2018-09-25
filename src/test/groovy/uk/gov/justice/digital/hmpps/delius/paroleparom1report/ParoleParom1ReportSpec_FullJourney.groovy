@@ -96,6 +96,14 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Current risk assessment page'
         withWindow("reportpopup") {
             at(PP1CurrentRiskAssessmentPage)
+            setRiskAssessmentRSRScore("2.9")
+            setRiskAssessmentOGRS3ReoffendingProbability("50")
+            setRiskAssessmentOGPReoffendingProbability("67")
+            setRiskAssessmentOVPReoffendingProbability("80")
+            setRiskAssessmentMatrix2000AssessmentCompletedYes()
+            setRiskAssessmentMatrix2000ScoreLow()
+            setRiskAssessmentSpousalAssaultAssessmentCompletedYes()
+            setRiskAssessmentSpousalAssaultScoreHigh()
             saveAndContinue.click()
         }
         and: 'I complete the RoSH community page'
@@ -230,6 +238,15 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert interventionsDetail.contains("Interventions detail text")
             assert interventionsSummary.contains("interventions summary text")
 
+            assert riskAssessmentRSRScore  == "2.9"
+            assert riskAssessmentOGRS3ReoffendingProbability  == "50"
+            assert riskAssessmentOGPReoffendingProbability  == "67"
+            assert riskAssessmentOVPReoffendingProbability  == "80"
+            assert riskAssessmentMatrix2000AssessmentCompleted  == "yes"
+            assert riskAssessmentMatrix2000Score  == "low"
+            assert riskAssessmentSpousalAssaultAssessmentCompleted  == "yes"
+            assert riskAssessmentSpousalAssaultScore  == "high"
+
             assert sentencePlan.contains("Current sentence plan detail text")
 
             // Page 10 - MAPPA
@@ -322,6 +339,13 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'Prisoner\'s current MAPPA level'
         content.contains '1'
         content.contains '2'
+
+        content.contains "RSR  Low (2.9)"
+        content.contains "OGRS3  Medium (50)"
+        content.contains "OGP  High (67)"
+        content.contains "OVP  Very high (80)"
+        content.contains "Risk matrix 2000 Low"
+        content.contains "SARA High"
 
         content.contains 'Current RoSH: community'
         content.contains 'Public'

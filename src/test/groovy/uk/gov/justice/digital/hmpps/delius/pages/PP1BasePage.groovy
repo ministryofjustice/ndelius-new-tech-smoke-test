@@ -32,6 +32,15 @@ public class PP1BasePage extends Page {
         interventionsDetail { $( "#interventionsDetail").value() }
         interventionsSummary { $( "#interventionsSummary").value() }
 
+        riskAssessmentRSRScore { $( "#riskAssessmentRSRScore").value() }
+        riskAssessmentOGRS3ReoffendingProbability { $( "#riskAssessmentOGRS3ReoffendingProbability").value() }
+        riskAssessmentOGPReoffendingProbability { $( "#riskAssessmentOGPReoffendingProbability").value() }
+        riskAssessmentOVPReoffendingProbability { $( "#riskAssessmentOVPReoffendingProbability").value() }
+        riskAssessmentMatrix2000AssessmentCompleted { $( "#riskAssessmentMatrix2000AssessmentCompleted").value() }
+        riskAssessmentMatrix2000Score { $( "#riskAssessmentMatrix2000Score").value() }
+        riskAssessmentSpousalAssaultAssessmentCompleted { $( "#riskAssessmentSpousalAssaultAssessmentCompleted").value() }
+        riskAssessmentSpousalAssaultScore { $( "#riskAssessmentSpousalAssaultScore").value() }
+
         supervisionPlanRequired{ $( "#supervisionPlanRequired").value() }
         supervisionPlanDetail{ $( "#supervisionPlanDetail").value() }
 
