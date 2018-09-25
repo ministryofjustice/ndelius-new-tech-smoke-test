@@ -250,6 +250,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert sentencePlan.contains("Current sentence plan detail text")
 
             // Page 10 - MAPPA
+            assert eligibleForMappa == "yes"
             assert mappaScreenedDate == "30/03/2018"
             assert mappaCategory == "1"
             assert mappaLevel == "2"
