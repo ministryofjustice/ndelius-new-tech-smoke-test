@@ -214,6 +214,27 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             saveAndContinue.click()
         }
 
+        and: 'I am on the check your report page'
+        withWindow("reportpopup") {
+            at(PP1CheckYourReportPage)
+            signYourReportButton.click()
+        }
+
+        then: 'I am on the Signature & date page'
+        withWindow("reportpopup") {
+            at(PP1SignaturePage)
+            setSignatureName "Jane Doe"
+            setSignatureDivision "Some division"
+            setSignatureOfficeAddress "Some office somewhere"
+            setSignatureEmail "jane.doe@nps.com"
+            setSignatureTelephone "0123 456 789"
+            setSignatureCounterName "Joe Bloggs"
+            setSignatureCounterRole "SPO"
+            fillSignatureDateWith("25/09/2018")
+
+            // Click the Check your report link
+        }
+
 
         then: 'I am on the check your report page'
         withWindow("reportpopup") {
@@ -290,6 +311,15 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert sourcesAssessmentList.contains("sources assessment list text")
             assert sourceLimitations == "yes"
             assert sourceLimitationsDetail.contains("source limitations detail text")
+
+            assert signatureName.contains("Jane Doe")
+            assert signatureDivision.contains("Some division")
+            assert signatureOfficeAddress.contains("Some office somewhere")
+            assert signatureEmail.contains("jane.doe@nps.com")
+            assert signatureTelephone.contains("0123 456 789")
+            assert signatureCounterName.contains("Joe Bloggs")
+            assert signatureCounterRole.contains("SPO")
+            assert signatureDate.contains("25/09/2018")
 
             true
         }
@@ -400,6 +430,15 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'sources other detail text'
         content.contains 'sources assessment list text'
         content.contains 'source limitations detail text'
+
+        content.contains "Jane Doe"
+        content.contains "Some division"
+        content.contains "Some office somewhere"
+        content.contains "jane.doe@nps.com"
+        content.contains "0123 456 789"
+        content.contains "Joe Bloggs"
+        content.contains "SPO"
+        content.contains "25/09/2018"
 
     }
 }
