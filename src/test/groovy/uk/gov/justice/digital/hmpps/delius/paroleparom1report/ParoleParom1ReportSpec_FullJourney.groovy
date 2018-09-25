@@ -232,6 +232,11 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             assert sentencePlan.contains("Current sentence plan detail text")
 
+            // Page 10 - MAPPA
+            assert mappaScreenedDate == "30/03/2018"
+            assert mappaCategory == "1"
+            assert mappaLevel == "2"
+
             // Page 15 - RoSH analysis
             assert natureOfRisk.contains("Nature of risk detail text")
             assert increaseFactors.contains("Increase factors detail text")
@@ -309,6 +314,14 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'interventions summary text'
 
         content.contains 'Current sentence plan detail text'
+
+        content.contains 'Multi Agency Public Protection Arrangements (MAPPA)'
+        content.contains 'MAPPAQ completed'
+        content.contains '30/03/2018'
+        content.contains 'Prisoner\'s current MAPPA category'
+        content.contains 'Prisoner\'s current MAPPA level'
+        content.contains '1'
+        content.contains '2'
 
         content.contains 'Current RoSH: community'
         content.contains 'Public'
