@@ -2,7 +2,7 @@ package uk.gov.justice.digital.hmpps.delius.pages
 
 import java.text.SimpleDateFormat
 
-class PP1SignaturePage {
+class PP1SignaturePage extends PP1BasePage {
     static at = { heading == "Signature & date" }
 
     static content = {
@@ -15,11 +15,12 @@ class PP1SignaturePage {
         setSignatureCounterRole { text -> $("#signatureCounterRole").value(text) }
         fillSignatureDateWith {
             text ->
-                Date date = new SimpleDateFormat("dd/MM/yyyy").parse(text);
+                Date date = new SimpleDateFormat("dd/MM/yyyy").parse(text)
 
-                $("#signatureDate-day").value(new SimpleDateFormat("dd").format(date));
-                $("#signatureDate-month").value(new SimpleDateFormat("MM").format(date));
+                $("#signatureDate-day").value(new SimpleDateFormat("dd").format(date))
+                $("#signatureDate-month").value(new SimpleDateFormat("MM").format(date))
                 $("#signatureDate-year").value(new SimpleDateFormat("yyyy").format(date))
         }
+        submitReport { $("button" , text: "Submit") }
     }
 }
