@@ -46,6 +46,15 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the RoSH at point of sentence page'
         withWindow("reportpopup") {
             at(PP1ROSHAtSentencePage)
+            setRoshAtPointOfSentenceYes()
+            fillRoshAtPointOfSentenceDateWith("09/2018")
+            setRoshAtPointOfSentencePublicLow()
+            setRoshAtPointOfSentenceKnownAdultLow()
+            setRoshAtPointOfSentenceChildrenLow()
+            setRoshAtPointOfSentencePrisonersLow()
+            setRoshAtPointOfSentenceStaffLow()
+            fillRoshAtPointOfSentenceIndexWith("RoSH at point of sentence attitude to index offence text")
+            fillRoshAtPointOfSentencePreviousWith("RoSH at point of sentence attitude to previous offending text")
             saveAndContinue.click()
         }
         and: 'I complete the Victims page'
@@ -222,6 +231,16 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert prisonerContactFamilyDetail.contains("Prisoner contact family detail text")
             assert prisonerContactAgenciesDetail.contains("Prisoner contact agencies detail text")
 
+            assert roshAtPosAssessmentCompleted == "yes"
+            assert roshAtPosDate == "Sep 2018"
+            assert roshAtPosPublic == "low"
+            assert roshAtPosKnownAdult == "low"
+            assert roshAtPosChildren == "low"
+            assert roshAtPosPrisoners == "low"
+            assert roshAtPosStaff == "low"
+            assert roshAtPosAttitudeIndexOffence.contains("RoSH at point of sentence attitude to index offence text")
+            assert roshAtPosAttitudePreviousOffending.contains("RoSH at point of sentence attitude to previous offending text")
+
             assert victimsImpactDetails.contains("Victims impact detail text")
             assert victimsVLOContactDate == "30/03/2018"
             assert victimsVLOContactDate_day == "30"
@@ -322,6 +341,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'Prisoner contact detail text'
         content.contains 'Prisoner contact family detail text'
         content.contains 'Prisoner contact agencies detail text'
+
+        content.contains "RoSH at point of sentence attitude to index offence text"
+        content.contains "RoSH at point of sentence attitude to previous offending text"
 
         content.contains 'Victims impact detail text'
         content.contains "Victim Liaison Officer (VLO) contacted 30/03/2018"
@@ -435,6 +457,15 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the RoSH at point of sentence page'
         withWindow("reportpopup") {
             at(PP1ROSHAtSentencePage)
+            setRoshAtPointOfSentenceYes()
+            fillRoshAtPointOfSentenceDateWith("09/2018")
+            setRoshAtPointOfSentencePublicLow()
+            setRoshAtPointOfSentenceKnownAdultLow()
+            setRoshAtPointOfSentenceChildrenLow()
+            setRoshAtPointOfSentencePrisonersLow()
+            setRoshAtPointOfSentenceStaffLow()
+            fillRoshAtPointOfSentenceIndexWith("RoSH at point of sentence attitude to index offence text")
+            fillRoshAtPointOfSentencePreviousWith("RoSH at point of sentence attitude to previous offending text")
             saveAndContinue.click()
         }
         and: 'I complete the Victims page'
@@ -610,6 +641,16 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert prisonerContactDetail.contains("Prisoner contact detail text")
             assert prisonerContactFamilyDetail.contains("Prisoner contact family detail text")
             assert prisonerContactAgenciesDetail.contains("Prisoner contact agencies detail text")
+
+            assert roshAtPosAssessmentCompleted == "yes"
+            assert roshAtPosDate == "Sep 2018"
+            assert roshAtPosPublic == "low"
+            assert roshAtPosKnownAdult == "low"
+            assert roshAtPosChildren == "low"
+            assert roshAtPosPrisoners == "low"
+            assert roshAtPosStaff == "low"
+            assert roshAtPosAttitudeIndexOffence.contains("RoSH at point of sentence attitude to index offence text")
+            assert roshAtPosAttitudePreviousOffending.contains("RoSH at point of sentence attitude to previous offending text")
 
             assert victimsImpactDetails.contains("Victims impact detail text")
             assert victimsVLOContactDate == "30/03/2018"
@@ -736,6 +777,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'Prisoner contact detail text'
         content.contains 'Prisoner contact family detail text'
         content.contains 'Prisoner contact agencies detail text'
+
+        content.contains "RoSH at point of sentence attitude to index offence text"
+        content.contains "RoSH at point of sentence attitude to previous offending text"
 
         content.contains 'Victims impact detail text'
         content.contains "Victim Liaison Officer (VLO) contacted 30/03/2018"
