@@ -196,7 +196,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             assert pnc == "gHYQKWx6gGbP7qo+wsQf6w=="
 
             assert court == "h7MBpp9IR8kIdeTf8grydw=="
-            assert dateOfHearing == "igY1rhdHh6XNlTto+oNRSw=="
+            assert dateOfHearing == "o0Visp+OX0kRPpoKW4hx2g=="
             assert localJusticeArea == "GoLwo2nCnYgh1QImL5p0Jw=="
 
             assert interviewInformationSource == "true"
