@@ -244,7 +244,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
             assert likelihoodOfReOffending.contains("Likelihood of re-offending text")
             assert riskOfSeriousHarm.contains("Risk of serious harm text")
-            assert previousSupervisionResponse.contains("Good")
+            assert previousSupervisionResponse.contains("good")
             assert additionalPreviousSupervision.contains("Additional previous supervision text")
 
             assert proposal.contains("Proposed sentence text")
