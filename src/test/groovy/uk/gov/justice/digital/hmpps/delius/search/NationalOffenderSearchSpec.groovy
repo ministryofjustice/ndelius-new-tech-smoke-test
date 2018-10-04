@@ -24,6 +24,12 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         offenders[6] = offender( '/esdata/antonio-gramsci-n03.json' )
         offenders[7] = offender( '/esdata/anne-gramsci-n02.json' )
         offenders[8] = offender( '/esdata/antonio-gramsci-c20.json' )
+        offenders[9] = offender( '/esdata/mark-white.json' )
+        offenders[10] = offender( '/esdata/mark-whitehead.json' )
+        offenders[11] = offender( '/esdata/mary-whitehead.json' )
+        offenders[12] = offender( '/esdata/sarah-whitehead.json' )
+        offenders[13] = offender( '/esdata/mark-brown.json' )
+        offenders[14] = offender( '/esdata/mary-white.json' )
         replace(offenders)
         to IndexPage
         waitFor(10) {
