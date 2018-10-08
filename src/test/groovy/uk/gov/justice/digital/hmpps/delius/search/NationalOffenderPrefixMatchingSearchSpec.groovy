@@ -47,7 +47,7 @@ class NationalOffenderPrefixMatchingSearchSpec extends GebReportingSpec {
 
         when: 'I enter partial firstnme and full surname'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            enterSearchTerms('m whitehead')
+            enterSearchTerms('ma whitehead')
         }
 
         then: 'I see the results for matches of surname and those that partial match firstname'
@@ -78,7 +78,7 @@ class NationalOffenderPrefixMatchingSearchSpec extends GebReportingSpec {
 
         when: 'I enter firstnme and partial surname'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            enterSearchTerms('m white')
+            enterSearchTerms('ma white')
         }
 
         then: 'I see the results for matches of firstname and those that partial match surname'
