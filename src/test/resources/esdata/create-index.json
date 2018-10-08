@@ -6,8 +6,20 @@
     },
     "analysis": {
       "analyzer": {
-        "autocomplete": {
-          "tokenizer": "autocomplete",
+        "autocomplete_name": {
+          "tokenizer": "autocomplete_name",
+          "filter": [
+            "lowercase"
+          ]
+        },
+        "autocomplete_initial": {
+          "tokenizer": "autocomplete_initial",
+          "filter": [
+            "lowercase"
+          ]
+        },
+        "autocomplete_address": {
+          "tokenizer": "autocomplete_address",
           "filter": [
             "lowercase"
           ]
@@ -17,9 +29,25 @@
         }
       },
       "tokenizer": {
-        "autocomplete": {
+        "autocomplete_name": {
           "type": "edge_ngram",
           "min_gram": 2,
+          "max_gram": 10,
+          "token_chars": [
+            "letter"
+          ]
+        },
+        "autocomplete_initial": {
+          "type": "edge_ngram",
+          "min_gram": 1,
+          "max_gram": 10,
+          "token_chars": [
+            "letter"
+          ]
+        },
+        "autocomplete_address": {
+          "type": "edge_ngram",
+          "min_gram": 3,
           "max_gram": 10,
           "token_chars": [
             "letter"
@@ -54,22 +82,22 @@
         },
         "firstName": {
           "type": "text",
-          "analyzer": "autocomplete",
+          "analyzer": "autocomplete_initial",
           "search_analyzer": "autocomplete_search"
         },
         "surname": {
           "type": "text",
-          "analyzer": "autocomplete",
+          "analyzer": "autocomplete_name",
           "search_analyzer": "autocomplete_search"
         },
         "contactDetails.addresses.town": {
           "type": "text",
-          "analyzer": "autocomplete",
+          "analyzer": "autocomplete_address",
           "search_analyzer": "autocomplete_search"
         },
         "contactDetails.addresses.streetName": {
           "type": "text",
-          "analyzer": "autocomplete",
+          "analyzer": "autocomplete_address",
           "search_analyzer": "autocomplete_search"
         }
       }
