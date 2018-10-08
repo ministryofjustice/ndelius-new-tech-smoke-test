@@ -41,7 +41,7 @@ class NationalOffenderPrefixMatchingSearchSpec extends GebReportingSpec {
         resetBrowser()
         CachingDriverFactory.clearCacheAndQuitDriver()
     }
-    def 'Searching with initial of firstname with `Match all terms` set to Yes returns mpartial atching firstanme'() {
+    def 'Searching with initial of firstname with `Match all terms` set to Yes returns partial matching firstanme'() {
         given: 'I am on the search page'
         to NationalOffenderSearchPageFrame
 
@@ -83,7 +83,7 @@ class NationalOffenderPrefixMatchingSearchSpec extends GebReportingSpec {
 
         then: 'I see the results for matches of firstname and those that partial match surname'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
-            waitFor {resultCount == 4}
+            waitFor {resultCount == 5}
         }
     }
 

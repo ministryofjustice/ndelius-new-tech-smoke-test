@@ -1,25 +1,76 @@
 {
-  "settings" : {
-    "index" : {
-      "number_of_shards" : 10,
-      "number_of_replicas" : 1
+  "settings": {
+    "index": {
+      "number_of_shards": 10,
+      "number_of_replicas": 1
+    },
+    "analysis": {
+      "analyzer": {
+        "autocomplete": {
+          "tokenizer": "autocomplete",
+          "filter": [
+            "lowercase"
+          ]
+        },
+        "autocomplete_search": {
+          "tokenizer": "lowercase"
+        }
+      },
+      "tokenizer": {
+        "autocomplete": {
+          "type": "edge_ngram",
+          "min_gram": 1,
+          "max_gram": 10,
+          "token_chars": [
+            "letter"
+          ]
+        }
+      }
     }
   },
   "mappings": {
     "document": {
       "properties": {
-        "otherIds.croNumberLowercase": {"type": "keyword"},
-        "otherIds.pncNumberLongYear": {"type": "keyword"},
-        "otherIds.pncNumberShortYear": {"type": "keyword"},
+        "otherIds.croNumberLowercase": {
+          "type": "keyword"
+        },
+        "otherIds.pncNumberLongYear": {
+          "type": "keyword"
+        },
+        "otherIds.pncNumberShortYear": {
+          "type": "keyword"
+        },
         "dateOfBirth": {
-          "type":   "date",
+          "type": "date",
           "format": "yyyy-MM-dd||yyyy/MM/dd||dd-MM-yy||dd/MM/yy||dd-MM-yyyy||dd/MM/yyyy"
         },
         "offenderManagers": {
           "type": "nested",
           "properties": {
-            "probationArea.code": {"type": "keyword"}
+            "probationArea.code": {
+              "type": "keyword"
+            }
           }
+        },
+        "firstName": {
+          "type": "text",
+          "analyzer": "autocomplete",
+          "search_analyzer": "autocomplete_search"
+        },
+        "surname": {
+          "type": "text",
+          "analyzer": "autocomplete",
+          "search_analyzer": "autocomplete_search"
+        },
+        "contactDetails.addresses.town": {
+          "type": "text",
+          "analyzer": "autocomplete",
+          "search_analyzer": "autocomplete_search"
+        },
+        "contactDetails.addresses.streetName": {
+          "type": "text",
+          "analyzer": "autocomplete",
+          "search_analyzer": "autocomplete_search"
         }
       }
     }
