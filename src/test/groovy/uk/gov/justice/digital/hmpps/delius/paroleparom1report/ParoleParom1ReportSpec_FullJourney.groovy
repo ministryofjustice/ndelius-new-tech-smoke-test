@@ -161,6 +161,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         withWindow("reportpopup") {
             at(PP1RiskManagementPlanPage)
 
+            setRiskManagementPlanRequiredYes()
             fillAgencies("Agencies text")
             fillSupport("Support text")
             fillControl("Control text")
@@ -283,6 +284,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert riskOfAbscondingDetails.contains("Risk of absconding detail text")
 
             // Page 16 - Risk Management Plan (RMP)
+            assert riskManagementPlanRequired == "yes"
             assert agencies.contains("Agencies text")
             assert support.contains("Support text")
             assert control.contains("Control text")
@@ -572,6 +574,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         withWindow("reportpopup") {
             at(PP1RiskManagementPlanPage)
 
+            setRiskManagementPlanRequiredYes()
             fillAgencies("Agencies text")
             fillSupport("Support text")
             fillControl("Control text")
@@ -694,6 +697,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert riskOfAbscondingDetails.contains("Risk of absconding detail text")
 
             // Page 16 - Risk Management Plan (RMP)
+            assert riskManagementPlanRequired == "yes"
             assert agencies.contains("Agencies text")
             assert support.contains("Support text")
             assert control.contains("Control text")
