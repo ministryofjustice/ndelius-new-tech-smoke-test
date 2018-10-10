@@ -4,6 +4,7 @@ class PP1RiskManagementPlanPage extends PP1BasePage {
     static at = { heading == "Risk Management Plan (RMP)" }
 
     static content = {
+        setRiskManagementPlanRequiredYes { $("#riskManagementPlanRequired_yes").value("yes") }
         fillAgencies { text -> $("#agencies .ql-editor").leftShift(text) }
         fillSupport { text -> $("#support .ql-editor").leftShift(text) }
         fillControl { text -> $("#control .ql-editor").leftShift(text) }
