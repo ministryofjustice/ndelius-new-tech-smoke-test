@@ -33,6 +33,18 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Prisoner details page'
         withWindow("reportpopup") {
             at(PP1PrisonerDetailsPage)
+            setPrisonerDetailsPrisonInstitution "Doncaster"
+            setPrisonerDetailsPrisonersFullName "Kieron Dobson"
+            setPrisonerDetailsPrisonNumber "P98793-123"
+            setPrisonerDetailsNomisNumber "N2124214-3423"
+
+            setPrisonerDetailsPrisonersCategoryA
+
+            fillPrisonerDetailOffenceWith "Assault"
+            fillPrisonerDetailSentenceWith "1 year"
+
+            setPrisonerDetailsSentenceTypeDeterminate
+
             saveAndContinue.click()
         }
         and: 'I complete the Prisoner contact page'
@@ -227,6 +239,15 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I am on the check your report page'
         withWindow("reportpopup") {
             at(PP1CheckYourReportPage)
+
+            assert prisonerDetailsPrisonInstitution.contains("Doncaster")
+            assert prisonerDetailsPrisonersFullName.contains("Kieron Dobson")
+            assert prisonerDetailsPrisonNumber.contains("P98793-123")
+            assert prisonerDetailsNomisNumber.contains("N2124214-3423")
+            assert prisonerDetailsPrisonersCategory.contains("a")
+            assert prisonerDetailsOffence.contains("Assault")
+            assert prisonerDetailsSentence.contains("1 year")
+            assert prisonerDetailsSentenceType.contains("determinate")
 
             assert prisonerContactDetail.contains("Prisoner contact detail text")
             assert prisonerContactFamilyDetail.contains("Prisoner contact family detail text")
