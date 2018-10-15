@@ -371,9 +371,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains '2'
 
         content.contains "RSR  Low (2.9)"
-        content.contains "OGRS3  Medium (50)"
-        content.contains "OGP  High (67)"
-        content.contains "OVP  Very high (80)"
+        content.contains "OGRS3 (year 2)  Medium (50)"
+        content.contains "OGP (year 2)  High (67)"
+        content.contains "OVP (year 2)  Very high (80)"
         content.contains "Risk matrix 2000 Low"
         content.contains "SARA High"
 
@@ -809,9 +809,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains '2'
 
         content.contains "RSR  Low (2.9)"
-        content.contains "OGRS3  Medium (50)"
-        content.contains "OGP  High (67)"
-        content.contains "OVP  Very high (80)"
+        content.contains "OGRS3 (year 2)  Medium (50)"
+        content.contains "OGP (year 2)  High (67)"
+        content.contains "OVP (year 2)  Very high (80)"
         content.contains "Risk matrix 2000 Low"
         content.contains "SARA High"
 
