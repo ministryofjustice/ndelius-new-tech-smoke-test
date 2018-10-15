@@ -467,6 +467,18 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Prisoner details page'
         withWindow("reportpopup") {
             at(PP1PrisonerDetailsPage)
+            setPrisonerDetailsPrisonInstitution "Doncaster"
+            setPrisonerDetailsPrisonersFullName "Kieron Dobson"
+            setPrisonerDetailsPrisonNumber "P98793-123"
+            setPrisonerDetailsNomisNumber "N2124214-3423"
+
+            setPrisonerDetailsPrisonersCategoryA
+
+            fillPrisonerDetailOffenceWith "Assault"
+            fillPrisonerDetailSentenceWith "1 year"
+
+            setPrisonerDetailsSentenceTypeDeterminate
+
             saveAndContinue.click()
         }
         and: 'I complete the Prisoner contact page'
