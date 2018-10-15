@@ -15,6 +15,19 @@ public class PP1BasePage extends Page {
         entityId { $( "#entityId").value() }
         documentId { $( "#documentId").value() }
 
+        prisonerDetailsPrisonInstitution { $("#prisonerDetailsPrisonInstitution").value() }
+        prisonerDetailsPrisonersFullName { $("#prisonerDetailsPrisonersFullName").value() }
+        prisonerDetailsPrisonNumber { $("#prisonerDetailsPrisonNumber").value() }
+        prisonerDetailsNomisNumber { $("#prisonerDetailsNomisNumber").value() }
+
+        prisonerDetailsPrisonersCategory { $("#prisonerDetailsPrisonersCategory").value() }
+
+        prisonerDetailsOffence { $("#prisonerDetailsOffence").value() }
+        prisonerDetailsSentence { $("#prisonerDetailsSentence").value() }
+
+        prisonerDetailsSentenceType { $("#prisonerDetailsSentenceType").value() }
+
+
         prisonerContactDetail { $( "#prisonerContactDetail").value() }
         prisonerContactFamilyDetail { $( "#prisonerContactFamilyDetail").value() }
         prisonerContactAgenciesDetail { $( "#prisonerContactAgenciesDetail").value() }
