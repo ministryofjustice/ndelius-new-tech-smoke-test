@@ -811,6 +811,19 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
         and: 'I download the PDF'
         def content = PDFReader.textContent(downloadBytes(firstDocumentViewLink.@href.replace('pdf', 'view_pdf')))
+
+        content.contains 'Doncaster'
+        content.contains 'Kieron Dobson'
+        content.contains 'P98793-123'
+        content.contains 'N2124214-3423'
+
+        content.contains 'A'
+
+        content.contains 'Assault'
+        content.contains '1 year'
+
+        content.contains 'Determinate'
+
         content.contains 'Prisoner contact detail text'
         content.contains 'Prisoner contact family detail text'
         content.contains 'Prisoner contact agencies detail text'
