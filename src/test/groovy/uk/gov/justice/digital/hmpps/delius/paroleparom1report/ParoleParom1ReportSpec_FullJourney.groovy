@@ -34,9 +34,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         withWindow("reportpopup") {
             at(PP1PrisonerDetailsPage)
             setPrisonerDetailsPrisonInstitution "Doncaster"
-            setPrisonerDetailsPrisonersFullName "Kieron Dobson"
             setPrisonerDetailsPrisonNumber "P98793-123"
-            setPrisonerDetailsNomisNumber "N2124214-3423"
 
             setPrisonerDetailsPrisonersCategoryA
 
@@ -241,9 +239,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             at(PP1CheckYourReportPage)
 
             assert prisonerDetailsPrisonInstitution.contains("Doncaster")
-            assert prisonerDetailsPrisonersFullName.contains("Kieron Dobson")
+            assert prisonerDetailsPrisonersFullName.contains("Sam Henry Jones")
             assert prisonerDetailsPrisonNumber.contains("P98793-123")
-            assert prisonerDetailsNomisNumber.contains("N2124214-3423")
+            assert prisonerDetailsNomisNumber.contains("A3597AEX")
             assert prisonerDetailsPrisonersCategory.contains("a")
             assert prisonerDetailsOffence.contains("Assault")
             assert prisonerDetailsSentence.contains("1 year")
@@ -468,9 +466,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         withWindow("reportpopup") {
             at(PP1PrisonerDetailsPage)
             setPrisonerDetailsPrisonInstitution "Doncaster"
-            setPrisonerDetailsPrisonersFullName "Kieron Dobson"
             setPrisonerDetailsPrisonNumber "P98793-123"
-            setPrisonerDetailsNomisNumber "N2124214-3423"
 
             setPrisonerDetailsPrisonersCategoryA
 
@@ -813,9 +809,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         def content = PDFReader.textContent(downloadBytes(firstDocumentViewLink.@href.replace('pdf', 'view_pdf')))
 
         content.contains 'Doncaster'
-        content.contains 'Kieron Dobson'
+        content.contains 'Sam Henry Jones'
         content.contains 'P98793-123'
-        content.contains 'N2124214-3423'
+        content.contains 'A3597AEX'
 
         content.contains 'A'
 
