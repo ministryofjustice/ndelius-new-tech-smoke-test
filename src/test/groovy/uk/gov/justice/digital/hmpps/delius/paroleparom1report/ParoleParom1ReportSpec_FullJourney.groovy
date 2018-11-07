@@ -241,7 +241,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert prisonerDetailsPrisonInstitution.contains("Doncaster")
             assert prisonerDetailsPrisonersFullName.contains("Sam Henry Jones")
             assert prisonerDetailsPrisonNumber.contains("P98793-123")
-            assert prisonerDetailsNomisNumber.contains("A3597AEX")
+            assert prisonerDetailsNomisNumber.contains("G8678GG")
             assert prisonerDetailsPrisonersCategory.contains("a")
             assert prisonerDetailsOffence.contains("Assault")
             assert prisonerDetailsSentence.contains("1 year")
@@ -811,7 +811,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'Doncaster'
         content.contains 'Sam Henry Jones'
         content.contains 'P98793-123'
-        content.contains 'A3597AEX'
+        content.contains 'G8678GG'
 
         content.contains 'A'
 
