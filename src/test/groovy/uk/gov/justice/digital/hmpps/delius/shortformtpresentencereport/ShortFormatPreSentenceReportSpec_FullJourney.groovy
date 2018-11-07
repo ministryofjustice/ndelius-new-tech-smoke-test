@@ -42,23 +42,6 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         withWindow("reportpopup") {
-            at(SFRPSSourcesOfInformationPage)
-            interviewInformationSourceCheckBox.click()
-            serviceRecordsInformationSourceCheckBox.click()
-            cpsSummaryInformationSourceCheckBox.click()
-            oasysAssessmentsInformationSourceCheckBox.click()
-            previousConvictionsInformationSourceCheckBox.click()
-            victimStatementInformationSourceCheckBox.click()
-            childrenServicesInformationSourceCheckBox.click()
-            policeInformationSourceCheckBox.click()
-            sentencingGuidelinesInformationSourceCheckBox.click()
-            domesticAbuseInformationSourceCheckBox.click()
-            otherInformationSourceCheckBox.click()
-            fillOtherInformationDetailsWith("Other information details text")
-            saveAndContinue.click()
-        }
-
-        withWindow("reportpopup") {
             at(SFRPSOffenceDetailsPage)
             fillMainOffenceWith("Main offence text")
             fillOtherOffencesWith("Other offences text")
@@ -114,6 +97,23 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         withWindow("reportpopup") {
+            at(SFRPSSourcesOfInformationPage)
+            interviewInformationSourceCheckBox.click()
+            serviceRecordsInformationSourceCheckBox.click()
+            cpsSummaryInformationSourceCheckBox.click()
+            oasysAssessmentsInformationSourceCheckBox.click()
+            previousConvictionsInformationSourceCheckBox.click()
+            victimStatementInformationSourceCheckBox.click()
+            childrenServicesInformationSourceCheckBox.click()
+            policeInformationSourceCheckBox.click()
+            sentencingGuidelinesInformationSourceCheckBox.click()
+            domesticAbuseInformationSourceCheckBox.click()
+            otherInformationSourceCheckBox.click()
+            fillOtherInformationDetailsWith("Other information details text")
+            saveAndContinue.click()
+        }
+
+        withWindow("reportpopup") {
             at(SFRPSCheckYourReportPage)
             signYourReportButton.click()
         }
@@ -144,11 +144,6 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         }
 
         withWindow("reportpopup") {
-            at(SFRPSSourcesOfInformationPage)
-            saveAndContinue.click()
-        }
-
-        withWindow("reportpopup") {
             at(SFRPSOffenceDetailsPage)
             saveAndContinue.click()
         }
@@ -170,6 +165,11 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
         withWindow("reportpopup") {
             at(SFRPSConclusionPage)
+            saveAndContinue.click()
+        }
+
+        withWindow("reportpopup") {
+            at(SFRPSSourcesOfInformationPage)
             saveAndContinue.click()
         }
 
