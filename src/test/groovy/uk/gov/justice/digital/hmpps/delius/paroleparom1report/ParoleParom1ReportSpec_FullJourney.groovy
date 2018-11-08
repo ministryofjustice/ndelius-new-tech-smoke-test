@@ -33,7 +33,6 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Prisoner details page'
         withWindow("reportpopup") {
             at(PP1PrisonerDetailsPage)
-            setPrisonerDetailsPrisonInstitution "Doncaster"
             setPrisonerDetailsPrisonNumber "P98793-123"
 
             setPrisonerDetailsPrisonersCategoryA
@@ -238,7 +237,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         withWindow("reportpopup") {
             at(PP1CheckYourReportPage)
 
-            assert prisonerDetailsPrisonInstitution.contains("Doncaster")
+            assert prisonerDetailsPrisonInstitution.contains("HMP Leeds")
             assert prisonerDetailsPrisonersFullName.contains("Sam Henry Jones")
             assert prisonerDetailsPrisonNumber.contains("P98793-123")
             assert prisonerDetailsNomisNumber.contains("G8678GG")
@@ -465,7 +464,6 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Prisoner details page'
         withWindow("reportpopup") {
             at(PP1PrisonerDetailsPage)
-            setPrisonerDetailsPrisonInstitution "Doncaster"
             setPrisonerDetailsPrisonNumber "P98793-123"
 
             setPrisonerDetailsPrisonersCategoryA
@@ -808,7 +806,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I download the PDF'
         def content = PDFReader.textContent(downloadBytes(firstDocumentViewLink.@href.replace('pdf', 'view_pdf')))
 
-        content.contains 'Doncaster'
+        content.contains 'HMP Leeds'
         content.contains 'Sam Henry Jones'
         content.contains 'P98793-123'
         content.contains 'G8678GG'
