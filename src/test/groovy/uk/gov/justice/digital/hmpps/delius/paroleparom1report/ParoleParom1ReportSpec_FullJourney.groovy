@@ -33,8 +33,6 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Prisoner details page'
         withWindow("reportpopup") {
             at(PP1PrisonerDetailsPage)
-            setPrisonerDetailsPrisonNumber "P98793-123"
-
             setPrisonerDetailsPrisonersCategoryA
 
             fillPrisonerDetailOffenceWith "Assault"
@@ -239,7 +237,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             assert prisonerDetailsPrisonInstitution.contains("HMP Leeds")
             assert prisonerDetailsPrisonersFullName.contains("Sam Henry Jones")
-            assert prisonerDetailsPrisonNumber.contains("P98793-123")
+            assert prisonerDetailsPrisonNumber.contains("4815")
             assert prisonerDetailsNomisNumber.contains("G8678GG")
             assert prisonerDetailsPrisonersCategory.contains("a")
             assert prisonerDetailsOffence.contains("Assault")
@@ -464,7 +462,6 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Prisoner details page'
         withWindow("reportpopup") {
             at(PP1PrisonerDetailsPage)
-            setPrisonerDetailsPrisonNumber "P98793-123"
 
             setPrisonerDetailsPrisonersCategoryA
 
@@ -808,7 +805,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
         content.contains 'HMP Leeds'
         content.contains 'Sam Henry Jones'
-        content.contains 'P98793-123'
+        content.contains '4815'
         content.contains 'G8678GG'
 
         content.contains 'A'
