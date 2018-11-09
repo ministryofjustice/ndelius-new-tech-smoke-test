@@ -37,7 +37,6 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             setPrisonerDetailsPrisonersCategoryA
 
-            fillPrisonerDetailOffenceWith "Assault"
             fillPrisonerDetailSentenceWith "1 year"
 
             setPrisonerDetailsSentenceTypeDeterminate
@@ -242,7 +241,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert prisonerDetailsPrisonNumber.contains("P98793-123")
             assert prisonerDetailsNomisNumber.contains("G8678GG")
             assert prisonerDetailsPrisonersCategory.contains("a")
-            assert prisonerDetailsOffence.contains("Assault")
+            assert prisonerDetailsOffence.contains("Obtaining a money transfer by deception (05331) - 03/09/2018")
             assert prisonerDetailsSentence.contains("1 year")
             assert prisonerDetailsSentenceType.contains("determinate")
 
@@ -358,6 +357,19 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
         and: 'I download the PDF'
         def content = PDFReader.textContent(downloadBytes(firstDocumentViewLink.@href.replace('pdf', 'view_pdf')))
+
+        content.contains 'HMP Leeds'
+        content.contains 'Sam Henry Jones'
+        content.contains 'P98793-123'
+        content.contains 'G8678GG'
+
+        content.contains 'A'
+
+        content.contains 'Obtaining a money transfer by deception (05331) - 03/09/2018'
+        content.contains '1 year'
+
+        content.contains 'Determinate'
+
         content.contains 'Prisoner contact detail text'
         content.contains 'Prisoner contact family detail text'
         content.contains 'Prisoner contact agencies detail text'
@@ -468,7 +480,6 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             setPrisonerDetailsPrisonersCategoryA
 
-            fillPrisonerDetailOffenceWith "Assault"
             fillPrisonerDetailSentenceWith "1 year"
 
             setPrisonerDetailsSentenceTypeDeterminate
@@ -813,7 +824,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
         content.contains 'A'
 
-        content.contains 'Assault'
+        content.contains 'Obtaining a money transfer by deception (05331) - 03/09/2018'
         content.contains '1 year'
 
         content.contains 'Determinate'
