@@ -358,7 +358,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
         content.contains 'HMP Leeds'
         content.contains 'Sam Henry Jones'
-        content.contains 'P98793-123'
+        content.contains '4815'
         content.contains 'G8678GG'
 
         content.contains 'A'
