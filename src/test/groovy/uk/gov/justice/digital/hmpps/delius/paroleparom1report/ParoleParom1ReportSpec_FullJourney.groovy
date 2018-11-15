@@ -239,7 +239,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert prisonerDetailsPrisonNumber.contains("4815")
             assert prisonerDetailsNomisNumber.contains("G8678GG")
             assert prisonerDetailsPrisonersCategory.contains("a")
-            assert prisonerDetailsOffence.contains("Obtaining a money transfer by deception (05331) - 03/09/2018")
+            assert prisonerDetailsOffence.contains("Obtaining a money transfer by deception - 03/09/2018")
             assert prisonerDetailsSentence.contains("1 year")
             assert prisonerDetailsSentenceType.contains("determinate")
 
