@@ -363,7 +363,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
         content.contains 'A'
 
-        content.contains 'Obtaining a money transfer by deception - 03/09/2018\nDishonestly retaining a wrongful credit - 01/08/2018Dishonest representation for obtaining benefit etc\n'
+        content.contains 'Obtaining a money transfer by deception - 03/09/2018\nDishonestly retaining a wrongful credit - 01/08/2018\nDishonest representation for obtaining benefit etc\n'
         content.contains '1 year'
 
         content.contains 'Determinate'
