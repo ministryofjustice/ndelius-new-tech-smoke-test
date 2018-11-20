@@ -35,6 +35,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Prisoner details page'
         withWindow("reportpopup") {
             at(PP1PrisonerDetailsPage)
+
             setPrisonerDetailsPrisonersCategoryA
 
             fillPrisonerDetailSentenceWith "1 year"
