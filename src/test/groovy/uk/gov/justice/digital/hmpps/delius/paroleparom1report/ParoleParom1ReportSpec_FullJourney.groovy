@@ -11,6 +11,8 @@ import uk.gov.justice.digital.hmpps.delius.util.PDFReader
 @Stepwise
 class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
+    def yesterday = (new Date() - 1).format("dd/MM/yyyy")
+
     def setup() {
         resetBrowser()
         CachingDriverFactory.clearCacheAndQuitDriver()
@@ -33,6 +35,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Prisoner details page'
         withWindow("reportpopup") {
             at(PP1PrisonerDetailsPage)
+
             setPrisonerDetailsPrisonersCategoryA
 
             fillPrisonerDetailSentenceWith "1 year"
@@ -69,7 +72,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             fillVictimsImpactDetailsWith("Victims impact detail text")
             setVictimsSubmitVPSYes()
             setVictimsEngagedInVCSYes()
-            fillVictimsVLOContactDatesWith("30/03/2018")
+            fillVictimsVLOContactDatesWith(yesterday)
             saveAndContinue.click()
         }
         and: 'I complete the OPD pathway page'
@@ -103,7 +106,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         withWindow("reportpopup") {
             at(PP1MappaPage)
             setEligibleForMappaYes()
-            fillScreenedDateWith("30/03/2018")
+            fillScreenedDateWith(yesterday)
             setMappaCategory1()
             setMappaLevel2()
             saveAndContinue.click()
@@ -258,10 +261,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert roshAtPosAttitudePreviousOffending.contains("RoSH at point of sentence attitude to previous offending text")
 
             assert victimsImpactDetails.contains("Victims impact detail text")
-            assert victimsVLOContactDate == "30/03/2018"
-            assert victimsVLOContactDate_day == "30"
-            assert victimsVLOContactDate_month == "03"
-            assert victimsVLOContactDate_year == "2018"
+            assert victimsVLOContactDate == yesterday
             assert victimsEngagedInVCS == "yes"
             assert victimsSubmitVPS == "yes"
 
@@ -286,7 +286,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             // Page 10 - MAPPA
             assert eligibleForMappa == "yes"
-            assert mappaScreenedDate == "30/03/2018"
+            assert mappaScreenedDate == yesterday
             assert mappaCategory == "1"
             assert mappaLevel == "2"
 
@@ -376,7 +376,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains "RoSH at point of sentence attitude to previous offending text"
 
         content.contains 'Victims impact detail text'
-        content.contains "Victim Liaison Officer (VLO) contacted 30/03/2018"
+        content.contains "Victim Liaison Officer (VLO) contacted " + yesterday
         content.contains "Victim Contact Scheme (VCS) engagement Yes"
         content.contains "Victim Personal Statement (VPS) Yes"
 
@@ -392,7 +392,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
         content.contains 'Multi Agency Public Protection Arrangements (MAPPA)'
         content.contains 'MAPPAQ completed'
-        content.contains '30/03/2018'
+        content.contains yesterday
         content.contains 'Prisoner\'s current MAPPA category'
         content.contains 'Prisoner\'s current MAPPA level'
         content.contains '1'
@@ -511,7 +511,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             fillVictimsImpactDetailsWith("Victims impact detail text")
             setVictimsSubmitVPSYes()
             setVictimsEngagedInVCSYes()
-            fillVictimsVLOContactDatesWith("30/03/2018")
+            fillVictimsVLOContactDatesWith(yesterday)
             saveAndContinue.click()
         }
         and: 'I complete the OPD pathway page'
@@ -545,7 +545,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         withWindow("reportpopup") {
             at(PP1MappaPage)
             setEligibleForMappaYes()
-            fillScreenedDateWith("30/03/2018")
+            fillScreenedDateWith(yesterday)
             setMappaCategory1()
             setMappaLevel2()
             saveAndContinue.click()
@@ -691,10 +691,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert roshAtPosAttitudePreviousOffending.contains("RoSH at point of sentence attitude to previous offending text")
 
             assert victimsImpactDetails.contains("Victims impact detail text")
-            assert victimsVLOContactDate == "30/03/2018"
-            assert victimsVLOContactDate_day == "30"
-            assert victimsVLOContactDate_month == "03"
-            assert victimsVLOContactDate_year == "2018"
+            assert victimsVLOContactDate == yesterday
             assert victimsEngagedInVCS == "yes"
             assert victimsSubmitVPS == "yes"
 
@@ -719,7 +716,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             // Page 10 - MAPPA
             assert eligibleForMappa == "yes"
-            assert mappaScreenedDate == "30/03/2018"
+            assert mappaScreenedDate == yesterday
             assert mappaCategory == "1"
             assert mappaLevel == "2"
 
@@ -834,7 +831,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains "RoSH at point of sentence attitude to previous offending text"
 
         content.contains 'Victims impact detail text'
-        content.contains "Victim Liaison Officer (VLO) contacted 30/03/2018"
+        content.contains "Victim Liaison Officer (VLO) contacted " + yesterday
         content.contains "Victim Contact Scheme (VCS) engagement Yes"
         content.contains "Victim Personal Statement (VPS) Yes"
 
@@ -850,7 +847,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
         content.contains 'Multi Agency Public Protection Arrangements (MAPPA)'
         content.contains 'MAPPAQ completed'
-        content.contains '30/03/2018'
+        content.contains yesterday
         content.contains 'Prisoner\'s current MAPPA category'
         content.contains 'Prisoner\'s current MAPPA level'
         content.contains '1'

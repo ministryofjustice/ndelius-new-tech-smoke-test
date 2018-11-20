@@ -5,8 +5,6 @@ class PP1PrisonerDetailsPage extends PP1BasePage {
     static at = { heading == "Prisoner details" }
 
     static content = {
-        setPrisonerDetailsPrisonersFullName { text -> $("#prisonerDetailsPrisonersFullName").value(text) }
-
         setPrisonerDetailsPrisonersCategoryA { $("#prisonerDetailsPrisonersCategory_a").value("a") }
 
         fillPrisonerDetailOffenceWith { text -> $("#prisonerDetailsOffence .ql-editor").leftShift(text) }
