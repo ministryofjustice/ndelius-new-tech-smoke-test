@@ -93,10 +93,6 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
             saveAndContinue.click()
         }
         withWindow("reportpopup") {
-            at(SFRPSSourcesOfInformationPage)
-            saveAndContinue.click()
-        }
-        withWindow("reportpopup") {
             at(SFRPSOffenceDetailsPage)
         }
         and: 'I go back to start page via the document list'
@@ -111,7 +107,7 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
             simulateUserPause() // since writes are async, we need the above changes to be written before we next, else writes may get out of order
             saveAndContinue.click()
             at(SFRPSOffenceAnalysisPage)
-            waitFor {ReportDataLoader.reportAtPage(6)}
+            waitFor {ReportDataLoader.reportAtPage(5)}
         }
         when: 'I click continue now'
         withFrame(newTechFrame, SFRPSWelcomePage) {

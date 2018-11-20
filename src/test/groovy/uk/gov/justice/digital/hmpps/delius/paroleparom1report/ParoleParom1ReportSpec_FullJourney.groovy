@@ -35,12 +35,8 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Prisoner details page'
         withWindow("reportpopup") {
             at(PP1PrisonerDetailsPage)
-            setPrisonerDetailsPrisonInstitution "Doncaster"
-            setPrisonerDetailsPrisonNumber "P98793-123"
-
             setPrisonerDetailsPrisonersCategoryA
 
-            fillPrisonerDetailOffenceWith "Assault"
             fillPrisonerDetailSentenceWith "1 year"
 
             setPrisonerDetailsSentenceTypeDeterminate
@@ -240,12 +236,12 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         withWindow("reportpopup") {
             at(PP1CheckYourReportPage)
 
-            assert prisonerDetailsPrisonInstitution.contains("Doncaster")
-            assert prisonerDetailsPrisonersFullName.contains("Sam Henry Jones")
-            assert prisonerDetailsPrisonNumber.contains("P98793-123")
-            assert prisonerDetailsNomisNumber.contains("A3597AEX")
+            assert prisonerDetailsPrisonInstitution.contains("HMP Leeds")
+            assert prisonerDetailsPrisonersFullName.contains("Sam Jones")
+            assert prisonerDetailsPrisonNumber.contains("4815")
+            assert prisonerDetailsNomisNumber.contains("G8678GG")
             assert prisonerDetailsPrisonersCategory.contains("a")
-            assert prisonerDetailsOffence.contains("Assault")
+            assert prisonerDetailsOffence.contains("<p>Obtaining a money transfer by deception - 03/09/2018</p><p>Dishonestly retaining a wrongful credit - 01/08/2018</p><p>Dishonest representation for obtaining benefit etc</p>")
             assert prisonerDetailsSentence.contains("1 year")
             assert prisonerDetailsSentenceType.contains("determinate")
 
@@ -358,6 +354,19 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
         and: 'I download the PDF'
         def content = PDFReader.textContent(downloadBytes(firstDocumentViewLink.@href.replace('pdf', 'view_pdf')))
+
+        content.contains 'HMP Leeds'
+        content.contains 'Sam Jones'
+        content.contains '4815'
+        content.contains 'G8678GG'
+
+        content.contains 'A'
+
+        content.contains 'Obtaining a money transfer by deception - 03/09/2018\nDishonestly retaining a wrongful credit - 01/08/2018\nDishonest representation for obtaining benefit etc\n'
+        content.contains '1 year'
+
+        content.contains 'Determinate'
+
         content.contains 'Prisoner contact detail text'
         content.contains 'Prisoner contact family detail text'
         content.contains 'Prisoner contact agencies detail text'
@@ -464,12 +473,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the Prisoner details page'
         withWindow("reportpopup") {
             at(PP1PrisonerDetailsPage)
-            setPrisonerDetailsPrisonInstitution "Doncaster"
-            setPrisonerDetailsPrisonNumber "P98793-123"
 
             setPrisonerDetailsPrisonersCategoryA
 
-            fillPrisonerDetailOffenceWith "Assault"
             fillPrisonerDetailSentenceWith "1 year"
 
             setPrisonerDetailsSentenceTypeDeterminate
@@ -804,14 +810,14 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I download the PDF'
         def content = PDFReader.textContent(downloadBytes(firstDocumentViewLink.@href.replace('pdf', 'view_pdf')))
 
-        content.contains 'Doncaster'
-        content.contains 'Sam Henry Jones'
-        content.contains 'P98793-123'
-        content.contains 'A3597AEX'
+        content.contains 'HMP Leeds'
+        content.contains 'Sam Jones'
+        content.contains '4815'
+        content.contains 'G8678GG'
 
         content.contains 'A'
 
-        content.contains 'Assault'
+        content.contains 'Obtaining a money transfer by deception - 03/09/2018\nDishonestly retaining a wrongful credit - 01/08/2018\nDishonest representation for obtaining benefit etc\n'
         content.contains '1 year'
 
         content.contains 'Determinate'
