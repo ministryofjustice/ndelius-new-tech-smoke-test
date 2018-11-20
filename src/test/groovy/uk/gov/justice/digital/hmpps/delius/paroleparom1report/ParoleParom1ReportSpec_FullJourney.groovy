@@ -172,8 +172,8 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             at(PP1RiskManagementPlanPage)
 
             setRiskManagementPlanRequiredYes()
-            fillAgencies("Agencies text")
-            fillSupport("Support text")
+            fillCurrentSituation("Current situation text")
+            fillSupportingAgencies("Supporting agencies text")
             fillControl("Control text")
             fillRiskMeasures("Risk Measures text")
             fillAgencyActions("Agency Actions text")
@@ -302,8 +302,8 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             // Page 16 - Risk Management Plan (RMP)
             assert riskManagementPlanRequired == "yes"
-            assert agencies.contains("Agencies text")
-            assert support.contains("Support text")
+            assert currentSituation.contains("Current situation text")
+            assert supportingAgencies.contains("Supporting agencies text")
             assert control.contains("Control text")
             assert riskMeasures.contains("Risk Measures text")
             assert agencyActions.contains("Agency Actions text")
@@ -437,8 +437,8 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'Likelihood of reoffending detail text'
         content.contains 'Risk of absconding detail text'
 
-        content.contains 'Agencies text'
-        content.contains 'Support text'
+        content.contains 'Current situation text'
+        content.contains 'Supporting agencies text'
         content.contains 'Control text'
         content.contains 'Risk Measures text'
         content.contains 'Agency Actions text'
@@ -615,8 +615,8 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             at(PP1RiskManagementPlanPage)
 
             setRiskManagementPlanRequiredYes()
-            fillAgencies("Agencies text")
-            fillSupport("Support text")
+            fillCurrentSituation("Current situation text")
+            fillSupportingAgencies("Supporting agencies text")
             fillControl("Control text")
             fillRiskMeasures("Risk Measures text")
             fillAgencyActions("Agency Actions text")
@@ -736,8 +736,8 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             // Page 16 - Risk Management Plan (RMP)
             assert riskManagementPlanRequired == "yes"
-            assert agencies.contains("Agencies text")
-            assert support.contains("Support text")
+            assert currentSituation.contains("Current situation text")
+            assert supportingAgencies.contains("Supporting agencies text")
             assert control.contains("Control text")
             assert riskMeasures.contains("Risk Measures text")
             assert agencyActions.contains("Agency Actions text")
@@ -896,8 +896,8 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'Likelihood of reoffending detail text'
         content.contains 'Risk of absconding detail text'
 
-        content.contains 'Agencies text'
-        content.contains 'Support text'
+        content.contains 'Current situation text'
+        content.contains 'Supporting agencies text'
         content.contains 'Control text'
         content.contains 'Risk Measures text'
         content.contains 'Agency Actions text'
