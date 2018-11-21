@@ -8,8 +8,29 @@ import uk.gov.justice.digital.hmpps.delius.dataload.ReportDataLoader
 import uk.gov.justice.digital.hmpps.delius.pages.*
 import uk.gov.justice.digital.hmpps.delius.util.PDFReader
 
+import java.text.SimpleDateFormat
+
 @Stepwise
 class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
+
+    private static String getMonthNameAndYear(String date) {
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy")
+        SimpleDateFormat outputFormat = new SimpleDateFormat("MMM yyyy", Locale.ENGLISH)
+        Date parsedDate = inputFormat.parse(date)
+        return outputFormat.format(parsedDate).toString()
+    }
+
+    private static String getDay(String date) {
+        return date.substring(0, 2)
+    }
+
+    private static String getMonth(String date) {
+        return date.substring(3, 5)
+    }
+
+    private static String getYear(String date) {
+        return date.substring(6)
+    }
 
     def yesterday = (new Date() - 1).format("dd/MM/yyyy")
 
@@ -56,7 +77,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         withWindow("reportpopup") {
             at(PP1ROSHAtSentencePage)
             setRoshAtPointOfSentenceYes()
-            fillRoshAtPointOfSentenceDateWith("09/2018")
+            fillRoshAtPointOfSentenceDateWith(yesterday.substring(3))
             setRoshAtPointOfSentencePublicLow()
             setRoshAtPointOfSentenceKnownAdultLow()
             setRoshAtPointOfSentenceChildrenLow()
@@ -252,7 +273,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert prisonerContactAgenciesDetail.contains("Prisoner contact agencies detail text")
 
             assert roshAtPosAssessmentCompleted == "yes"
-            assert roshAtPosDate == "Sep 2018"
+            assert roshAtPosDate == getMonthNameAndYear(yesterday)
             assert roshAtPosPublic == "low"
             assert roshAtPosKnownAdult == "low"
             assert roshAtPosChildren == "low"
@@ -263,11 +284,17 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             assert victimsImpactDetails.contains("Victims impact detail text")
             assert victimsVLOContactDate == yesterday
+            assert victimsVLOContactDate_day == getDay(yesterday)
+            assert victimsVLOContactDate_month == getMonth(yesterday)
+            assert victimsVLOContactDate_year == getYear(yesterday)
             assert victimsEngagedInVCS == "yes"
             assert victimsSubmitVPS == "yes"
 
             assert consideredForOPDPathwayServices == "yes"
             assert opdScreenedDate == yesterday
+            assert opdScreenedDate_day == getDay(yesterday)
+            assert opdScreenedDate_month == getMonth(yesterday)
+            assert opdScreenedDate_year == getYear(yesterday)
 
             assert behaviourDetail.contains("Prisoner behaviour in prison text")
             assert rotlSummary.contains("RoTL summary text")
@@ -289,6 +316,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             // Page 10 - MAPPA
             assert eligibleForMappa == "yes"
             assert mappaScreenedDate == yesterday
+            assert mappaScreenedDate_day == getDay(yesterday)
+            assert mappaScreenedDate_month == getMonth(yesterday)
+            assert mappaScreenedDate_year == getYear(yesterday)
             assert mappaCategory == "1"
             assert mappaLevel == "2"
 
@@ -499,7 +529,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         withWindow("reportpopup") {
             at(PP1ROSHAtSentencePage)
             setRoshAtPointOfSentenceYes()
-            fillRoshAtPointOfSentenceDateWith("09/2018")
+            fillRoshAtPointOfSentenceDateWith(yesterday.substring(3))
             setRoshAtPointOfSentencePublicLow()
             setRoshAtPointOfSentenceKnownAdultLow()
             setRoshAtPointOfSentenceChildrenLow()
@@ -686,7 +716,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert prisonerContactAgenciesDetail.contains("Prisoner contact agencies detail text")
 
             assert roshAtPosAssessmentCompleted == "yes"
-            assert roshAtPosDate == "Sep 2018"
+            assert roshAtPosDate == getMonthNameAndYear(yesterday)
             assert roshAtPosPublic == "low"
             assert roshAtPosKnownAdult == "low"
             assert roshAtPosChildren == "low"
@@ -697,11 +727,17 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             assert victimsImpactDetails.contains("Victims impact detail text")
             assert victimsVLOContactDate == yesterday
+            assert victimsVLOContactDate_day == getDay(yesterday)
+            assert victimsVLOContactDate_month == getMonth(yesterday)
+            assert victimsVLOContactDate_year == getYear(yesterday)
             assert victimsEngagedInVCS == "yes"
             assert victimsSubmitVPS == "yes"
 
             assert consideredForOPDPathwayServices == "yes"
             assert opdScreenedDate == yesterday
+            assert opdScreenedDate_day == getDay(yesterday)
+            assert opdScreenedDate_month == getMonth(yesterday)
+            assert opdScreenedDate_year == getYear(yesterday)
 
             assert behaviourDetail.contains("Prisoner behaviour in prison text")
             assert rotlSummary.contains("RoTL summary text")
@@ -723,6 +759,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             // Page 10 - MAPPA
             assert eligibleForMappa == "yes"
             assert mappaScreenedDate == yesterday
+            assert mappaScreenedDate_day == getDay(yesterday)
+            assert mappaScreenedDate_month == getMonth(yesterday)
+            assert mappaScreenedDate_year == getYear(yesterday)
             assert mappaCategory == "1"
             assert mappaLevel == "2"
 
@@ -778,7 +817,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             setSignatureTelephone "0123 456 789"
             setSignatureCounterName "Joe Bloggs"
             setSignatureCounterRole "SPO"
-            fillSignatureDateWith("25/09/2018")
+            fillSignatureDateWith(yesterday)
 
             assert signatureName.contains("Jane Doe")
             assert signatureDivision.contains("Some division")
@@ -787,9 +826,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert signatureTelephone.contains("0123 456 789")
             assert signatureCounterName.contains("Joe Bloggs")
             assert signatureCounterRole.contains("SPO")
-            assert signatureDate_day == "25"
-            assert signatureDate_month == "09"
-            assert signatureDate_year == "2018"
+            assert signatureDate_day == getDay(yesterday)
+            assert signatureDate_month == getMonth(yesterday)
+            assert signatureDate_year == getYear(yesterday)
 
             true
 
@@ -928,6 +967,6 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains "0123 456 789"
         content.contains "Joe Bloggs"
         content.contains "SPO"
-        content.contains "25/09/2018"
+        content.contains yesterday
     }
 }
