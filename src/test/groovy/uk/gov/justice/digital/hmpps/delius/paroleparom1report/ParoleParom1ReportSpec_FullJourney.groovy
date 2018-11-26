@@ -265,7 +265,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert prisonerDetailsNomisNumber.contains("G8678GG")
             assert prisonerDetailsPrisonersCategory.contains("a")
             assert prisonerDetailsOffence.contains("<p>Obtaining a money transfer by deception - 03/09/2018</p><p>Dishonestly retaining a wrongful credit - 01/08/2018</p><p>Dishonest representation for obtaining benefit etc</p>")
-            assert prisonerDetailsSentence.contains("1 year")
+            assert prisonerDetailsSentence.contains("Life imprisonment (Adult), 25 Years.")
             assert prisonerDetailsSentenceType.contains("determinate")
 
             assert prisonerContactDetail.contains("Prisoner contact detail text")
@@ -396,7 +396,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'A'
 
         content.contains 'Obtaining a money transfer by deception - 03/09/2018\nDishonestly retaining a wrongful credit - 01/08/2018\nDishonest representation for obtaining benefit etc\n'
-        content.contains '1 year'
+        content.contains 'Life imprisonment (Adult), 25 Years.'
 
         content.contains 'Determinate'
 
@@ -864,7 +864,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'A'
 
         content.contains 'Obtaining a money transfer by deception - 03/09/2018\nDishonestly retaining a wrongful credit - 01/08/2018\nDishonest representation for obtaining benefit etc\n'
-        content.contains '1 year'
+        content.contains 'Life imprisonment (Adult), 25 Years.'
 
         content.contains 'Determinate'
 
