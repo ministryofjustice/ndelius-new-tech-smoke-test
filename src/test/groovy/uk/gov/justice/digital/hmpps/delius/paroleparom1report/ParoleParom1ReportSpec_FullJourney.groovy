@@ -59,8 +59,6 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             setPrisonerDetailsPrisonersCategoryA
 
-            fillPrisonerDetailSentenceWith "1 year"
-
             setPrisonerDetailsSentenceTypeDeterminate
 
             saveAndContinue.click()
@@ -510,8 +508,6 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             at(PP1PrisonerDetailsPage)
 
             setPrisonerDetailsPrisonersCategoryA
-
-            fillPrisonerDetailSentenceWith "1 year"
 
             setPrisonerDetailsSentenceTypeDeterminate
 
