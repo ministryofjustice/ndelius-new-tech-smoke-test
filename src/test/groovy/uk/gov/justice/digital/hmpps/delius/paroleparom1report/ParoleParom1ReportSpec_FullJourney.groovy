@@ -195,6 +195,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             setRiskManagementPlanRequiredYes()
             fillCurrentSituation("Current situation text")
             fillSupportingAgencies("Supporting agencies text")
+            fillSupport("Support text")
             fillControl("Control text")
             fillRiskMeasures("Risk Measures text")
             fillAgencyActions("Agency Actions text")
@@ -334,6 +335,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert riskManagementPlanRequired == "yes"
             assert currentSituation.contains("Current situation text")
             assert supportingAgencies.contains("Supporting agencies text")
+            assert support.contains("Support text")
             assert control.contains("Control text")
             assert riskMeasures.contains("Risk Measures text")
             assert agencyActions.contains("Agency Actions text")
@@ -469,6 +471,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
         content.contains 'Current situation text'
         content.contains 'Supporting agencies text'
+        content.contains 'Support text'
         content.contains 'Control text'
         content.contains 'Risk Measures text'
         content.contains 'Agency Actions text'
@@ -647,6 +650,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             setRiskManagementPlanRequiredYes()
             fillCurrentSituation("Current situation text")
             fillSupportingAgencies("Supporting agencies text")
+            fillSupport("Support text")
             fillControl("Control text")
             fillRiskMeasures("Risk Measures text")
             fillAgencyActions("Agency Actions text")
@@ -777,6 +781,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert riskManagementPlanRequired == "yes"
             assert currentSituation.contains("Current situation text")
             assert supportingAgencies.contains("Supporting agencies text")
+            assert support.contains("Support text")
             assert control.contains("Control text")
             assert riskMeasures.contains("Risk Measures text")
             assert agencyActions.contains("Agency Actions text")
@@ -937,6 +942,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
         content.contains 'Current situation text'
         content.contains 'Supporting agencies text'
+        content.contains 'Support text'
         content.contains 'Control text'
         content.contains 'Risk Measures text'
         content.contains 'Agency Actions text'
