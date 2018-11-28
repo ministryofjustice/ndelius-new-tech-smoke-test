@@ -25,7 +25,3 @@ dependencies {
     testCompile 'org.apache.pdfbox:pdfbox:2.0.4'
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '3.1'
-}
-
