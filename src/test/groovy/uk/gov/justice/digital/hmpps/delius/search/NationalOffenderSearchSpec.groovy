@@ -24,7 +24,11 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         offenders[6] = offender( '/esdata/antonio-gramsci-n03.json' )
         offenders[7] = offender( '/esdata/anne-gramsci-n02.json' )
         offenders[8] = offender( '/esdata/antonio-gramsci-c20.json' )
-        replace(offenders)
+
+        // we can no longer touch ES while it has been secured. So wait until Delius has moved
+        // to AWS then we can find a secure way of accessing ES. In the meantime rely on the data
+        // and index being correct
+        // replace(offenders)
         to IndexPage
         waitFor(10) {
             hasLoaded(offenders)
