@@ -30,9 +30,9 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         // and index being correct
         // replace(offenders)
         to IndexPage
-        waitFor(10) {
-            hasLoaded(offenders)
-        }
+//        waitFor(10) {
+//            hasLoaded(offenders)
+//        }
     }
 
     def setup() {
