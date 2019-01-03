@@ -11,6 +11,20 @@ import uk.gov.justice.digital.hmpps.delius.util.PDFReader
 @Stepwise
 class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
+    private static String getDay(String date) {
+        return date.substring(0, 2)
+    }
+
+    private static String getMonth(String date) {
+        return date.substring(3, 5)
+    }
+
+    private static String getYear(String date) {
+        return date.substring(6)
+    }
+
+    def  yesterday = (new Date() - 1).format("dd/MM/yyyy")
+
     def setup() {
         resetBrowser()
         CachingDriverFactory.clearCacheAndQuitDriver()
@@ -122,6 +136,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             at(SFRPSSignYourReportPage)
             fillReportAuthorWith("Report author text")
             fillOfficeWith("Office text")
+            fillReportDateWith(yesterday)
             fillCourtOfficePhoneNumberWith("01999 123456")
             fillCounterSignatureWith("Counter signature text")
         }
@@ -251,7 +266,9 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
             assert reportAuthor.contains("Report author text")
             assert office.contains("Office text")
-            assert reportDate == new Date().format("dd/MM/yyyy")
+            assert reportDate_day == getDay(yesterday)
+            assert reportDate_month == getMonth(yesterday)
+            assert reportDate_year == getYear(yesterday)
             assert courtOfficePhoneNumber.contains("01999 123456")
             assert counterSignature.contains("Counter signature text")
             assert startDate != null
