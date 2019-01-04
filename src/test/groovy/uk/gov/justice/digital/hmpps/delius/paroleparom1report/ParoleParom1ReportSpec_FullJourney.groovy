@@ -32,7 +32,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         return date.substring(6)
     }
 
-    def yesterday = (new Date() - 1).format("dd/MM/yyyy")
+    def  yesterday = (new Date() - 1).format("dd/MM/yyyy")
 
     def setup() {
         resetBrowser()
