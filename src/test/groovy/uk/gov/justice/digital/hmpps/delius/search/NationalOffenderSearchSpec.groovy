@@ -28,11 +28,11 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
         // we can no longer touch ES while it has been secured. So wait until Delius has moved
         // to AWS then we can find a secure way of accessing ES. In the meantime rely on the data
         // and index being correct
-        // replace(offenders)
+        replace(offenders)
         to IndexPage
-//        waitFor(10) {
-//            hasLoaded(offenders)
-//        }
+        waitFor(10) {
+            hasLoaded(offenders)
+        }
     }
 
     def setup() {

@@ -2,7 +2,26 @@
   "settings" : {
     "index" : {
       "number_of_shards" : 10,
-      "number_of_replicas" : 1
+      "number_of_replicas" : 1,
+      "analysis": {
+        "analyzer": {
+          "search_soundex": {
+            "tokenizer": "standard",
+            "filter": [
+              "standard",
+              "lowercase",
+              "soundex_filter"
+            ]
+          }
+        },
+        "filter": {
+          "soundex_filter": {
+            "type": "phonetic",
+            "encoder": "soundex",
+            "replace": false
+          }
+        }
+      }
     }
   },
   "mappings": {
@@ -14,6 +33,66 @@
         "dateOfBirth": {
           "type":   "date",
           "format": "yyyy-MM-dd||yyyy/MM/dd||dd-MM-yy||dd/MM/yy||dd-MM-yyyy||dd/MM/yyyy"
+        },
+        "surname": {
+          "type": "text",
+          "analyzer": "search_soundex",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "firstName": {
+          "type": "text",
+          "analyzer": "search_soundex",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "middleNames": {
+          "type": "text",
+          "analyzer": "search_soundex",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "offenderAliases.firstName": {
+          "type": "text",
+          "analyzer": "search_soundex",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "offenderAliases.surname": {
+          "type": "text",
+          "analyzer": "search_soundex",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "contactDetails.addresses.town": {
+          "type": "text",
+          "analyzer": "search_soundex",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
         },
         "offenderManagers": {
           "type": "nested",
