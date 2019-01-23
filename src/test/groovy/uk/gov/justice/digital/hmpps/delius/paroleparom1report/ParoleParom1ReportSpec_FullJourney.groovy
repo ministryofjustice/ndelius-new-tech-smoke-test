@@ -441,27 +441,14 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains "Risk matrix 2000 Low"
         content.contains "SARA High"
 
-        content.contains 'Current RoSH: community'
+        content.contains 'Current RoSH'
         content.contains 'Public'
         content.contains 'Known adult'
         content.contains 'Children'
         content.contains 'Prisoners'
         content.contains 'Staff'
-        content.contains 'Low'
-        content.contains 'Medium'
-        content.contains 'High'
-        content.contains 'Very high'
-
-        content.contains 'Current RoSH: custody'
-        content.contains 'Public'
-        content.contains 'Known adult'
-        content.contains 'Children'
-        content.contains 'Prisoners'
-        content.contains 'Staff'
-        content.contains 'Low'
-        content.contains 'Medium'
-        content.contains 'High'
-        content.contains 'Very high'
+        content.contains 'Community Low Medium High Very high Low'
+        content.contains 'Custody Low Medium High Very high Low'
 
         content.contains 'Nature of risk detail text'
         content.contains 'Increase factors detail text'
@@ -912,27 +899,14 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains "Risk matrix 2000 Low"
         content.contains "SARA High"
 
-        content.contains 'Current RoSH: community'
+        content.contains 'Current RoSH'
         content.contains 'Public'
         content.contains 'Known adult'
         content.contains 'Children'
         content.contains 'Prisoners'
         content.contains 'Staff'
-        content.contains 'Low'
-        content.contains 'Medium'
-        content.contains 'High'
-        content.contains 'Very high'
-
-        content.contains 'Current RoSH: custody'
-        content.contains 'Public'
-        content.contains 'Known adult'
-        content.contains 'Children'
-        content.contains 'Prisoners'
-        content.contains 'Staff'
-        content.contains 'Low'
-        content.contains 'Medium'
-        content.contains 'High'
-        content.contains 'Very high'
+        content.contains 'Community Low Medium High Very high Low'
+        content.contains 'Custody Low Medium High Very high Low'
         
         content.contains 'Nature of risk detail text'
         content.contains 'Increase factors detail text'
