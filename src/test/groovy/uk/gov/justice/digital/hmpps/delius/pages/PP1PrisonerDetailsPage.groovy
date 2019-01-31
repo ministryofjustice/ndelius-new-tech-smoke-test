@@ -13,7 +13,7 @@ class PP1PrisonerDetailsPage extends PP1BasePage {
         fillPrisonerDetailSentenceWith { text -> $("#prisonerDetailsSentence .ql-editor").leftShift(text) }
 
         setPrisonerDetailsDeterminate { $("#prisonerDetailsSentenceType_determinate").value("determinate") }
-        setPrisonerDetailsDeterminateSentenceType { $("#prisonerDetailsDeterminateSentenceType_extended").value("extended") }
+        setPrisonerDetailsDeterminateSentenceType { $("#prisonerDetailsDeterminateSentenceType_discretionaryConditionalRelease").value("discretionaryConditionalRelease") }
 
         fillPrisonerDetailsDeterminateReleaseDateDatesWith {
             text ->
