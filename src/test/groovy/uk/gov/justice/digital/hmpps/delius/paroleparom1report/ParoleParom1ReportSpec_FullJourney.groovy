@@ -32,7 +32,8 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         return date.substring(6)
     }
 
-    def  yesterday = (new Date() - 1).format("dd/MM/yyyy")
+    def yesterday = (new Date() - 1).format("dd/MM/yyyy")
+    def tomorrow = (new Date() + 1).format("dd/MM/yyyy")
 
     def setup() {
         resetBrowser()
@@ -61,7 +62,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             fillPrisonerDetailSentenceWith "1 year"
 
-            setPrisonerDetailsSentenceTypeDeterminate
+            setPrisonerDetailsDeterminate
+            setPrisonerDetailsDeterminateSentenceType
+            fillPrisonerDetailsDeterminateReleaseDateDatesWith(tomorrow)
 
             saveAndContinue.click()
         }
@@ -268,6 +271,11 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert prisonerDetailsOffence.contains("<p>Obtaining a money transfer by deception - 03/09/2018</p><p>Dishonestly retaining a wrongful credit - 01/08/2018</p><p>Dishonest representation for obtaining benefit etc</p>")
             assert prisonerDetailsSentence.contains("1 year")
             assert prisonerDetailsSentenceType.contains("determinate")
+            assert prisonerDetailsDeterminateSentenceType.contains("extended")
+            assert prisonerDetailsParoleEligibilityDate == tomorrow
+            assert prisonerDetailsParoleEligibilityDate_day == getDay(tomorrow)
+            assert prisonerDetailsParoleEligibilityDate_month == getMonth(tomorrow)
+            assert prisonerDetailsParoleEligibilityDate_year == getYear(tomorrow)
 
             assert prisonerContactDetail.contains("Prisoner contact detail text")
             assert prisonerContactFamilyDetail.contains("Prisoner contact family detail text")
@@ -503,7 +511,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             fillPrisonerDetailSentenceWith "1 year"
 
-            setPrisonerDetailsSentenceTypeDeterminate
+            setPrisonerDetailsDeterminate
+            setPrisonerDetailsDeterminateSentenceType
+            fillPrisonerDetailsDeterminateReleaseDateDatesWith(tomorrow)
 
             saveAndContinue.click()
         }
