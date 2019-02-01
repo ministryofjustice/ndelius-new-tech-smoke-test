@@ -7,7 +7,6 @@ class PP1OPDPathwayPage extends PP1BasePage {
     static at = { heading == "OPD pathway" }
 
     static content = {
-        setOPDPathwayServicesYes { $("#consideredForOPDPathwayServices_yes").value("yes") }
         fillScreenedDateWith {
             text ->
                 Date date = new SimpleDateFormat("dd/MM/yyyy").parse(text);
@@ -15,5 +14,7 @@ class PP1OPDPathwayPage extends PP1BasePage {
                 $("#opdScreenedDate-month").value(new SimpleDateFormat("MM").format(date));
                 $("#opdScreenedDate-year").value(new SimpleDateFormat("yyyy").format(date))
         }
+        setOPDPathwayServicesYes { $("#consideredForOPDPathwayServices_yes").value("yes") }
+        setOPDPathwayConsultationFormulationYes { $("#consultationOrFormulation_yes").value("yes") }
     }
 }

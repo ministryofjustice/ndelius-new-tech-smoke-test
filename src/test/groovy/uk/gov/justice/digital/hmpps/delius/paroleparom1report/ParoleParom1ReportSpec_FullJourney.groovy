@@ -102,8 +102,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the OPD pathway page'
         withWindow("reportpopup") {
             at(PP1OPDPathwayPage)
-            setOPDPathwayServicesYes()
             fillScreenedDateWith(yesterday)
+            setOPDPathwayServicesYes()
+            setOPDPathwayConsultationFormulationYes()
             saveAndContinue.click()
         }
         and: 'I complete the Behaviour in prison page'
@@ -304,6 +305,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert opdScreenedDate_day == getDay(yesterday)
             assert opdScreenedDate_month == getMonth(yesterday)
             assert opdScreenedDate_year == getYear(yesterday)
+            assert consultationOrFormulation == "yes"
 
             assert behaviourDetail.contains("Prisoner behaviour in prison text")
             assert rotlSummary.contains("RoTL summary text")
@@ -423,8 +425,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains "Victim Personal Statement (VPS) Yes"
 
         content.contains 'Offender Personality Disorder (OPD) pathway'
-        content.contains 'Screening date'
+        content.contains 'Date of OPD screen'
         content.contains yesterday
+        content.contains 'Consultation or formulation received'
 
         content.contains 'Prisoner behaviour in prison text'
         content.contains 'RoTL summary text'
@@ -551,8 +554,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         and: 'I complete the OPD pathway page'
         withWindow("reportpopup") {
             at(PP1OPDPathwayPage)
-            setOPDPathwayServicesYes()
             fillScreenedDateWith(yesterday)
+            setOPDPathwayServicesYes()
+            setOPDPathwayConsultationFormulationYes()
             saveAndContinue.click()
         }
         and: 'I complete the Behaviour in prison page'
@@ -734,11 +738,12 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert victimsEngagedInVCS == "yes"
             assert victimsSubmitVPS == "yes"
 
-            assert consideredForOPDPathwayServices == "yes"
             assert opdScreenedDate == yesterday
             assert opdScreenedDate_day == getDay(yesterday)
             assert opdScreenedDate_month == getMonth(yesterday)
             assert opdScreenedDate_year == getYear(yesterday)
+            assert consideredForOPDPathwayServices == "yes"
+            assert consultationOrFormulation == "yes"
 
             assert behaviourDetail.contains("Prisoner behaviour in prison text")
             assert rotlSummary.contains("RoTL summary text")
@@ -883,8 +888,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains "Victim Personal Statement (VPS) Yes"
 
         content.contains 'Offender Personality Disorder (OPD) pathway'
-        content.contains 'Screening date'
+        content.contains 'Date of OPD screen'
         content.contains yesterday
+        content.contains 'Consultation or formulation received'
 
         content.contains 'Prisoner behaviour in prison text'
         content.contains 'RoTL summary text'
