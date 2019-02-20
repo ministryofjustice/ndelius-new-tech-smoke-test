@@ -269,7 +269,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert prisonerDetailsPrisonNumber.contains("4815")
             assert prisonerDetailsNomisNumber.contains("G8678GG")
             assert prisonerDetailsPrisonersCategory.contains("a")
-            assert prisonerDetailsOffence.contains("<p>Obtaining a money transfer by deception - 03/09/2018</p><p>Dishonestly retaining a wrongful credit - 01/08/2018</p><p>Dishonest representation for obtaining benefit etc</p>")
+            assert prisonerDetailsOffence.contains("<p>Obtaining a money transfer by deception x 3 - 03/09/2018</p><p>Dishonestly retaining a wrongful credit - 01/08/2018</p><p>Dishonest representation for obtaining benefit etc x 2</p>")
             assert prisonerDetailsSentence.contains("1 year")
             assert prisonerDetailsSentenceType.contains("determinate")
             assert prisonerDetailsDeterminateSentenceType.contains("discretionaryConditionalRelease")
@@ -407,7 +407,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
         content.contains 'A'
 
-        content.contains 'Obtaining a money transfer by deception - 03/09/2018\nDishonestly retaining a wrongful credit - 01/08/2018\nDishonest representation for obtaining benefit etc\n'
+        content.contains 'Obtaining a money transfer by deception x 3 - 03/09/2018\nDishonestly retaining a wrongful credit - 01/08/2018\nDishonest representation for obtaining benefit etc x 2\n'
         content.contains '1 year'
 
         content.contains 'Discretionary Conditional Release (DCR)'
@@ -870,7 +870,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
         content.contains 'A'
 
-        content.contains 'Obtaining a money transfer by deception - 03/09/2018\nDishonestly retaining a wrongful credit - 01/08/2018\nDishonest representation for obtaining benefit etc\n'
+        content.contains 'Obtaining a money transfer by deception x 3 - 03/09/2018\nDishonestly retaining a wrongful credit - 01/08/2018\nDishonest representation for obtaining benefit etc x 2\n'
         content.contains '1 year'
 
         content.contains 'Discretionary Conditional Release (DCR)'
