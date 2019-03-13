@@ -7,9 +7,9 @@ class NationalOffenderSearchPage extends Page {
     static content = {
         searchTerms { $("input[name=searchTerms]") }
         enterSearchTerms {searchTerm -> searchTerms.value(searchTerm)}
-        resultCount { $(".offenderDetailsRow").size() }
+        resultCount { $(".qa-offender-details-row").size() }
         zeroResultsFound {$("h2 span", text: "0 results found")}
-        offenders {$(".offenderDetailsRow").collect {
+        offenders {$(".qa-offender-details-row").collect {
             it.text()
          }}
         hasResults {$("#offender-results") }
