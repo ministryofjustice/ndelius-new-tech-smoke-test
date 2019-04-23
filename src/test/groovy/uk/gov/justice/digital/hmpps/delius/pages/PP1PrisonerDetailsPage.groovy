@@ -9,8 +9,8 @@ class PP1PrisonerDetailsPage extends PP1BasePage {
     static content = {
         setPrisonerDetailsPrisonersCategoryA { $("#prisonerDetailsPrisonersCategory_a").value("a") }
 
-        fillPrisonerDetailOffenceWith { text -> $("#prisonerDetailsOffence .ql-editor").leftShift(text) }
-        fillPrisonerDetailSentenceWith { text -> $("#prisonerDetailsSentence .ql-editor").leftShift(text) }
+        fillPrisonerDetailOffenceWith { text -> $("#prisonerDetailsOffence").value(text) }
+        fillPrisonerDetailSentenceWith { text -> $("#prisonerDetailsSentence").value(text) }
 
         setPrisonerDetailsDeterminate { $("#prisonerDetailsSentenceType_determinate").value("determinate") }
         setPrisonerDetailsDeterminateSentenceType { $("#prisonerDetailsDeterminateSentenceType_discretionaryConditionalRelease").value("discretionaryConditionalRelease") }

@@ -5,6 +5,6 @@ class PP1CurrentSentencePlanPage extends PP1BasePage {
     static at = { heading == "Prison sentence plan and response" }
 
     static content = {
-        fillSentencePlanWith { text -> $("#sentencePlan .ql-editor").leftShift(text) }
+        fillSentencePlanWith { text -> $("#sentencePlan").value(text) }
     }
 }

@@ -6,9 +6,9 @@ class SFRPSRiskAssessmentPage extends SFPSRBasePage {
 
     static content = {
         heading { $("h1").text() }
-        fillLikelihoodOfReOffendingWith { text -> $("#likelihoodOfReOffending .ql-editor").leftShift(text) }
-        fillRiskOfSeriousHarmWith { text -> $("#riskOfSeriousHarm .ql-editor").leftShift(text) }
+        fillLikelihoodOfReOffendingWith { text -> $("#likelihoodOfReOffending").value(text) }
+        fillRiskOfSeriousHarmWith { text -> $("#riskOfSeriousHarm").value(text) }
         setPreviousSupervisionResponseGood { $( "#previousSupervisionResponse_Good").value("Good") }
-        fillAdditionalPreviousSupervisionWith { text -> $("#additionalPreviousSupervision .ql-editor").leftShift(text) }
+        fillAdditionalPreviousSupervisionWith { text -> $("#additionalPreviousSupervision").value(text) }
     }
 }

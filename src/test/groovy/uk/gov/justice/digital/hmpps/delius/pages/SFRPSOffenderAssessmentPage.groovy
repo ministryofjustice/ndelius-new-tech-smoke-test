@@ -7,25 +7,25 @@ class SFRPSOffenderAssessmentPage extends SFPSRBasePage {
     static content = {
         heading { $("h1").text() }
         accommodationCheckBox { $("#issueAccommodation") }
-        fillAccommodationWith { text -> $("#issueAccommodationDetails .ql-editor").leftShift(text) }
+        fillAccommodationWith { text -> $("#issueAccommodationDetails").value(text) }
         employmentCheckBox { $("#issueEmployment") }
-        fillEmploymentWith { text -> $("#issueEmploymentDetails .ql-editor").leftShift(text)  }
+        fillEmploymentWith { text -> $("#issueEmploymentDetails").value(text)  }
         financeCheckBox { $("#issueFinance") }
-        fillFinanceWith{ text -> $("#issueFinanceDetails .ql-editor").leftShift(text)  }
+        fillFinanceWith{ text -> $("#issueFinanceDetails").value(text)  }
         relationshipsCheckBox { $("#issueRelationships") }
-        fillRelationshipsWith{ text -> $("#issueRelationshipsDetails .ql-editor").leftShift(text)  }
+        fillRelationshipsWith{ text -> $("#issueRelationshipsDetails").value(text)  }
         substanceMisuseCheckBox { $("#issueSubstanceMisuse") }
-        fillSubstanceMisuseWith{ text -> $("#issueSubstanceMisuseDetails .ql-editor").leftShift(text) }
+        fillSubstanceMisuseWith{ text -> $("#issueSubstanceMisuseDetails").value(text) }
         healthCheckBox { $("#issueHealth") }
-        fillHealthWith{ text -> $("#issueHealthDetails .ql-editor").leftShift(text) }
+        fillHealthWith{ text -> $("#issueHealthDetails").value(text) }
         behaviourCheckBox { $("#issueBehaviour") }
-        fillBehaviourWith { text -> $("#issueBehaviourDetails .ql-editor").leftShift(text) }
+        fillBehaviourWith { text -> $("#issueBehaviourDetails").value(text) }
         otherCheckBox { $("#issueOther") }
-        fillOtherWith { text -> $("#issueOtherDetails .ql-editor").leftShift(text) }
+        fillOtherWith { text -> $("#issueOtherDetails").value(text) }
         setExperienceTraumaYes { $( "#experienceTrauma_yes").value("yes") }
-        fillExperienceTraumaDetailsWith { text -> $("#experienceTraumaDetails .ql-editor").leftShift(text) }
+        fillExperienceTraumaDetailsWith { text -> $("#experienceTraumaDetails").value(text) }
         setCaringResponsibilitiesYes { $( "#caringResponsibilities_yes").value("yes") }
-        fillCaringResponsibilitiesDetailsWith { text -> $("#caringResponsibilitiesDetails .ql-editor").leftShift(text) }
+        fillCaringResponsibilitiesDetailsWith { text -> $("#caringResponsibilitiesDetails").value(text) }
 
     }
 }

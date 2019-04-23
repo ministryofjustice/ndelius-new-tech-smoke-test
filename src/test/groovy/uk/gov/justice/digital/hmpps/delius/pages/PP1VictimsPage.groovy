@@ -7,7 +7,7 @@ class PP1VictimsPage extends PP1BasePage {
     static at = { heading == "Victims" }
 
     static content = {
-        fillVictimsImpactDetailsWith { text -> $("#victimsImpactDetails .ql-editor").leftShift(text) }
+        fillVictimsImpactDetailsWith { text -> $("#victimsImpactDetails").value(text) }
         fillVictimsVLOContactDatesWith {
             text ->
                 Date date = new SimpleDateFormat("dd/MM/yyyy").parse(text);

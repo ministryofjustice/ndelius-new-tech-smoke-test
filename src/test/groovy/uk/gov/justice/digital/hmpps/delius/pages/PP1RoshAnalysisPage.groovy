@@ -4,11 +4,11 @@ class PP1RoshAnalysisPage extends PP1BasePage {
     static at = { heading == "RoSH analysis" }
 
     static content = {
-        fillNatureOfRisk { text -> $("#natureOfRisk .ql-editor").leftShift(text) }
-        fillIncreaseFactors { text -> $("#increaseFactors .ql-editor").leftShift(text) }
-        fillDecreaseFactors { text -> $("#decreaseFactors .ql-editor").leftShift(text) }
-        fillLikelihoodFurtherOffending { text -> $("#likelihoodFurtherOffending .ql-editor").leftShift(text) }
+        fillNatureOfRisk { text -> $("#natureOfRisk").value(text) }
+        fillIncreaseFactors { text -> $("#increaseFactors").value(text) }
+        fillDecreaseFactors { text -> $("#decreaseFactors").value(text) }
+        fillLikelihoodFurtherOffending { text -> $("#likelihoodFurtherOffending").value(text) }
         setRiskOfAbscondingYes { $("#riskOfAbsconding_yes").value("yes") }
-        fillRiskOfAbscondingDetails { text -> $("#riskOfAbscondingDetails .ql-editor").leftShift(text) }
+        fillRiskOfAbscondingDetails { text -> $("#riskOfAbscondingDetails").value(text) }
     }
 }

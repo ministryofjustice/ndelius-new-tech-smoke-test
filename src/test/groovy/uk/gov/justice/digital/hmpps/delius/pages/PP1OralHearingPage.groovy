@@ -5,7 +5,7 @@ class PP1OralHearingPage extends PP1BasePage {
     static at = { heading == "Oral hearing" }
 
     static content = {
-        fillOralHearingWith { text -> $("#oralHearing .ql-editor").leftShift(text) }
+        fillOralHearingWith { text -> $("#oralHearing").value(text) }
     }
 
 }

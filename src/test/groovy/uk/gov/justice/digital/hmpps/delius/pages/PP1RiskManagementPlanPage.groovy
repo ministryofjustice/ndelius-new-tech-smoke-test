@@ -5,14 +5,14 @@ class PP1RiskManagementPlanPage extends PP1BasePage {
 
     static content = {
         setRiskManagementPlanRequiredYes { $("#riskManagementPlanRequired_yes").value("yes") }
-        fillCurrentSituation { text -> $("#currentSituation .ql-editor").leftShift(text) }
-        fillSupportingAgencies { text -> $("#supportingAgencies .ql-editor").leftShift(text) }
-        fillSupport { text -> $("#support .ql-editor").leftShift(text) }
-        fillControl { text -> $("#control .ql-editor").leftShift(text) }
-        fillRiskMeasures { text -> $("#riskMeasures .ql-editor").leftShift(text) }
-        fillAgencyActions { text -> $("#agencyActions .ql-editor").leftShift(text) }
-        fillAdditionalConditions { text -> $("#additionalConditions .ql-editor").leftShift(text) }
-        fillLevelOfContact { text -> $("#levelOfContact .ql-editor").leftShift(text) }
-        fillContingencyPlan { text -> $("#contingencyPlan .ql-editor").leftShift(text) }
+        fillCurrentSituation { text -> $("#currentSituation").value(text) }
+        fillSupportingAgencies { text -> $("#supportingAgencies").value(text) }
+        fillSupport { text -> $("#support").value(text) }
+        fillControl { text -> $("#control").value(text) }
+        fillRiskMeasures { text -> $("#riskMeasures").value(text) }
+        fillAgencyActions { text -> $("#agencyActions").value(text) }
+        fillAdditionalConditions { text -> $("#additionalConditions").value(text) }
+        fillLevelOfContact { text -> $("#levelOfContact").value(text) }
+        fillContingencyPlan { text -> $("#contingencyPlan").value(text) }
     }
 }
