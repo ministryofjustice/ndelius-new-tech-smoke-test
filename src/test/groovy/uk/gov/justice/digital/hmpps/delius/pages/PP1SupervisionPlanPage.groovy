@@ -6,7 +6,7 @@ class PP1SupervisionPlanPage extends PP1BasePage {
 
     static content = {
         setSupervisionPlanRequiredYes { $("#supervisionPlanRequired_yes").value("yes") }
-        fillSupervisionPlanDetailWith { text -> $("#supervisionPlanDetail .ql-editor").leftShift(text) }
+        fillSupervisionPlanDetailWith { text -> $("#supervisionPlanDetail").value(text) }
     }
 
 

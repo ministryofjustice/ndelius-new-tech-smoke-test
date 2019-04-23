@@ -6,7 +6,7 @@ class PP1ResettlementPlanPage extends PP1BasePage {
 
     static content = {
         setResettlementplanYes { $("#resettlementPlan_yes").value("yes") }
-        fillResettlementPlanDetail { text -> $("#resettlementPlanDetail .ql-editor").leftShift(text) }
+        fillResettlementPlanDetail { text -> $("#resettlementPlanDetail").value(text) }
     }
 
 }

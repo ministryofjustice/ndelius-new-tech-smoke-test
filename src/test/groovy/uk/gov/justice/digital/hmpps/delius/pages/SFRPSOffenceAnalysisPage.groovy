@@ -6,7 +6,7 @@ class SFRPSOffenceAnalysisPage extends SFPSRBasePage {
 
     static content = {
         heading { $("h1").text() }
-        fillOffenceAnalysisWith { text -> $("#offenceAnalysis  .ql-editor").leftShift(text) }
-        fillPatternOfOffendingWith { text -> $("#patternOfOffending  .ql-editor").leftShift(text) }
+        fillOffenceAnalysisWith { text -> $("#offenceAnalysis").value(text) }
+        fillPatternOfOffendingWith { text -> $("#patternOfOffending").value(text) }
     }
 }

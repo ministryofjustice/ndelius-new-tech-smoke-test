@@ -13,9 +13,9 @@ class PP1SourcesPage extends PP1BasePage {
         clickSourcesPreSentenceReport { $("#sourcesPreSentenceReport").click() }
         clickSourcesProbationCaseRecord { $("#sourcesProbationCaseRecord").click() }
         clickSourcesOther { $("#sourcesOther").click() }
-        fillSourcesOtherDetailWith { text -> $("#sourcesOtherDetail .ql-editor").leftShift(text) }
-        fillSourcesAssessmentListWith { text -> $("#sourcesAssessmentList .ql-editor").leftShift(text) }
+        fillSourcesOtherDetailWith { text -> $("#sourcesOtherDetail").value(text) }
+        fillSourcesAssessmentListWith { text -> $("#sourcesAssessmentList").value(text) }
         setSourceLimitationsYes { $("#sourceLimitations_yes").value("yes") }
-        fillSourceLimitationsDetailWith { text -> $("#sourceLimitationsDetail .ql-editor").leftShift(text) }
+        fillSourceLimitationsDetailWith { text -> $("#sourceLimitationsDetail").value(text) }
     }
 }
