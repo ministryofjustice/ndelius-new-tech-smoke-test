@@ -5,7 +5,7 @@ driver = {
     def chromeDriverPath = getClass().getResource(String.format("webdriver/%s/chromedriver", isMac() ? "mac64" : "linux64"))
     System.setProperty('webdriver.chrome.driver', chromeDriverPath.getPath())
     def options = new ChromeOptions();
-    options.addArguments("--headless");
+    // options.addArguments("--headless");
     options.addArguments("window-size=1920,1080");
     options.addArguments("--disable-gpu");
 

@@ -17,6 +17,6 @@ class SFRPSSourcesOfInformationPage extends SFPSRBasePage {
         domesticAbuseInformationSourceCheckBox { $("#domesticAbuseInformationSource") }
         sentencingGuidelinesInformationSourceCheckBox { $("#sentencingGuidelinesInformationSource") }
         otherInformationSourceCheckBox { $("#otherInformationSource") }
-        fillOtherInformationDetailsWith { text -> $("#otherInformationDetails").value(text) }
+        fillOtherInformationDetailsWith { text -> js.exec("return tinymce.get('otherInformationDetails').setContent('$text')") }
     }
 }

@@ -6,9 +6,9 @@ class SFRPSRiskAssessmentPage extends SFPSRBasePage {
 
     static content = {
         heading { $("h1").text() }
-        fillLikelihoodOfReOffendingWith { text -> $("#likelihoodOfReOffending").value(text) }
-        fillRiskOfSeriousHarmWith { text -> $("#riskOfSeriousHarm").value(text) }
+        fillLikelihoodOfReOffendingWith { text -> js.exec("return tinymce.get('likelihoodOfReOffending').setContent('$text')") }
+        fillRiskOfSeriousHarmWith { text -> js.exec("return tinymce.get('riskOfSeriousHarm').setContent('$text')") }
         setPreviousSupervisionResponseGood { $( "#previousSupervisionResponse_Good").value("Good") }
-        fillAdditionalPreviousSupervisionWith { text -> $("#additionalPreviousSupervision").value(text) }
+        fillAdditionalPreviousSupervisionWith { text -> js.exec("return tinymce.get('additionalPreviousSupervision').setContent('$text')") }
     }
 }

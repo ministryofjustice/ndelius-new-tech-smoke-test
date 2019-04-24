@@ -9,8 +9,8 @@ class PP1PrisonerDetailsPage extends PP1BasePage {
     static content = {
         setPrisonerDetailsPrisonersCategoryA { $("#prisonerDetailsPrisonersCategory_a").value("a") }
 
-        fillPrisonerDetailOffenceWith { text -> $("#prisonerDetailsOffence").value(text) }
-        fillPrisonerDetailSentenceWith { text -> $("#prisonerDetailsSentence").value(text) }
+        fillPrisonerDetailOffenceWith { text -> js.exec("return tinymce.get('prisonerDetailsOffence').setContent('$text')") }
+        fillPrisonerDetailSentenceWith { text -> js.exec("return tinymce.get('prisonerDetailsSentence').setContent('$text')") }
 
         setPrisonerDetailsDeterminate { $("#prisonerDetailsSentenceType_determinate").value("determinate") }
         setPrisonerDetailsDeterminateSentenceType { $("#prisonerDetailsDeterminateSentenceType_discretionaryConditionalRelease").value("discretionaryConditionalRelease") }

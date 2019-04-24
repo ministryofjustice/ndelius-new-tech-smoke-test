@@ -6,8 +6,8 @@ class SFRPSOffenceDetailsPage extends SFPSRBasePage {
 
     static content = {
         heading { $("h1").text() }
-        fillMainOffenceWith { text -> $("#mainOffence").value(text) }
-        fillOtherOffencesWith { text -> $("#otherOffences").value(text) }
-        fillOffenceSummaryWith { text -> $("#offenceSummary").value(text) }
+        fillMainOffenceWith { text -> js.exec("return tinymce.get('mainOffence').setContent('$text')") }
+        fillOtherOffencesWith { text -> js.exec("return tinymce.get('otherOffences').setContent('$text')") }
+        fillOffenceSummaryWith { text -> js.exec("return tinymce.get('offenceSummary').setContent('$text')") }
     }
 }

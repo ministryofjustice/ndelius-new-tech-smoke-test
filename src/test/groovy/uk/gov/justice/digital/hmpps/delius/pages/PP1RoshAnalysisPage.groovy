@@ -4,11 +4,11 @@ class PP1RoshAnalysisPage extends PP1BasePage {
     static at = { heading == "RoSH analysis" }
 
     static content = {
-        fillNatureOfRisk { text -> $("#natureOfRisk").value(text) }
-        fillIncreaseFactors { text -> $("#increaseFactors").value(text) }
-        fillDecreaseFactors { text -> $("#decreaseFactors").value(text) }
-        fillLikelihoodFurtherOffending { text -> $("#likelihoodFurtherOffending").value(text) }
+        fillNatureOfRisk { text -> js.exec("return tinymce.get('natureOfRisk').setContent('$text')") }
+        fillIncreaseFactors { text -> js.exec("return tinymce.get('increaseFactors').setContent('$text')") }
+        fillDecreaseFactors { text -> js.exec("return tinymce.get('decreaseFactors').setContent('$text')") }
+        fillLikelihoodFurtherOffending { text -> js.exec("return tinymce.get('likelihoodFurtherOffending').setContent('$text')") }
         setRiskOfAbscondingYes { $("#riskOfAbsconding_yes").value("yes") }
-        fillRiskOfAbscondingDetails { text -> $("#riskOfAbscondingDetails").value(text) }
+        fillRiskOfAbscondingDetails { text -> js.exec("return tinymce.get('riskOfAbscondingDetails').setContent('$text')") }
     }
 }
