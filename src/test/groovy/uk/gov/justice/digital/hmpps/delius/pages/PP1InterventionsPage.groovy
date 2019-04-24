@@ -5,7 +5,7 @@ class PP1InterventionsPage extends PP1BasePage {
     static at = { heading == "Interventions" }
 
     static content = {
-        fillInterventionsDetailWith { text -> $("#interventionsDetail").value(text) }
-        fillInterventionsSummaryWith { text -> $("#interventionsSummary").value(text) }
+        fillInterventionsDetailWith { text -> js.exec("return tinymce.get('interventionsDetail').setContent('$text')") }
+        fillInterventionsSummaryWith { text -> js.exec("return tinymce.get('interventionsSummary').setContent('$text')") }
     }
 }

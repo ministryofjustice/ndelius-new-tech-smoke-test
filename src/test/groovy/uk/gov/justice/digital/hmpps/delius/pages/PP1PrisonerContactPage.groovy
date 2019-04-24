@@ -5,8 +5,8 @@ class PP1PrisonerContactPage extends PP1BasePage {
     static at = { heading == "Prisoner contact" }
 
     static content = {
-        fillPrisonerContactDetailWith { text -> $("#prisonerContactDetail").value(text) }
-        fillPrisonerContactFamilyDetailWith { text -> $("#prisonerContactFamilyDetail").value(text) }
-        fillPrisonerContactAgenciesDetailWith { text -> $("#prisonerContactAgenciesDetail").value(text) }
+        fillPrisonerContactDetailWith { text -> js.exec("return tinymce.get('prisonerContactDetail').setContent('$text')") }
+        fillPrisonerContactFamilyDetailWith { text -> js.exec("return tinymce.get('prisonerContactFamilyDetail').setContent('$text')") }
+        fillPrisonerContactAgenciesDetailWith { text -> js.exec("return tinymce.get('prisonerContactAgenciesDetail').setContent('$text')") }
     }
 }

@@ -7,25 +7,25 @@ class SFRPSOffenderAssessmentPage extends SFPSRBasePage {
     static content = {
         heading { $("h1").text() }
         accommodationCheckBox { $("#issueAccommodation") }
-        fillAccommodationWith { text -> $("#issueAccommodationDetails").value(text) }
+        fillAccommodationWith { text -> js.exec("return tinymce.get('issueAccommodationDetails').setContent('$text')") }
         employmentCheckBox { $("#issueEmployment") }
-        fillEmploymentWith { text -> $("#issueEmploymentDetails").value(text)  }
+        fillEmploymentWith { text -> js.exec("return tinymce.get('issueEmploymentDetails').setContent('$text')") }
         financeCheckBox { $("#issueFinance") }
-        fillFinanceWith{ text -> $("#issueFinanceDetails").value(text)  }
+        fillFinanceWith { text -> js.exec("return tinymce.get('issueFinanceDetails').setContent('$text')") }
         relationshipsCheckBox { $("#issueRelationships") }
-        fillRelationshipsWith{ text -> $("#issueRelationshipsDetails").value(text)  }
+        fillRelationshipsWith { text -> js.exec("return tinymce.get('issueRelationshipsDetails').setContent('$text')") }
         substanceMisuseCheckBox { $("#issueSubstanceMisuse") }
-        fillSubstanceMisuseWith{ text -> $("#issueSubstanceMisuseDetails").value(text) }
+        fillSubstanceMisuseWith { text -> js.exec("return tinymce.get('issueSubstanceMisuseDetails').setContent('$text')") }
         healthCheckBox { $("#issueHealth") }
-        fillHealthWith{ text -> $("#issueHealthDetails").value(text) }
+        fillHealthWith { text -> js.exec("return tinymce.get('issueHealthDetails').setContent('$text')") }
         behaviourCheckBox { $("#issueBehaviour") }
-        fillBehaviourWith { text -> $("#issueBehaviourDetails").value(text) }
+        fillBehaviourWith { text -> js.exec("return tinymce.get('issueBehaviourDetails').setContent('$text')") }
         otherCheckBox { $("#issueOther") }
-        fillOtherWith { text -> $("#issueOtherDetails").value(text) }
-        setExperienceTraumaYes { $( "#experienceTrauma_yes").value("yes") }
-        fillExperienceTraumaDetailsWith { text -> $("#experienceTraumaDetails").value(text) }
-        setCaringResponsibilitiesYes { $( "#caringResponsibilities_yes").value("yes") }
-        fillCaringResponsibilitiesDetailsWith { text -> $("#caringResponsibilitiesDetails").value(text) }
+        fillOtherWith { text -> js.exec("return tinymce.get('issueOtherDetails').setContent('$text')") }
+        setExperienceTraumaYes { $("#experienceTrauma_yes").value("yes") }
+        fillExperienceTraumaDetailsWith { text -> js.exec("return tinymce.get('experienceTraumaDetails').setContent('$text')") }
+        setCaringResponsibilitiesYes { $("#caringResponsibilities_yes").value("yes") }
+        fillCaringResponsibilitiesDetailsWith { text -> js.exec("return tinymce.get('caringResponsibilitiesDetails').setContent('$text')") }
 
     }
 }

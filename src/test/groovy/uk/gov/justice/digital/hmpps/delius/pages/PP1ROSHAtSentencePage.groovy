@@ -21,7 +21,7 @@ class PP1ROSHAtSentencePage extends PP1BasePage {
         setRoshAtPointOfSentencePrisonersLow { $("#roshAtPosPrisoners_low").value("low") }
         setRoshAtPointOfSentenceStaffLow { $("#roshAtPosStaff_low").value("low") }
 
-        fillRoshAtPointOfSentenceIndexWith { text -> $("#roshAtPosAttitudeIndexOffence").value(text) }
-        fillRoshAtPointOfSentencePreviousWith { text -> $("#roshAtPosAttitudePreviousOffending").value(text) }
+        fillRoshAtPointOfSentenceIndexWith { text -> js.exec("return tinymce.get('roshAtPosAttitudeIndexOffence').setContent('$text')") }
+        fillRoshAtPointOfSentencePreviousWith { text -> js.exec("return tinymce.get('roshAtPosAttitudePreviousOffending').setContent('$text')") }
     }
 }

@@ -6,8 +6,6 @@ class PP1SupervisionPlanPage extends PP1BasePage {
 
     static content = {
         setSupervisionPlanRequiredYes { $("#supervisionPlanRequired_yes").value("yes") }
-        fillSupervisionPlanDetailWith { text -> $("#supervisionPlanDetail").value(text) }
+        fillSupervisionPlanDetailWith { text -> js.exec("return tinymce.get('supervisionPlanDetail').setContent('$text')") }
     }
-
-
 }

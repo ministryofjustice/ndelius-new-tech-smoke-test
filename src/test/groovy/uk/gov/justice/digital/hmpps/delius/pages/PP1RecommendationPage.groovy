@@ -5,7 +5,7 @@ class PP1RecommendationPage extends PP1BasePage {
     static at = { heading == "Recommendation" }
 
     static content = {
-        fillRecommendationWith { text -> $("#recommendation").value(text) }
+        fillRecommendationWith { text -> js.exec("return tinymce.get('recommendation').setContent('$text')") }
     }
 
 }

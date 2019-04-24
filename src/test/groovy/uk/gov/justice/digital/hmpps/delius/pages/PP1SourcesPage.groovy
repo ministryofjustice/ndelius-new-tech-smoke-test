@@ -13,9 +13,9 @@ class PP1SourcesPage extends PP1BasePage {
         clickSourcesPreSentenceReport { $("#sourcesPreSentenceReport").click() }
         clickSourcesProbationCaseRecord { $("#sourcesProbationCaseRecord").click() }
         clickSourcesOther { $("#sourcesOther").click() }
-        fillSourcesOtherDetailWith { text -> $("#sourcesOtherDetail").value(text) }
-        fillSourcesAssessmentListWith { text -> $("#sourcesAssessmentList").value(text) }
+        fillSourcesOtherDetailWith { text -> js.exec("return tinymce.get('sourcesOtherDetail').setContent('$text')") }
+        fillSourcesAssessmentListWith { text -> js.exec("return tinymce.get('sourcesAssessmentList').setContent('$text')") }
         setSourceLimitationsYes { $("#sourceLimitations_yes").value("yes") }
-        fillSourceLimitationsDetailWith { text -> $("#sourceLimitationsDetail").value(text) }
+        fillSourceLimitationsDetailWith { text -> js.exec("return tinymce.get('sourceLimitationsDetail').setContent('$text')") }
     }
 }
