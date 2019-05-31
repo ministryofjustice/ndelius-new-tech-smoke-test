@@ -6,7 +6,7 @@ class SFRPSOffenceAnalysisPage extends SFPSRBasePage {
 
     static content = {
         heading { $("h1").text() }
-        fillOffenceAnalysisWith { text -> js.exec("return tinymce.get('offenceAnalysis').setContent('$text')") }
-        fillPatternOfOffendingWith { text -> js.exec("return tinymce.get('patternOfOffending').setContent('$text')") }
+        fillOffenceAnalysisWith { text -> js.exec("tinymce.get('offenceAnalysis-tinymce').setContent('$text'); tinymce.get('offenceAnalysis-tinymce').fire('blur'); return true") }
+        fillPatternOfOffendingWith { text -> js.exec("tinymce.get('patternOfOffending-tinymce').setContent('$text'); tinymce.get('patternOfOffending-tinymce').fire('blur'); return true") }
     }
 }

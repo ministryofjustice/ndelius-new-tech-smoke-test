@@ -101,6 +101,7 @@ class ShortFormatPreSentenceReportSpec extends GebReportingSpec {
         and: 'Fill in details in the popup window'
         withWindow("reportpopup") {
             at(SFRPSOffenceDetailsPage)
+            simulateUserPause()
             fillMainOffenceWith("Main offence")
             fillOtherOffencesWith("Other offences")
             fillOffenceSummaryWith("Summary of offence")

@@ -7,7 +7,7 @@ class PP1VictimsPage extends PP1BasePage {
     static at = { heading == "Victims" }
 
     static content = {
-        fillVictimsImpactDetailsWith { text -> js.exec("return tinymce.get('victimsImpactDetails-tinymce').setContent('$text')") }
+        fillVictimsImpactDetailsWith { text -> js.exec("tinymce.get('victimsImpactDetails-tinymce').setContent('$text'); tinymce.get('victimsImpactDetails-tinymce').fire('blur'); return true") }
         fillVictimsVLOContactDatesWith {
             text ->
                 Date date = new SimpleDateFormat("dd/MM/yyyy").parse(text);

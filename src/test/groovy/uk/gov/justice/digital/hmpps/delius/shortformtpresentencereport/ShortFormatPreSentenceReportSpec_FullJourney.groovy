@@ -57,6 +57,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
         withWindow("reportpopup") {
             at(SFRPSOffenceDetailsPage)
+            simulateUserPause()
             fillMainOffenceWith("Main offence text")
             fillOtherOffencesWith("Other offences text")
             fillOffenceSummaryWith("Summary of offence text")
@@ -65,6 +66,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
         withWindow("reportpopup") {
             at(SFRPSOffenceAnalysisPage)
+            simulateUserPause()
             fillOffenceAnalysisWith("Offence analysis text")
             fillPatternOfOffendingWith("Pattern of offending text")
             saveAndContinue.click()
@@ -72,6 +74,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
         withWindow("reportpopup") {
             at(SFRPSOffenderAssessmentPage)
+            simulateUserPause()
             accommodationCheckBox.click()
             fillAccommodationWith("Accommodation text")
             employmentCheckBox.click()
@@ -97,6 +100,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
         withWindow("reportpopup") {
             at(SFRPSRiskAssessmentPage)
+            simulateUserPause()
             fillLikelihoodOfReOffendingWith("Likelihood of re-offending text")
             fillRiskOfSeriousHarmWith("Risk of serious harm text")
             setPreviousSupervisionResponseGood
@@ -106,12 +110,14 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
 
         withWindow("reportpopup") {
             at(SFRPSConclusionPage)
+            simulateUserPause()
             fillProposalWith("Proposed sentence text")
             saveAndContinue.click()
         }
 
         withWindow("reportpopup") {
             at(SFRPSSourcesOfInformationPage)
+            simulateUserPause()
             interviewInformationSourceCheckBox.click()
             serviceRecordsInformationSourceCheckBox.click()
             cpsSummaryInformationSourceCheckBox.click()
@@ -336,5 +342,13 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             at(SFRPSSignYourReportPage)
         }
 
+    }
+
+    def simulateUserPause() {
+        int waitForSeconds = 1
+        def originalMilliseconds = System.currentTimeMillis()
+        waitFor(waitForSeconds + 1, 0.5) {
+            (System.currentTimeMillis() - originalMilliseconds) > (waitForSeconds * 1000)
+        }
     }
 }

@@ -6,7 +6,7 @@ class PP1ResettlementPlanPage extends PP1BasePage {
 
     static content = {
         setResettlementplanYes { $("#resettlementPlan_yes").value("yes") }
-        fillResettlementPlanDetail { text -> js.exec("return tinymce.get('resettlementPlanDetail').setContent('$text')") }
+        fillResettlementPlanDetail { text -> js.exec("tinymce.get('resettlementPlanDetail-tinymce').setContent('$text'); tinymce.get('resettlementPlanDetail-tinymce').fire('blur'); return true") }
     }
 
 }

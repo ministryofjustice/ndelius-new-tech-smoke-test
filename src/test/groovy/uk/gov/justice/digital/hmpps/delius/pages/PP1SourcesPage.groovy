@@ -13,9 +13,9 @@ class PP1SourcesPage extends PP1BasePage {
         clickSourcesPreSentenceReport { $("#sourcesPreSentenceReport").click() }
         clickSourcesProbationCaseRecord { $("#sourcesProbationCaseRecord").click() }
         clickSourcesOther { $("#sourcesOther").click() }
-        fillSourcesOtherDetailWith { text -> js.exec("return tinymce.get('sourcesOtherDetail').setContent('$text')") }
-        fillSourcesAssessmentListWith { text -> js.exec("return tinymce.get('sourcesAssessmentList').setContent('$text')") }
+        fillSourcesOtherDetailWith { text -> js.exec("tinymce.get('sourcesOtherDetail-tinymce').setContent('$text'); tinymce.get('sourcesOtherDetail-tinymce').fire('blur'); return true") }
+        fillSourcesAssessmentListWith { text -> js.exec("tinymce.get('sourcesAssessmentList-tinymce').setContent('$text'); tinymce.get('sourcesAssessmentList-tinymce').fire('blur'); return true") }
         setSourceLimitationsYes { $("#sourceLimitations_yes").value("yes") }
-        fillSourceLimitationsDetailWith { text -> js.exec("return tinymce.get('sourceLimitationsDetail').setContent('$text')") }
+        fillSourceLimitationsDetailWith { text -> js.exec("tinymce.get('sourceLimitationsDetail-tinymce').setContent('$text'); tinymce.get('sourceLimitationsDetail-tinymce').fire('blur'); return true") }
     }
 }
