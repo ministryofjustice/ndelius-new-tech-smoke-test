@@ -111,6 +111,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         withWindow("reportpopup") {
             at(SFRPSConclusionPage)
             simulateUserPause()
+            setConfirmEIFYes.click()
             fillProposalWith("Proposed sentence text")
             saveAndContinue.click()
         }
@@ -128,6 +129,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             policeInformationSourceCheckBox.click()
             sentencingGuidelinesInformationSourceCheckBox.click()
             domesticAbuseInformationSourceCheckBox.click()
+            equalityInformationFormInformationSourceCheckBox.click()
             otherInformationSourceCheckBox.click()
             fillOtherInformationDetailsWith("Other information details text")
             saveAndContinue.click()
