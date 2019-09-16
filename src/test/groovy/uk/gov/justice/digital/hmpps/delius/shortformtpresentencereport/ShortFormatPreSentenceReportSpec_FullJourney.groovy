@@ -231,6 +231,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             assert policeInformationSource == "true"
             assert sentencingGuidelinesInformationSource == "true"
             assert domesticAbuseInformationSource == "true"
+            assert equalityInformationFormInformationSource == "true"
             assert otherInformationSource == "true"
             assert otherInformationDetails.contains("Other information details text")
 
@@ -269,6 +270,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
             assert previousSupervisionResponse.contains("Good")
             assert additionalPreviousSupervision.contains("Additional previous supervision text")
 
+            assert confirmEIF.contains("yes")
             assert proposal.contains("Proposed sentence text")
 
             assert reportAuthor.contains("Report author text")
