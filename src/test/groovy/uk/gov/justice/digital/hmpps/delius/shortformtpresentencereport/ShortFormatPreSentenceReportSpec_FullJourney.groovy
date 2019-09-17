@@ -111,7 +111,7 @@ class ShortFormatPreSentenceReportSpec_FullJourney extends GebReportingSpec {
         withWindow("reportpopup") {
             at(SFRPSConclusionPage)
             simulateUserPause()
-            setConfirmEIFYes.click()
+            confirmEIFRadio.click()
             fillProposalWith("Proposed sentence text")
             saveAndContinue.click()
         }
