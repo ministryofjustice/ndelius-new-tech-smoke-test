@@ -6,7 +6,7 @@ class SFRPSConclusionPage extends SFPSRBasePage {
 
     static content = {
         heading { $("h1").text() }
-        confirmEIFRadio { $("#confirmEIF") }
+        confirmEIFRadio { $("#confirmEIF_yes") }
         fillProposalWith { text -> js.exec("tinymce.get('proposal-tinymce').setContent('$text'); tinymce.get('proposal-tinymce').fire('blur'); return true") }
     }
 }
