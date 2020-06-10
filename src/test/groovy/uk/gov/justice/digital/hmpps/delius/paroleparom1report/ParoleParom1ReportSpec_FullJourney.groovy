@@ -343,11 +343,8 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert currentSituation.contains("Current situation text")
             assert supervision.contains("Supervision text")
             assert monitoringControl.contains("Monitoring / Control text")
-            assert control.contains("Control text")
-            assert riskMeasures.contains("Risk Measures text")
-            assert agencyActions.contains("Agency Actions text")
-            assert additionalConditions.contains("Additional conditions text")
-            assert levelOfContact.contains("Level of contact text")
+            assert victimSafetyPlanning.contains("Victim safety planning  text")
+            assert interventionsTreatment.contains("Interventions / Treatment text")
             assert contingencyPlan.contains("Contingency plan text")
 
             assert supervisionPlanRequired == "yes"
