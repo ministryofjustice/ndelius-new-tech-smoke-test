@@ -343,7 +343,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert currentSituation.contains("Current situation text")
             assert supervision.contains("Supervision text")
             assert monitoringControl.contains("Monitoring / Control text")
-            assert victimSafetyPlanning.contains("Victim safety planning  text")
+            assert victimSafetyPlanning.contains("Victim safety planning text")
             assert interventionsTreatment.contains("Interventions / Treatment text")
             assert contingencyPlan.contains("Contingency plan text")
 
@@ -772,7 +772,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             assert currentSituation.contains("Current situation text")
             assert supervision.contains("Supervision text")
             assert monitoringControl.contains("Monitoring / Control text")
-            assert victimSafetyPlanning.contains("Victim safety planning  text")
+            assert victimSafetyPlanning.contains("Victim safety planning text")
             assert interventionsTreatment.contains("Interventions / Treatment text")
             assert contingencyPlan.contains("Contingency plan text")
 
