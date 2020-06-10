@@ -198,13 +198,10 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             setRiskManagementPlanRequiredYes()
             fillCurrentSituation("Current situation text")
-            fillSupportingAgencies("Supporting agencies text")
-            fillSupport("Support text")
-            fillControl("Control text")
-            fillRiskMeasures("Risk Measures text")
-            fillAgencyActions("Agency Actions text")
-            fillAdditionalConditions("Additional conditions text")
-            fillLevelOfContact("Level of contact text")
+            fillSupervision("Supervision text")
+            fillMonitoringControl("Monitoring / Control text")
+            fillInterventionsTreatment("Interventions / Treatment text")
+            fillVictimSafetyPlanning("Victim safety planning text")
             fillContingencyPlan("Contingency plan text")
 
             saveAndContinue.click()
@@ -344,8 +341,8 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             // Page 16 - Risk Management Plan (RMP)
             assert riskManagementPlanRequired == "yes"
             assert currentSituation.contains("Current situation text")
-            assert supportingAgencies.contains("Supporting agencies text")
-            assert support.contains("Support text")
+            assert supervision.contains("Supervision text")
+            assert monitoringControl.contains("Monitoring / Control text")
             assert control.contains("Control text")
             assert riskMeasures.contains("Risk Measures text")
             assert agencyActions.contains("Agency Actions text")
@@ -469,12 +466,9 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
         content.contains 'Current situation text'
         content.contains 'Supporting agencies text'
-        content.contains 'Support text'
-        content.contains 'Control text'
-        content.contains 'Risk Measures text'
-        content.contains 'Agency Actions text'
-        content.contains 'Additional conditions text'
-        content.contains 'Level of contact text'
+        content.contains 'Monitoring / Control text'
+        content.contains 'Interventions / Treatment text'
+        content.contains 'Victim safety planning text'
         content.contains 'Contingency plan text'
 
         content.contains 'supervision plan detail text'
@@ -650,13 +644,10 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
 
             setRiskManagementPlanRequiredYes()
             fillCurrentSituation("Current situation text")
-            fillSupportingAgencies("Supporting agencies text")
-            fillSupport("Support text")
-            fillControl("Control text")
-            fillRiskMeasures("Risk Measures text")
-            fillAgencyActions("Agency Actions text")
-            fillAdditionalConditions("Additional conditions text")
-            fillLevelOfContact("Level of contact text")
+            fillSupervision("Supervision text")
+            fillMonitoringControl("Monitoring / Control text")
+            fillInterventionsTreatment("Interventions / Treatment text")
+            fillVictimSafetyPlanning("Victim safety planning text")
             fillContingencyPlan("Contingency plan text")
 
             saveAndContinue.click()
@@ -782,13 +773,10 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
             // Page 16 - Risk Management Plan (RMP)
             assert riskManagementPlanRequired == "yes"
             assert currentSituation.contains("Current situation text")
-            assert supportingAgencies.contains("Supporting agencies text")
-            assert support.contains("Support text")
-            assert control.contains("Control text")
-            assert riskMeasures.contains("Risk Measures text")
-            assert agencyActions.contains("Agency Actions text")
-            assert additionalConditions.contains("Additional conditions text")
-            assert levelOfContact.contains("Level of contact text")
+            assert supervision.contains("Supervision text")
+            assert monitoringControl.contains("Monitoring / Control text")
+            assert victimSafetyPlanning.contains("Victim safety planning  text")
+            assert interventionsTreatment.contains("Interventions / Treatment text")
             assert contingencyPlan.contains("Contingency plan text")
 
             assert supervisionPlanRequired == "yes"
@@ -931,13 +919,10 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'Risk of absconding detail text'
 
         content.contains 'Current situation text'
-        content.contains 'Supporting agencies text'
-        content.contains 'Support text'
-        content.contains 'Control text'
-        content.contains 'Risk Measures text'
-        content.contains 'Agency Actions text'
-        content.contains 'Additional conditions text'
-        content.contains 'Level of contact text'
+        content.contains 'Supervision text'
+        content.contains 'Monitoring / Control text'
+        content.contains 'Interventions / Treatment text'
+        content.contains 'Victim safety planning text'
         content.contains 'Contingency plan text'
 
         content.contains 'supervision plan detail text'
