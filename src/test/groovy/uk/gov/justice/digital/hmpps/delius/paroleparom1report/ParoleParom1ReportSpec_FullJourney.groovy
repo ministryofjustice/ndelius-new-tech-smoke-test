@@ -462,7 +462,7 @@ class ParoleParom1ReportSpec_FullJourney extends GebReportingSpec {
         content.contains 'Risk of absconding detail text'
 
         content.contains 'Current situation text'
-        content.contains 'Supporting agencies text'
+        content.contains 'Supervision text'
         content.contains 'Monitoring / Control text'
         content.contains 'Interventions / Treatment text'
         content.contains 'Victim safety planning text'
