@@ -9,7 +9,11 @@ driver = {
         options.addArguments("--headless");
     }
     options.addArguments("window-size=1920,1080");
+    options.addArguments("allow-insecure-localhost");
     options.addArguments("--disable-gpu");
+    def experimentalFlags = ['same-site-by-default-cookies@2','cookies-without-same-site-must-be-secure@2', 'enable-experimental-cookie-features@2']
+    def chromeLocalStatePrefs = ["browser.enabled_labs_experiments" : experimentalFlags]
+    options.setExperimentalOption("localState", chromeLocalStatePrefs)
 
     def driverInstance = new ChromeDriver(options)
 
