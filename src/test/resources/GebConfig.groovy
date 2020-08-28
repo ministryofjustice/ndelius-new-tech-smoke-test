@@ -21,6 +21,12 @@ static def isMac() {
     return ((OS.contains("mac")) || (OS.contains("darwin")));
 }
 
-baseUrl = System.getenv('DELIUS_WRAPPER_URL') ?: "http://localhost:3000/"
+baseUrl = getBaseUrl()
 reportsDir = "build/geb-reports"
 atCheckWaiting = true
+
+static def getBaseUrl() {
+    def url = System.getenv('DELIUS_WRAPPER_URL') ?: "http://localhost:3000/"
+    println("Base url is " + url)
+    return url
+}
