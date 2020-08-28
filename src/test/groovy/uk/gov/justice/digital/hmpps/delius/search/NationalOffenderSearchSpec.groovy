@@ -46,6 +46,10 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
 
         when: 'I view the page'
         newTechFrame.isDisplayed()
+        def options = driver.manage()
+        def cookie = options.getCookieNamed("PLAY_SESSION")
+        println("parent play session is" + cookie)
+
 
         then: 'I see a search terms field'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
@@ -64,6 +68,9 @@ class NationalOffenderSearchSpec extends GebReportingSpec {
 
         then: 'I see a single offender record'
         withFrame(newTechFrame, NationalOffenderSearchPage) {
+            def options = driver.manage()
+            def cookie = options.getCookieNamed("PLAY_SESSION")
+            println("frame play session is" + cookie)
             waitFor {resultCount == 1}
             offenders[0].contains('X00001')
         }
